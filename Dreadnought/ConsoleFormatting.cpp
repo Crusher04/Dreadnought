@@ -13,4 +13,5 @@ void ConsoleFormatting::SetColour(int colour)
 void ConsoleFormatting::ClearScreen()
 {
 	system("cls");
+	
 }

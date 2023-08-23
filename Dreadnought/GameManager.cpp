@@ -102,6 +102,7 @@ bool GameManager::Run()
 
 void GameManager::Title()
 {
+
 	cFormat.SetColour(7);
 	std::cout << "Welcome To Battleship Combat Simulator!\n"
 		<< "---------------------------------------\n"
@@ -374,6 +375,7 @@ void GameManager::GetUserInput()
 
 		while (moveFlag)
 		{
+			std::cout << std::endl;
 			if(playerOne.GetMovement() != 0)
 			std::cout << "Where would you like to move? (LEFT, RIGHT, UP, DOWN)";
 
