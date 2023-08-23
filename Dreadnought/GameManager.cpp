@@ -19,7 +19,7 @@ GameManager::GameManager()
 	
 	while (!playerOne.Initialize(PLAYER))
 	{
-		SetConsoleTextAttribute(cFormat.hConsole, 15);
+		cFormat.SetColour(15);
 		std::cout << std::left << "To select a ship of choice, type the name of the ship. Choose a ship:";
 		std::cout << "\n\nSHIPS\n------\n";
 		std::cout << "\nDreadnought: \n------------\n    Movement:\t 20 NM\n    Weapon:\t Dual Canons (1D6 per canon)  (Action)\n    Weapon:\t AA Gun (Good against Missiles) (Adds 1D4 to defence rolls)  (Must Be Prepared) (Bonus Action)\n";
@@ -28,11 +28,11 @@ GameManager::GameManager()
 		std::cout << "\nSuperNova: \n------------\n    Movement:\t 20 NM\n    Weapon:\t RailGun (1D20) (MUST BE CHARGED) (Action)\n    Defense:\t Turrets (1D4)  (Good against close ranged ships)  (Bonus Action)\n";
 
 
-		SetConsoleTextAttribute(cFormat.hConsole, 14);
+		cFormat.SetColour(14);
 		std::cout << "\n\n-> ";
 		std::cin >> userInput;
 		std::transform(userInput.begin(), userInput.end(), userInput.begin(), [](unsigned char c) {return std::tolower(c); });
-		SetConsoleTextAttribute(cFormat.hConsole, 15);
+		cFormat.SetColour(15);
 
 		if (userInput.compare("dreadnought") == 0)
 		{
@@ -53,10 +53,10 @@ GameManager::GameManager()
 		//Check for terminating characters
 		else if (userInput.compare("quit") == 0 || userInput.compare("exit") == 0)
 		{
-			SetConsoleTextAttribute(cFormat.hConsole, 10);
+			cFormat.SetColour(10);
 			std::cout << "\n **Thanks For Playing! Goodbye!**\n";
 			gameActive = false;
-			SetConsoleTextAttribute(cFormat.hConsole, 15);
+			cFormat.SetColour(10);
 			break;
 		}
 		
@@ -102,7 +102,7 @@ bool GameManager::Run()
 
 void GameManager::Title()
 {
-	SetConsoleTextAttribute(cFormat.hConsole, 7);
+	cFormat.SetColour(7);
 	std::cout << "Welcome To Battleship Combat Simulator!\n"
 		<< "---------------------------------------\n"
 		<< "To quit the game, type Quit or Exit at anytime, progress does not save!\n"
@@ -111,7 +111,7 @@ void GameManager::Title()
 		<< "The board is 20x20 and you move one square at a time. \nEach weapon will have a specific dice as damage and you roll to hit with every attack.\n"
 		<< "Every turn you have 1 action, 1 bonus action and your movement speed. Good luck!\n"
 		<< "---------------------------------------\n\n";
-	SetConsoleTextAttribute(cFormat.hConsole, 15);
+	cFormat.SetColour(15);
 }
 
 void GameManager::Update()
@@ -138,6 +138,7 @@ void GameManager::Update()
 
 	if (!helpFlag && !moveFlag)
 	{
+		cFormat.ClearScreen();
 		theBoard.Display(playerOne.GetPositionX(), playerOne.GetPositionY(), playerAI.GetPositionX(), playerAI.GetPositionY());
 
 		playerOne.RenderUI(playerAI.GetPositionX(), playerAI.GetPositionY(), playerAI.GetHealth(), playerAI.GetShipName());
@@ -328,11 +329,11 @@ void GameManager::GetUserInput()
 	* Basic user input to accept only keywords. No filtration system, wont find keywords in a mess of a sentence like ' asjflasjj quit '
 	*/
 
-	SetConsoleTextAttribute(cFormat.hConsole, 14);
+	cFormat.SetColour(14);
 	std::cout << "\nCOMMAND-> ";
 	std::cin >> userInput;
 	std::transform(userInput.begin(), userInput.end(), userInput.begin(), [](unsigned char c) {return std::tolower(c); });
-	SetConsoleTextAttribute(cFormat.hConsole, 15);
+	cFormat.SetColour(15);
 
 	//Check for help
 	if (userInput.compare("help") == 0)
@@ -360,10 +361,10 @@ void GameManager::GetUserInput()
 	//Check for terminating characters
 	else if (userInput.compare("quit") == 0 || userInput.compare("exit") == 0)
 	{
-		SetConsoleTextAttribute(cFormat.hConsole, 10);
+		cFormat.SetColour(10);
 		std::cout << "\n **Thanks For Playing! Goodbye!**\n";
 		gameActive = false;
-		SetConsoleTextAttribute(cFormat.hConsole, 15);
+		cFormat.SetColour(15);
 
 	}
 	else if (userInput.compare("move") == 0)
@@ -376,11 +377,11 @@ void GameManager::GetUserInput()
 			if(playerOne.GetMovement() != 0)
 			std::cout << "Where would you like to move? (LEFT, RIGHT, UP, DOWN)";
 
-			SetConsoleTextAttribute(cFormat.hConsole, 14);
+			cFormat.SetColour(14);
 			std::cout << "\n\nMOVE COMMAND-> ";
 			std::cin >> userInput;
 			std::transform(userInput.begin(), userInput.end(), userInput.begin(), [](unsigned char c) {return std::tolower(c); });
-			SetConsoleTextAttribute(cFormat.hConsole, 15);
+			cFormat.SetColour(15);
 
 			if (moveFlag && userInput.compare("left") == 0 || userInput.compare("right") == 0 || userInput.compare("up") == 0 || userInput.compare("down") == 0 || userInput.compare("back") == 0)
 			{

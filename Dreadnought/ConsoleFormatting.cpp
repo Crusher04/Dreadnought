@@ -9,3 +9,8 @@ void ConsoleFormatting::SetColour(int colour)
 {
 	SetConsoleTextAttribute(hConsole, colour);
 }
+
+void ConsoleFormatting::ClearScreen()
+{
+	system("cls");
+}
