@@ -16,6 +16,10 @@
     <ClCompile Include="GameManager.cpp">
       <Filter>Source</Filter>
     </ClCompile>
+    <ClCompile Include="SceneMenu.cpp">
+      <Filter>Source\Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneGame.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Battleship.h">
@@ -30,6 +34,13 @@
     <ClInclude Include="GameManager.h">
       <Filter>Header</Filter>
     </ClInclude>
+    <ClInclude Include="Scene.h">
+      <Filter>Header</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneMenu.h">
+      <Filter>Header</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneGame.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header">
@@ -37,6 +48,9 @@
     </Filter>
     <Filter Include="Source">
       <UniqueIdentifier>{8b2c2f0f-987a-4864-b1ae-738bb4b51fe9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Scenes">
+      <UniqueIdentifier>{93465e95-4add-4e64-9de6-24682c58a4e5}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

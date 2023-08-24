@@ -99,6 +99,12 @@ GameManager::GameManager()
 GameManager::~GameManager()
 {
 	gameActive = false;
+	
+	if (currentScene) {
+		currentScene->OnDestroy();
+		delete currentScene;
+		currentScene = nullptr;
+	}
 }
 
 bool GameManager::Run()
@@ -679,4 +685,24 @@ void GameManager::PauseAfterAction()
 	helpFlag = false;
 	std::cout << std::endl;
 	system("pause");
+}
+
+bool GameManager::BuildScene(SCENENUMBER scene_)
+{
+	if (currentScene != nullptr)
+	{
+		currentScene->OnDestroy();
+		delete currentScene;
+		currentScene = nullptr;
+	}
+	return true;
+
+	switch (scene_)
+	{
+	case SCENENUMBER::SCENE_MAIN_MENU:
+		currentScene = new SceneMenu();
+		break;
+	default:
+		std::cout << "ERROR: Scene cannot be found\n";
+	}
 }
