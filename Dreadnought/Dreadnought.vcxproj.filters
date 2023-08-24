@@ -2,19 +2,19 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <ClCompile Include="Dreadnought.cpp">
-      <Filter>Class</Filter>
+      <Filter>Source</Filter>
     </ClCompile>
     <ClCompile Include="Battleship.cpp">
-      <Filter>Class</Filter>
+      <Filter>Source</Filter>
     </ClCompile>
     <ClCompile Include="Board.cpp">
-      <Filter>Class</Filter>
+      <Filter>Source</Filter>
     </ClCompile>
     <ClCompile Include="ConsoleFormatting.cpp">
-      <Filter>Class</Filter>
+      <Filter>Source</Filter>
     </ClCompile>
     <ClCompile Include="GameManager.cpp">
-      <Filter>Class</Filter>
+      <Filter>Source</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -35,7 +35,7 @@
     <Filter Include="Header">
       <UniqueIdentifier>{a5e8d406-9f7c-45c0-acd5-782f42c4322f}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Class">
+    <Filter Include="Source">
       <UniqueIdentifier>{8b2c2f0f-987a-4864-b1ae-738bb4b51fe9}</UniqueIdentifier>
     </Filter>
   </ItemGroup>

@@ -1,5 +1,6 @@
 #include "ConsoleFormatting.h"
 
+
 ConsoleFormatting::ConsoleFormatting()
 {
 	hConsole = GetStdHandle(STD_OUTPUT_HANDLE);

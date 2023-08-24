@@ -8,6 +8,12 @@
 
 GameManager::GameManager()
 {
+	// Console Sizing Adjustment
+	cFormat.AdjustToFullscreen();
+
+	//Console Title
+	SetConsoleTitleA("Dreadnought: Rogue-like Surival Game");
+
 	// Providing a seed value
 	std::srand((unsigned)time(NULL));
 
@@ -15,6 +21,8 @@ GameManager::GameManager()
 		gameActive = true;
 
 	theBoard.Generate();
+
+	//Title
 	Title();
 	
 	while (!playerOne.Initialize(PLAYER))

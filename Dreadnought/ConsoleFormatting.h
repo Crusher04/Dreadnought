@@ -1,7 +1,7 @@
 #pragma once
 #include <conio.h>
 #include <windows.h>
-
+#include <iostream>
 
 class ConsoleFormatting
 {
@@ -22,6 +22,7 @@ public:
 	/// </summary>
 	void ClearScreen();
 
+	
 private:
 	HANDLE  hConsole;
 

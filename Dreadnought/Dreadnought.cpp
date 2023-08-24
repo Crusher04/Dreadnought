@@ -8,7 +8,7 @@
 int main()
 {
     GameManager game;
-    
+
     while (game.Run())
     {
         game.Update();
