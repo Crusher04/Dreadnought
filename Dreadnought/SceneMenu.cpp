@@ -1,8 +1,12 @@
 #include "SceneMenu.h"
 
-SceneMenu::SceneMenu(): userInput(nullptr)
+SceneMenu::SceneMenu()
 {
-	userInput;
+	if (userInput)
+		userInput = nullptr;
+
+	std::cout << "SCENE MENU LOADED\n";
+
 }
 
 bool SceneMenu::OnCreate()

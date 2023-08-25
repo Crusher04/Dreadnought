@@ -22,7 +22,6 @@ public:
 	~GameManager();
 
 	bool Run();
-	void Title();
 	void Update();
 	void GetUserInput();
 	void Attack(Battleship friendly, ActorType actor);

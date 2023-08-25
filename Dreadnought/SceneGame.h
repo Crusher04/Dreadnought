@@ -4,5 +4,9 @@
 class SceneGame: public Scene
 {
 
+	SceneGame();
+	~SceneGame();
+
+	void Title();
 };
 

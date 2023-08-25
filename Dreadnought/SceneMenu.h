@@ -15,7 +15,7 @@ public:
 	void GetUserInput();
 
 protected:
-	std::unique_ptr<std::string> userInput;
+	
 };
 
 #endif
