@@ -1,9 +1,12 @@
 #pragma once
+#ifndef GAMEMANAGER_H
+#define GAMEMANAGER_H
 #include "Board.h"
 #include "Battleship.h"
 #include "ConsoleFormatting.h"
 #include "Scene.h"
 #include "SceneMenu.h"
+#include "SceneGame.h"
 
 #include <algorithm>
 #include <cctype>
@@ -13,31 +16,28 @@
 
 class GameManager
 {
-public:
-	GameManager();
-	~GameManager();
-
-	void Run();
-	bool IsGameActive() { return *gameActive; }
-	void Update();
-	
-	
-
 private:
-	enum class SCENENUMBER {
-		SCENE_MAINMENU = 0,
-		SCENE_GAME = 1
-	};
-
 	class Scene* currentScene;
-
 
 	std::string userInput;
 	ConsoleFormatting cFormat;
 	bool* gameActive;
 
+public:
+	
+
+	GameManager();
+	~GameManager();
+
+	void Run();
+	bool IsGameActive() { return *gameActive; }
 	bool BuildScene(SCENENUMBER scene_);
+	void Update();
+	
+	
+
+
 	
 	
 };
-
+#endif

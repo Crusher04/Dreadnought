@@ -67,7 +67,10 @@ bool GameManager::BuildScene(SCENENUMBER scene_)
 	switch (scene_)
 	{
 	case SCENENUMBER::SCENE_MAINMENU:
-		currentScene = new SceneMenu();
+		currentScene = new SceneMenu(this);
+		break;
+	case SCENENUMBER::SCENE_GAME:
+		currentScene = new SceneGame(this);
 		break;
 	default:
 		std::cout << "ERROR: Scene cannot be found\n";

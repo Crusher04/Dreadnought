@@ -1,6 +1,6 @@
 #pragma once
-#ifndef SCENEMENU
-#define SCENEMENU
+#ifndef SCENEMENU_H
+#define SCENEMENU_H
 #include "Scene.h"	
 #include <iostream>
 #include <fstream>
@@ -10,8 +10,8 @@
 class SceneMenu : public Scene
 {
 public:
-	explicit SceneMenu();
-	virtual ~SceneMenu() {}
+	 SceneMenu(GameManager* game_);
+	 virtual ~SceneMenu();
 	virtual bool OnCreate();
 	virtual void OnDestroy();
 	virtual void Update(bool* gameActive_);
@@ -19,7 +19,8 @@ public:
 	void Title();
 
 protected:
-	std::string asciiBanner;
+	
+
 };
 
 #endif

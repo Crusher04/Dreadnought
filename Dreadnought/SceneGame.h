@@ -3,6 +3,7 @@
 #include "Battleship.h"	
 #include "Board.h"
 #include <algorithm>
+#include "GameManager.h"
 
 class SceneGame: public Scene
 {
@@ -18,11 +19,13 @@ class SceneGame: public Scene
 	};
 
 public:
+	explicit SceneGame(GameManager* game_);
+	virtual ~SceneGame();
 
-	SceneGame();
-	~SceneGame();
+	virtual bool OnCreate();
+	virtual void OnDestroy();
 
-	void Update();
+	virtual void Update(bool* gameActive_);
 	void GetUserInput();
 	void Attack(Battleship friendly, ActorType actor);
 	int RandomNumber(DiceType dice, int lastNum);

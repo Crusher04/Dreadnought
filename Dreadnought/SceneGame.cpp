@@ -1,7 +1,8 @@
 #include "SceneGame.h"
 
-SceneGame::SceneGame()
+SceneGame::SceneGame(GameManager* game_)
 {
+
 	while (!playerOne.Initialize(PLAYER))
 	{
 		cFormat.SetColour(15);
@@ -219,11 +220,22 @@ void SceneGame::GetUserInput()
 
 SceneGame::~SceneGame()
 {
+	OnDestroy();
+}
 
+bool SceneGame::OnCreate()
+{
+	return true;
+}
+
+void SceneGame::OnDestroy()
+{
+	game = nullptr;
+	delete game;
 }
 
 
-void SceneGame::Update()
+void SceneGame::Update(bool* gameActive_)
 {
 	std::cout << std::endl;
 

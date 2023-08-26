@@ -2,10 +2,11 @@
 #include <windows.h> 
 #include <sstream>
 #include <string>
+#include <algorithm>
 
-SceneMenu::SceneMenu()
+SceneMenu::SceneMenu(GameManager* game_)
 {
-	
+	game = game_;
 	//Title
 	Title();
 	//Sleep(1000);
@@ -22,6 +23,11 @@ SceneMenu::SceneMenu()
 	
 }
 
+SceneMenu::~SceneMenu()
+{
+	OnDestroy();
+}
+
 bool SceneMenu::OnCreate()
 {
 
@@ -31,7 +37,8 @@ bool SceneMenu::OnCreate()
 
 void SceneMenu::OnDestroy()
 {
-
+	game = nullptr;
+	delete game;
 }
 
 void SceneMenu::Update(bool* gameActive_)
@@ -43,7 +50,7 @@ void SceneMenu::GetUserInput(bool* gameActive_)
 {
 	std::cout << "SELECTION -> ";
 	std::getline(std::cin, userInput);
-
+	
 	//Set input string to lower case.
 	std::transform(userInput.begin(), userInput.end(), userInput.begin(), [](unsigned char c) {return std::tolower(c); });
 	userInput.erase(std::remove_if(userInput.begin(), userInput.end(), [](unsigned char x) { return std::isspace(x); }), userInput.end());
@@ -64,7 +71,7 @@ void SceneMenu::GetUserInput(bool* gameActive_)
 	}
 	else if (userInput.compare("play") == 0)
 	{
-		
+		game->BuildScene(SCENE_GAME);
 	}
 	else if (userInput.compare("quit") == 0 || userInput.compare("exit") == 0)
 		*gameActive_ = false;
@@ -74,6 +81,7 @@ void SceneMenu::GetUserInput(bool* gameActive_)
 
 void SceneMenu::Title()
 {
+	std::string asciiBanner;
 
 	std::ifstream myFile("asciiBanner.txt");
 
@@ -86,5 +94,6 @@ void SceneMenu::Title()
 
 	myFile.close();
 	cFormat.SetColour(15);
+	std::cout << std::flush;
 
 }
