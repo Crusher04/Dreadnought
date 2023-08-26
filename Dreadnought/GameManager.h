@@ -13,6 +13,8 @@
 #include <iomanip>
 #include<cstdlib>
 #include <time.h> 
+#include <conio.h>
+#include <stdio.h>
 
 class GameManager
 {
@@ -33,6 +35,7 @@ public:
 	bool IsGameActive() { return *gameActive; }
 	bool BuildScene(SCENENUMBER scene_);
 	void Update();
+	void SetGameActive(bool newValue) { *gameActive = newValue; }
 	
 	
 

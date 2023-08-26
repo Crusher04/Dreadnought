@@ -3,74 +3,13 @@
 SceneGame::SceneGame(GameManager* game_)
 {
 
-	while (!playerOne.Initialize(PLAYER))
+	game = game_;
+
+	if (!playerOne.Initialize(PLAYER))
 	{
-		cFormat.SetColour(15);
-		std::cout << std::left << "To select a ship of choice, type the name of the ship. Choose a ship:";
-		std::cout << "\n\nSHIPS\n------\n";
-		std::cout << "\nDreadnought: \n------------\n    Movement:\t 20 NM\n    Weapon:\t Dual Canons (1D6 per canon)  (Action)\n    Weapon:\t AA Gun (Good against Missiles) (Adds 1D4 to defence rolls)  (Must Be Prepared) (Bonus Action)\n";
-		std::cout << "\nSunkenLady: \n--------------\n    Movement:\t 20 NM\n    Weapon:\t Missles x 15 (1D12)  (Action)\n    Weapon:\t Turrets (1D4)  (Good against close ranged Ships)  (Bonus Action)\n";
-		std::cout << "\nIdris: \n------------\n    Movement:\t 20 NM\n    Weapon:\t Triple Canons (1D6 per canon)  (Action)\n    Weapon:\t AA Gun (Good against Missiles)   (Adds 1D4 to defence rolls) (Must Be Prepared) (Bonus Action)\n";
-		std::cout << "\nSuperNova: \n------------\n    Movement:\t 20 NM\n    Weapon:\t RailGun (1D20) (MUST BE CHARGED) (Action)\n    Defense:\t Turrets (1D4)  (Good against close ranged ships)  (Bonus Action)\n";
-
-
-		cFormat.SetColour(14);
-		std::cout << "\n\n-> ";
-		std::cin >> userInput;
-		std::transform(userInput.begin(), userInput.end(), userInput.begin(), [](unsigned char c) {return std::tolower(c); });
-		cFormat.SetColour(15);
-
-		if (userInput.compare("dreadnought") == 0)
-		{
-			playerOne.ChooseShip(Dreadnought);
-		}
-		else if (userInput.compare("sunkenlady") == 0)
-		{
-			playerOne.ChooseShip(SunkenLady);
-		}
-		else if (userInput.compare("idris") == 0)
-		{
-			playerOne.ChooseShip(Idris);
-		}
-		else if (userInput.compare("supernova") == 0)
-		{
-			playerOne.ChooseShip(SuperNova);
-		}
-		//Check for terminating characters
-		else if (userInput.compare("quit") == 0 || userInput.compare("exit") == 0)
-		{
-			cFormat.SetColour(10);
-			std::cout << "\n **Thanks For Playing! Goodbye!**\n";
-			gameActive = false;
-			cFormat.SetColour(10);
-			break;
-		}
-
-	}
-	std::srand((unsigned)time(NULL));
-	int psuedoNum = (rand() % 3);
-	playerAI.Initialize(AI);
-	switch (psuedoNum)
-	{
-	case 0:
-		playerAI.ChooseShip(Dreadnought);
-		break;
-	case 1:
-		playerAI.ChooseShip(SunkenLady);
-		break;
-	case 2:
-		playerAI.ChooseShip(Idris);
-		break;
-	case 3:
-		playerAI.ChooseShip(SuperNova);
-		break;
-	default:
-		playerAI.ChooseShip(UNDEFINEDSHIP);
-		break;
+		InitializePlayer();
 	}
 
-	playerOne.Spawn();
-	playerAI.Spawn();
 }
 
 void SceneGame::GetUserInput()
@@ -115,7 +54,7 @@ void SceneGame::GetUserInput()
 	{
 		cFormat.SetColour(10);
 		std::cout << "\n **Thanks For Playing! Goodbye!**\n";
-		gameActive = false;
+		game->SetGameActive(false);
 		cFormat.SetColour(15);
 
 	}
@@ -230,8 +169,11 @@ bool SceneGame::OnCreate()
 
 void SceneGame::OnDestroy()
 {
-	game = nullptr;
-	delete game;
+	if(game != nullptr)
+	{
+		game = nullptr;
+		delete game;
+	}
 }
 
 
@@ -243,7 +185,7 @@ void SceneGame::Update(bool* gameActive_)
 	{
 		cFormat.SetColour(12);
 		std::cout << "\n\n\t ** YOU LOSE. GAME OVER! ** \n";
-		gameActive = false;
+		game->SetGameActive(false);
 		cFormat.PauseAfterAction();
 		return;
 	}
@@ -252,7 +194,7 @@ void SceneGame::Update(bool* gameActive_)
 	{
 		cFormat.SetColour(10);
 		std::cout << "\n\n\t ** YOU WIN. CONGRATULATIONS! ** \n";
-		gameActive = false;
+		game->SetGameActive(false);
 		cFormat.PauseAfterAction();
 		return;
 	}
@@ -272,7 +214,7 @@ void SceneGame::Update(bool* gameActive_)
 	{
 		cFormat.SetColour(12);
 		std::cout << "\n\n\t ** YOU LOSE. GAME OVER! ** \n";
-		gameActive = false;
+		game->SetGameActive(false);
 		cFormat.PauseAfterAction();
 		return;
 	}
@@ -281,7 +223,7 @@ void SceneGame::Update(bool* gameActive_)
 	{
 		cFormat.SetColour(10);
 		std::cout << "\n\n\t ** YOU WIN. CONGRATULATIONS! ** \n";
-		gameActive = false;
+		game->SetGameActive(false);
 		cFormat.PauseAfterAction();
 		return;
 	}
@@ -637,5 +579,115 @@ int SceneGame::RandomNumber(DiceType dice, int lastNum)
 	cFormat.SetColour(15);
 
 	return psuedoNum;
+}
+
+void SceneGame::InitializePlayer()
+{
+	RunIntro();
+
+	while (!playerOne.Initialize(PLAYER))
+	{
+		cFormat.SetColour(15);
+		std::string shipDesc;
+		std::ifstream myFile("shipDesc.txt");
+
+
+		std::cout << "CHOOSE YOUR SHIP: \n";
+
+		while (std::getline(myFile, shipDesc))
+		{
+			std::cout << shipDesc << "\n";
+		}
+		myFile.close();
+
+		cFormat.SetColour(14);
+		std::cout << "\n\n-> ";
+		std::cin >> userInput;
+		std::transform(userInput.begin(), userInput.end(), userInput.begin(), [](unsigned char c) {return std::tolower(c); });
+		cFormat.SetColour(15);
+
+		if (userInput.compare("dreadnought") == 0)
+		{
+			playerOne.ChooseShip(Dreadnought);
+		}
+		else if (userInput.compare("sunkenlady") == 0)
+		{
+			playerOne.ChooseShip(SunkenLady);
+		}
+		else if (userInput.compare("idris") == 0)
+		{
+			playerOne.ChooseShip(Idris);
+		}
+		else if (userInput.compare("supernova") == 0)
+		{
+			playerOne.ChooseShip(SuperNova);
+		}
+		//Check for terminating characters
+		else if (userInput.compare("quit") == 0 || userInput.compare("exit") == 0)
+		{
+			cFormat.SetColour(10);
+			std::cout << "\n **Thanks For Playing! Goodbye!**\n";
+			if (game->IsGameActive())
+				game->SetGameActive(false);
+			cFormat.SetColour(10);
+			break;
+		}
+
+	}
+	std::srand((unsigned)time(NULL));
+	int psuedoNum = (rand() % 3);
+	playerAI.Initialize(AI);
+	switch (psuedoNum)
+	{
+	case 0:
+		playerAI.ChooseShip(Dreadnought);
+		break;
+	case 1:
+		playerAI.ChooseShip(SunkenLady);
+		break;
+	case 2:
+		playerAI.ChooseShip(Idris);
+		break;
+	case 3:
+		playerAI.ChooseShip(SuperNova);
+		break;
+	default:
+		playerAI.ChooseShip(UNDEFINEDSHIP);
+		break;
+	}
+
+	playerOne.Spawn();
+	playerAI.Spawn();
+}
+
+void SceneGame::RunIntro()
+{
+	cFormat.ClearScreen();
+	std::string intro1, intro2, intro3;
+	intro1 = "Commander, you are the last vessel from the fleet. You are in enemy waters and must do what you can to survive.\n";
+	intro2 = "Your goal is to find the hidden friendly naval base, we cannot transmit coordinates as this may be an unsecured line.\n";
+	intro3 = "\nDo what you can to survive, good luck and gods speed Commander! \n";
+
+	for (int i = 0; i < intro1.length(); i++)
+	{
+		std::cout << intro1[i];
+		Sleep(50);
+	}
+	Sleep(550);
+	for (int i = 0; i < intro2.length(); i++)
+	{
+		std::cout << intro2[i];
+		Sleep(50);
+	}
+	Sleep(550);
+	for (int i = 0; i < intro3.length(); i++)
+	{
+		std::cout << intro3[i];
+		Sleep(50);
+	}
+
+	cFormat.PauseAfterAction();
+	cFormat.ClearScreen();
+
 }
 

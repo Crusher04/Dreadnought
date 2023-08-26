@@ -3,7 +3,7 @@
 
 
 GameManager::GameManager():currentScene{nullptr}, gameActive{nullptr}
-{
+{	
 	//Console Title
 	SetConsoleTitleA("Dreadnought: Rogue-like Surival Game");
 
@@ -16,12 +16,10 @@ GameManager::GameManager():currentScene{nullptr}, gameActive{nullptr}
 		gameActive = new bool;
 		*gameActive = true;
 	}
-		
-	
-	
+
 
 	/********************************   Default first scene   ***********************/
-	BuildScene(SCENENUMBER::SCENE_MAINMENU);
+						BuildScene(SCENENUMBER::SCENE_MAINMENU);
 	/********************************************************************************/
 }
 
@@ -41,6 +39,7 @@ GameManager::~GameManager()
 		gameActive = nullptr;
 		delete gameActive;
 	}
+
 }
 
 void GameManager::Run()

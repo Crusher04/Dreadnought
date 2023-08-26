@@ -7,10 +7,11 @@
 SceneMenu::SceneMenu(GameManager* game_)
 {
 	game = game_;
+
 	//Title
 	Title();
 	//Sleep(1000);
-	//std::cout << "IM AWAKE\n";
+	
 
 	/*std::string s{"Welcome Commander"};
 	
@@ -37,8 +38,11 @@ bool SceneMenu::OnCreate()
 
 void SceneMenu::OnDestroy()
 {
-	game = nullptr;
-	delete game;
+	if (game->IsGameActive() == false && game != nullptr)
+	{
+		game = nullptr;
+		delete game;
+	}
 }
 
 void SceneMenu::Update(bool* gameActive_)
@@ -71,7 +75,7 @@ void SceneMenu::GetUserInput(bool* gameActive_)
 	}
 	else if (userInput.compare("play") == 0)
 	{
-		game->BuildScene(SCENE_GAME);
+		game->BuildScene(SCENENUMBER::SCENE_GAME);
 	}
 	else if (userInput.compare("quit") == 0 || userInput.compare("exit") == 0)
 		*gameActive_ = false;

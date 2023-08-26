@@ -4,6 +4,10 @@
 #include "Board.h"
 #include <algorithm>
 #include "GameManager.h"
+#include <iostream>
+#include <fstream>
+#include <sstream>
+#include <string>
 
 class SceneGame: public Scene
 {
@@ -29,10 +33,10 @@ public:
 	void GetUserInput();
 	void Attack(Battleship friendly, ActorType actor);
 	int RandomNumber(DiceType dice, int lastNum);
+	void InitializePlayer();
+	void RunIntro();
 
 private:
-	bool gameActive = false;
-
 	bool helpFlag = false;
 	bool moveFlag = false;
 	bool endTurn = false;

@@ -1,0 +1,37 @@
+				Dreadnought
+				-----------
+Health: 50
+Movement 20 NM
+Main Weapon: Dual Artillery Canons 250mm (1D6 Damage per canon) (Action)
+Secondary Weapon: Empty
+Secondary Weapon: Empty
+Inventory Slots: 5 slots
+				-----------
+				   Idris
+				-----------
+Health: 50
+Movement 20 NM
+Main Weapon: Triple Artillery Canons 250mm (1D6 Damage per canon) (Action)
+Secondary Weapon: Empty
+Inventory Slots: 4 slots
+
+				-----------
+				SunkenLady
+				-----------
+
+Health: 75
+Movement: 15 NM
+Main Weapon: Single Artillery Canon 400mm (1D12 Damage per canon) (Action)
+Secondary Weapon: Long Range Missile (1D8 Damage) (Must be prepared with Bonus Action, Action to use missile)
+Inventory Slots: 4 slots
+
+
+				-----------
+				 SuperNova
+				-----------
+
+Health: 50
+Movement: 10 NM
+Main Weapon: Dual Artillery Canon 400mm (1D12 Damage per canon) (Action)
+Secondary Weapon: Anti-Missile Defense (Must be prepared with Bonus Action)
+Inventory Slots: 2 slots
