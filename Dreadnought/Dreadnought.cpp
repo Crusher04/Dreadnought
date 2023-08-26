@@ -9,9 +9,9 @@ int main()
 {
     GameManager game;
 
-    while (game.Run())
+    while (game.IsGameActive())
     {
-        game.Update();
+        game.Run();
     }
     
     return 0;

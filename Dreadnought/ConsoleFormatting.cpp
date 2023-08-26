@@ -1,5 +1,8 @@
 #include "ConsoleFormatting.h"
-
+/*
+* Programmer:		Ahmed Hammoud
+* This class is to do with anything that formats the console view; Colouring, Advanced Spacing, Pausing, etc. 
+*/
 
 ConsoleFormatting::ConsoleFormatting()
 {
@@ -15,4 +18,11 @@ void ConsoleFormatting::ClearScreen()
 {
 	system("cls");
 	
+}
+
+void ConsoleFormatting::PauseAfterAction()
+{
+	SetColour(15);
+	std::cout << std::endl;
+	system("pause");
 }
