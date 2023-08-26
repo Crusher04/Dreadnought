@@ -3,6 +3,7 @@
 #define SCENEMENU
 #include "Scene.h"	
 #include <iostream>
+#include <fstream>
 #include "ConsoleFormatting.h"
 #include "GameManager.h"
 
@@ -14,11 +15,11 @@ public:
 	virtual bool OnCreate();
 	virtual void OnDestroy();
 	virtual void Update(bool* gameActive_);
-	void GetUserInput();
+	void GetUserInput(bool* gameActive_);
 	void Title();
 
 protected:
-	
+	std::string asciiBanner;
 };
 
 #endif

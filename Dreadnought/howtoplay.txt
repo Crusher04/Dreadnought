@@ -1,0 +1,12 @@
+================================================================================================================================
+Welcome Commander!
+
+Control the game by typing commands when prompted. There will be keywords to help you navigate through menus and through the game. 
+You will control a battleship that is in enemy territories, your goal is to survive for as long as possible. When typing commands, 
+please have the correct spelling to have the terminal accept your command. 'Exit' or 'Quit' will take you out of the game, 'Menu'
+will take you back to the Main Menu. Type 'Keywords' for all keywords or commands pertaining to the game. 
+
+Good luck!
+=================================================================================================================================
+
+PRESS ANY KEY TO RETURN BACK TO MENU...

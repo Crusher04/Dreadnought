@@ -2,7 +2,7 @@
 
 
 
-GameManager::GameManager():currentScene{nullptr}
+GameManager::GameManager():currentScene{nullptr}, gameActive{nullptr}
 {
 	//Console Title
 	SetConsoleTitleA("Dreadnought: Rogue-like Surival Game");
@@ -11,8 +11,12 @@ GameManager::GameManager():currentScene{nullptr}
 	std::srand((unsigned)time(NULL));
 
 	//Set Game as active
-	if (!gameActive)
-		gameActive.reset(new bool(true));
+	if (gameActive == nullptr)
+	{
+		gameActive = new bool;
+		*gameActive = true;
+	}
+		
 	
 	
 
@@ -23,18 +27,25 @@ GameManager::GameManager():currentScene{nullptr}
 
 GameManager::~GameManager()
 {
-	gameActive.reset(new bool(false));
+	*gameActive = false;
 	
 	if (currentScene) {
 		currentScene->OnDestroy();
-		delete currentScene;
 		currentScene = nullptr;
+		delete currentScene;
+		
+	}
+
+	if (gameActive)
+	{
+		gameActive = nullptr;
+		delete gameActive;
 	}
 }
 
 void GameManager::Run()
 {
-	currentScene->Update();
+	currentScene->Update(gameActive);
 }
 
 void GameManager::Update()
@@ -42,10 +53,6 @@ void GameManager::Update()
 	
 
 }
-	
-
-
-
 
 
 bool GameManager::BuildScene(SCENENUMBER scene_)
@@ -56,7 +63,7 @@ bool GameManager::BuildScene(SCENENUMBER scene_)
 		delete currentScene;
 		currentScene = nullptr;
 	}
-
+	
 	switch (scene_)
 	{
 	case SCENENUMBER::SCENE_MAINMENU:

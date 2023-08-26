@@ -18,7 +18,7 @@ public:
 	~GameManager();
 
 	void Run();
-	bool* IsGameActive() { return gameActive; }
+	bool IsGameActive() { return *gameActive; }
 	void Update();
 	
 	
@@ -34,7 +34,7 @@ private:
 
 	std::string userInput;
 	ConsoleFormatting cFormat;
-	bool* gameActive = false;
+	bool* gameActive;
 
 	bool BuildScene(SCENENUMBER scene_);
 	
