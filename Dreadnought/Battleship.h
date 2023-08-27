@@ -1,31 +1,7 @@
 #pragma once
 #include <iostream>
 #include "ConsoleFormatting.h"
-
-enum MovementDirection
-{
-	UP,
-	DOWN,
-	LEFT,
-	RIGHT
-};
-
-enum Ships
-{
-	Dreadnought,
-	SunkenLady,
-	Idris,
-	SuperNova,
-	UNDEFINEDSHIP
-};
-
-enum ActorType
-{
-	PLAYER,
-	AI,
-	UNDEFINEDACTOR
-};
-
+#include "Enums.h"
 
 
 class Battleship
@@ -54,8 +30,8 @@ public:
 
 private:	
 	struct Attributes {
-		ActorType actor = UNDEFINEDACTOR;
-		Ships shipOfChoice = UNDEFINEDSHIP;
+		ActorType actor = ActorType::UNDEFINEDACTOR;
+		Ships shipOfChoice = Ships::UNDEFINEDSHIP;
 		int health = 50;
 		bool action = true;
 		bool bonusAction = true;

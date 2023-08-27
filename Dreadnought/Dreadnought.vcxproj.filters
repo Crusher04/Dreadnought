@@ -45,6 +45,9 @@
     <ClInclude Include="Scene.h">
       <Filter>Header\Scenes</Filter>
     </ClInclude>
+    <ClInclude Include="Enums.h">
+      <Filter>Header</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header">

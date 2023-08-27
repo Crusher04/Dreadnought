@@ -22,7 +22,7 @@ void Board::Display(int actorX, int actorY, int aiX, int aiY)
 	int yCounter = 0;
 	//std::cout.width(20);
 	cFormat.SetColour(14);
-	std::cout << "\t\t\t    MAP";
+	std::cout << "\t\t\t    RADAR";
 	std::cout << "\n";
 
 	while (yCounter < boardY)

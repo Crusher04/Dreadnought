@@ -5,7 +5,7 @@ SceneGame::SceneGame(GameManager* game_)
 
 	game = game_;
 
-	if (!playerOne.Initialize(PLAYER))
+	if (!playerOne.Initialize(ActorType::PLAYER))
 	{
 		InitializePlayer();
 	}
@@ -79,13 +79,13 @@ void SceneGame::GetUserInput()
 			{
 
 				if (moveFlag && userInput.compare("left") == 0)
-					moveFlag = playerOne.Move(LEFT, PLAYER);
+					moveFlag = playerOne.Move(MovementDirection::LEFT, ActorType::PLAYER);
 				else if (moveFlag && userInput.compare("right") == 0)
-					moveFlag = playerOne.Move(RIGHT, PLAYER);
+					moveFlag = playerOne.Move(MovementDirection::RIGHT, ActorType::PLAYER);
 				else if (moveFlag && userInput.compare("up") == 0)
-					moveFlag = playerOne.Move(UP, PLAYER);
+					moveFlag = playerOne.Move(MovementDirection::UP, ActorType::PLAYER);
 				else if (moveFlag && userInput.compare("down") == 0)
-					moveFlag = playerOne.Move(DOWN, PLAYER);
+					moveFlag = playerOne.Move(MovementDirection::DOWN, ActorType::PLAYER);
 				else if (moveFlag && userInput.compare("back") == 0)
 					moveFlag = false;
 
@@ -122,7 +122,7 @@ void SceneGame::GetUserInput()
 		if (xRange <= 4 && yRange <= 4 && playerOne.GetAction())
 		{
 			playerOne.TakeAction();
-			Attack(playerOne, AI);
+			Attack(playerOne, ActorType::AI);
 		}
 		else if (!playerOne.GetAction())
 		{
@@ -240,7 +240,7 @@ void SceneGame::Update(bool* gameActive_)
 			yRange *= -1;
 		if (xRange <= 4 && yRange <= 4)
 		{
-			Attack(playerAI, PLAYER);
+			Attack(playerAI, ActorType::PLAYER);
 			playerAI.EndOfTurn();
 			endTurn = false;
 			return;
@@ -264,10 +264,10 @@ void SceneGame::Update(bool* gameActive_)
 					switch (psuedoNum)
 					{
 					case 1:
-						playerAI.Move(UP, AI);
+						playerAI.Move(MovementDirection::UP, ActorType::AI);
 						break;
 					case 2:
-						playerAI.Move(RIGHT, AI);
+						playerAI.Move(MovementDirection::RIGHT, ActorType::AI);
 						break;
 					};
 				}
@@ -276,10 +276,10 @@ void SceneGame::Update(bool* gameActive_)
 					switch (psuedoNum)
 					{
 					case 1:
-						playerAI.Move(UP, AI);
+						playerAI.Move(MovementDirection::UP, ActorType::AI);
 						break;
 					case 2:
-						playerAI.Move(LEFT, AI);
+						playerAI.Move(MovementDirection::LEFT, ActorType::AI);
 						break;
 					};
 				}
@@ -288,7 +288,7 @@ void SceneGame::Update(bool* gameActive_)
 					switch (psuedoNum)
 					{
 					case 1:
-						playerAI.Move(UP, AI);
+						playerAI.Move(MovementDirection::UP, ActorType::AI);
 						break;
 					case 2:
 						int lastNum = psuedoNum;
@@ -296,9 +296,9 @@ void SceneGame::Update(bool* gameActive_)
 						while (psuedoNum == lastNum && psuedoNum < 1 || psuedoNum > 2)
 							psuedoNum = rand() % 2;
 						if (psuedoNum == 1)
-							playerAI.Move(LEFT, AI);
+							playerAI.Move(MovementDirection::LEFT, ActorType::AI);
 						else
-							playerAI.Move(RIGHT, AI);
+							playerAI.Move(MovementDirection::RIGHT, ActorType::AI);
 						break;
 					};
 				}
@@ -311,10 +311,10 @@ void SceneGame::Update(bool* gameActive_)
 					switch (psuedoNum)
 					{
 					case 1:
-						playerAI.Move(DOWN, AI);
+						playerAI.Move(MovementDirection::DOWN, ActorType::AI);
 						break;
 					case 2:
-						playerAI.Move(RIGHT, AI);
+						playerAI.Move(MovementDirection::RIGHT, ActorType::AI);
 						break;
 					};
 				}
@@ -323,10 +323,10 @@ void SceneGame::Update(bool* gameActive_)
 					switch (psuedoNum)
 					{
 					case 1:
-						playerAI.Move(DOWN, AI);
+						playerAI.Move(MovementDirection::DOWN, ActorType::AI);
 						break;
 					case 2:
-						playerAI.Move(LEFT, AI);
+						playerAI.Move(MovementDirection::LEFT, ActorType::AI);
 						break;
 					};
 				}
@@ -335,7 +335,7 @@ void SceneGame::Update(bool* gameActive_)
 					switch (psuedoNum)
 					{
 					case 1:
-						playerAI.Move(DOWN, AI);
+						playerAI.Move(MovementDirection::DOWN, ActorType::AI);
 						break;
 					case 2:
 						int lastNum = psuedoNum;
@@ -343,9 +343,9 @@ void SceneGame::Update(bool* gameActive_)
 						while (psuedoNum == lastNum && psuedoNum < 1 || psuedoNum > 2)
 							psuedoNum = rand() % 2;
 						if (psuedoNum == 1)
-							playerAI.Move(LEFT, AI);
+							playerAI.Move(MovementDirection::LEFT, ActorType::AI);
 						else
-							playerAI.Move(RIGHT, AI);
+							playerAI.Move(MovementDirection::RIGHT, ActorType::AI);
 						break;
 					};
 				}
@@ -359,16 +359,16 @@ void SceneGame::Update(bool* gameActive_)
 				switch (psuedoNum)
 				{
 				case 1:
-					playerAI.Move(DOWN, AI);
+					playerAI.Move(MovementDirection::DOWN, ActorType::AI);
 					break;
 				case 2:
-					playerAI.Move(LEFT, AI);
+					playerAI.Move(MovementDirection::LEFT, ActorType::AI);
 					break;
 				case 3:
-					playerAI.Move(RIGHT, AI);
+					playerAI.Move(MovementDirection::RIGHT, ActorType::AI);
 					break;
 				case 4:
-					playerAI.Move(UP, AI);
+					playerAI.Move(MovementDirection::UP, ActorType::AI);
 					break;
 				};
 			}
@@ -388,7 +388,7 @@ void SceneGame::Attack(Battleship friendly, ActorType actor)
 {
 	helpFlag = true;
 
-	if (actor == PLAYER)
+	if (actor == ActorType::PLAYER)
 		std::cout << "\n**ATTACK INCOMING**\n";
 	else
 		std::cout << "\n**ATTACKING ENEMY**\n";
@@ -397,24 +397,24 @@ void SceneGame::Attack(Battleship friendly, ActorType actor)
 	int fNum = -1;
 	int eNum = -1;
 	std::cout << "\nAttacker Roll ";
-	fNum = RandomNumber(D20, 0);
+	fNum = RandomNumber(DiceType::D20, 0);
 
 	cFormat.SetColour(14);
 	std::cout << "\nDefender Roll ";
-	eNum = RandomNumber(D20, fNum);
+	eNum = RandomNumber(DiceType::D20, fNum);
 
 
 	cFormat.SetColour(15);
 
 
-	if (friendly.GetShipChoice() == Dreadnought)
+	if (friendly.GetShipChoice() == Ships::Dreadnought)
 	{
 		if (fNum > eNum)
 		{
 			std::cout << "\n** Rolling Damage: \n";
-			fNum = (RandomNumber(D6, 0)) + (RandomNumber(D6, fNum));
+			fNum = (RandomNumber(DiceType::D6, 0)) + (RandomNumber(DiceType::D6, fNum));
 
-			if (actor == PLAYER)
+			if (actor == ActorType::PLAYER)
 			{
 				cFormat.SetColour(12);
 				std::cout << "** TAKING DAMAGE: " << fNum << "\n";
@@ -436,13 +436,13 @@ void SceneGame::Attack(Battleship friendly, ActorType actor)
 			std::cout << "\n **MISSED**";
 		}
 	}
-	if (friendly.GetShipChoice() == SunkenLady)
+	if (friendly.GetShipChoice() == Ships::SunkenLady)
 	{
 		if (fNum > eNum)
 		{
 			std::cout << "\n** Rolling Damage: \n";
-			fNum = (RandomNumber(D12, 0));
-			if (actor == PLAYER)
+			fNum = (RandomNumber(DiceType::D12, 0));
+			if (actor == ActorType::PLAYER)
 			{
 				cFormat.SetColour(12);
 				std::cout << "** TAKING DAMAGE: " << fNum << "\n";
@@ -463,13 +463,13 @@ void SceneGame::Attack(Battleship friendly, ActorType actor)
 			std::cout << "\n **MISSED**\n";
 		}
 	}
-	if (friendly.GetShipChoice() == Idris)
+	if (friendly.GetShipChoice() == Ships::Idris)
 	{
 		if (fNum > eNum)
 		{
 			std::cout << "\n** Rolling Damage: \n";
-			fNum = (RandomNumber(D6, 0) + RandomNumber(D6, fNum) + RandomNumber(D6, fNum));
-			if (actor == PLAYER)
+			fNum = (RandomNumber(DiceType::D6, 0) + RandomNumber(DiceType::D6, fNum) + RandomNumber(DiceType::D6, fNum));
+			if (actor == ActorType::PLAYER)
 			{
 				cFormat.SetColour(12);
 				std::cout << "** TAKING DAMAGE: " << fNum << "\n";
@@ -490,13 +490,13 @@ void SceneGame::Attack(Battleship friendly, ActorType actor)
 			std::cout << "\n **MISSED**\n";
 		};
 	}
-	if (friendly.GetShipChoice() == SuperNova)
+	if (friendly.GetShipChoice() == Ships::SuperNova)
 	{
 		if (fNum > eNum)
 		{
 			std::cout << "\n** Rolling Damage: \n";
-			fNum = RandomNumber(D20, 0);
-			if (actor == PLAYER)
+			fNum = RandomNumber(DiceType::D20, 0);
+			if (actor == ActorType::PLAYER)
 			{
 				cFormat.SetColour(12);
 				std::cout << "** TAKING DAMAGE: " << fNum << " damage.\n";
@@ -527,37 +527,37 @@ int SceneGame::RandomNumber(DiceType dice, int lastNum)
 	int range = -1;
 
 	switch (dice) {
-	case 0:
+	case DiceType::D4:
 		range = 4;
 		cFormat.SetColour(14);
 		std::cout << "\n\t ** D4 ROLL **";
 		cFormat.SetColour(15);
 		break;
-	case 1:
+	case DiceType::D6:
 		cFormat.SetColour(14);
 		std::cout << "\n\t ** D6 ROLL **";
 		cFormat.SetColour(15);
 		range = 6;
 		break;
-	case 2:
+	case DiceType::D8:
 		cFormat.SetColour(14);
 		std::cout << "\n\t** D8 ROLL **";
 		cFormat.SetColour(15);
 		range = 8;
 		break;
-	case 3:
+	case DiceType::D10:
 		cFormat.SetColour(14);
 		std::cout << "\n\t ** D10 ROLL **";
 		cFormat.SetColour(15);
 		range = 10;
 		break;
-	case 4:
+	case DiceType::D12:
 		cFormat.SetColour(14);
 		std::cout << "\n\t ** D12 ROLL **";
 		cFormat.SetColour(15);
 		range = 12;
 		break;
-	case 5:
+	case DiceType::D20:
 		cFormat.SetColour(14);
 		std::cout << "\n\t ** D20 ROLL **";
 		cFormat.SetColour(15);
@@ -585,7 +585,7 @@ void SceneGame::InitializePlayer()
 {
 	RunIntro();
 
-	while (!playerOne.Initialize(PLAYER))
+	while (!playerOne.Initialize(ActorType::PLAYER))
 	{
 		cFormat.SetColour(15);
 		std::string shipDesc;
@@ -608,19 +608,19 @@ void SceneGame::InitializePlayer()
 
 		if (userInput.compare("dreadnought") == 0)
 		{
-			playerOne.ChooseShip(Dreadnought);
+			playerOne.ChooseShip(Ships::Dreadnought);
 		}
 		else if (userInput.compare("sunkenlady") == 0)
 		{
-			playerOne.ChooseShip(SunkenLady);
+			playerOne.ChooseShip(Ships::SunkenLady);
 		}
 		else if (userInput.compare("idris") == 0)
 		{
-			playerOne.ChooseShip(Idris);
+			playerOne.ChooseShip(Ships::Idris);
 		}
 		else if (userInput.compare("supernova") == 0)
 		{
-			playerOne.ChooseShip(SuperNova);
+			playerOne.ChooseShip(Ships::SuperNova);
 		}
 		//Check for terminating characters
 		else if (userInput.compare("quit") == 0 || userInput.compare("exit") == 0)
@@ -636,23 +636,23 @@ void SceneGame::InitializePlayer()
 	}
 	std::srand((unsigned)time(NULL));
 	int psuedoNum = (rand() % 3);
-	playerAI.Initialize(AI);
+	playerAI.Initialize(ActorType::AI);
 	switch (psuedoNum)
 	{
 	case 0:
-		playerAI.ChooseShip(Dreadnought);
+		playerAI.ChooseShip(Ships::Dreadnought);
 		break;
 	case 1:
-		playerAI.ChooseShip(SunkenLady);
+		playerAI.ChooseShip(Ships::SunkenLady);
 		break;
 	case 2:
-		playerAI.ChooseShip(Idris);
+		playerAI.ChooseShip(Ships::Idris);
 		break;
 	case 3:
-		playerAI.ChooseShip(SuperNova);
+		playerAI.ChooseShip(Ships::SuperNova);
 		break;
 	default:
-		playerAI.ChooseShip(UNDEFINEDSHIP);
+		playerAI.ChooseShip(Ships::UNDEFINEDSHIP);
 		break;
 	}
 

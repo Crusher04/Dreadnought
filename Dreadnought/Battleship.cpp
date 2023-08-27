@@ -10,7 +10,7 @@ bool Battleship::Initialize(ActorType actor_)
 {
 	shipAttributes.actor = actor_;
 
-	if (shipAttributes.shipOfChoice == UNDEFINEDSHIP)
+	if (shipAttributes.shipOfChoice == Ships::UNDEFINEDSHIP)
 	{
 		return false;
 	}
@@ -23,16 +23,16 @@ void Battleship::ChooseShip(Ships shipChoice)
 	shipAttributes.shipOfChoice = shipChoice;
 	switch (shipAttributes.shipOfChoice)
 	{
-	case 0:
+	case Ships::Dreadnought:
 		shipName = "Dreadnought";
 		break;
-	case 1:
+	case Ships::SunkenLady:
 		shipName = "SunkenLady";
 		break;
-	case 2:
+	case Ships::Idris:
 		shipName = "Idris";
 		break;
-	case 3:
+	case Ships::SuperNova:
 		shipName = "SuperNova";
 		break;
 	}
@@ -48,10 +48,10 @@ void Battleship::TakeDamage(int damage)
 bool Battleship::Move(MovementDirection direction, ActorType actor)
 {
 	//LEFT
-	if (shipAttributes.position[0] == 0 && direction == LEFT)
+	if (shipAttributes.position[0] == 0 && direction == MovementDirection::LEFT)
 	{
 		cFormat.SetColour(6);
-		if(actor == PLAYER)
+		if(actor == ActorType::PLAYER)
 			std::cout << "\tINVALID DIRECTION\n";
 		cFormat.SetColour(15);
 		return true;
@@ -60,13 +60,13 @@ bool Battleship::Move(MovementDirection direction, ActorType actor)
 	else if (shipAttributes.movement == 0)
 	{
 		cFormat.SetColour(6);
-		if (actor == PLAYER)
+		if (actor == ActorType::PLAYER)
 			std::cout << "\tNo Movement Left\n";
 		cFormat.SetColour(15);
 		return true;
 		
 	}
-	else if(direction == LEFT)
+	else if(direction == MovementDirection::LEFT)
 	{
 		shipAttributes.position[0] -= 1;
 		shipAttributes.movement -= 5;
@@ -74,10 +74,10 @@ bool Battleship::Move(MovementDirection direction, ActorType actor)
 	}
 
 	//RIGHT
-	if (shipAttributes.position[0] == 20 && direction == RIGHT)
+	if (shipAttributes.position[0] == 20 && direction == MovementDirection::RIGHT)
 	{
 		cFormat.SetColour(6);
-		if (actor == PLAYER)
+		if (actor == ActorType::PLAYER)
 			std::cout << "\tINVALID DIRECTION\n";
 		cFormat.SetColour(15);
 		return true;
@@ -90,7 +90,7 @@ bool Battleship::Move(MovementDirection direction, ActorType actor)
 		return true;
 
 	}
-	else if(direction == RIGHT)
+	else if(direction == MovementDirection::RIGHT)
 	{
 		shipAttributes.position[0] += 1;
 		shipAttributes.movement -= 5;
@@ -98,10 +98,10 @@ bool Battleship::Move(MovementDirection direction, ActorType actor)
 	}
 
 	//UP
-	if (shipAttributes.position[1] == 0 && direction == UP)
+	if (shipAttributes.position[1] == 0 && direction == MovementDirection::UP)
 	{
 		cFormat.SetColour(6);
-		if (actor == PLAYER)
+		if (actor == ActorType::PLAYER)
 			std::cout << "\tINVALID DIRECTION\n";
 		cFormat.SetColour(15);
 		return true;
@@ -114,7 +114,7 @@ bool Battleship::Move(MovementDirection direction, ActorType actor)
 		return true;
 
 	}
-	else if (direction == UP)
+	else if (direction == MovementDirection::UP)
 	{
 		shipAttributes.position[1] -= 1;
 		shipAttributes.movement -= 5;
@@ -122,10 +122,10 @@ bool Battleship::Move(MovementDirection direction, ActorType actor)
 	}
 
 	//DOWN
-	if (shipAttributes.position[1] == 19 && direction == DOWN)
+	if (shipAttributes.position[1] == 19 && direction == MovementDirection::DOWN)
 	{
 		cFormat.SetColour(6);
-		if (actor == PLAYER)
+		if (actor == ActorType::PLAYER)
 			std::cout << "\tINVALID DIRECTION\n";
 		cFormat.SetColour(15);
 		return true;
@@ -138,7 +138,7 @@ bool Battleship::Move(MovementDirection direction, ActorType actor)
 		return true;
 
 	}
-	else if (direction == DOWN)
+	else if (direction == MovementDirection::DOWN)
 	{
 		shipAttributes.position[1] += 1;
 		shipAttributes.movement -= 5;
@@ -168,8 +168,8 @@ void Battleship::ResetAttributes()
 	shipAttributes.health = defaultHealth;
 	shipAttributes.aliveStatus = true;
 	shipAttributes.spawned = false;
-	shipAttributes.actor = UNDEFINEDACTOR;
-	shipAttributes.shipOfChoice = UNDEFINEDSHIP;
+	shipAttributes.actor = ActorType::UNDEFINEDACTOR;
+	shipAttributes.shipOfChoice = Ships::UNDEFINEDSHIP;
 }
 
 bool Battleship::EndOfTurn()
@@ -183,7 +183,7 @@ bool Battleship::EndOfTurn()
 
 void Battleship::RenderUI(int aiX, int aiY, int aiHealth, std::string aiShipName)
 {
-	if (shipAttributes.actor == PLAYER)
+	if (shipAttributes.actor == ActorType::PLAYER)
 	{
 		cFormat.SetColour(11);
 		std::cout << "\n";
@@ -277,7 +277,7 @@ bool Battleship::Spawn()
 	int psuedoNum = rand() % range;
 
 	
-	if (shipAttributes.actor == PLAYER)
+	if (shipAttributes.actor == ActorType::PLAYER)
 	{
 		shipAttributes.position[0] = psuedoNum;
 		shipAttributes.position[1] = 0;

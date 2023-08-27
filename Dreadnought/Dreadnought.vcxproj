@@ -143,6 +143,7 @@
     <ClInclude Include="Battleship.h" />
     <ClInclude Include="Board.h" />
     <ClInclude Include="ConsoleFormatting.h" />
+    <ClInclude Include="Enums.h" />
     <ClInclude Include="GameManager.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="SceneGame.h" />

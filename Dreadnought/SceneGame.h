@@ -8,19 +8,12 @@
 #include <fstream>
 #include <sstream>
 #include <string>
+#include "Enums.h"
 
 class SceneGame: public Scene
 {
 
-	enum DiceType
-	{
-		D4,
-		D6,
-		D8,
-		D10,
-		D12,
-		D20
-	};
+	
 
 public:
 	explicit SceneGame(GameManager* game_);
