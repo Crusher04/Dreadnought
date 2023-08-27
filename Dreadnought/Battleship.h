@@ -2,7 +2,7 @@
 #include <iostream>
 #include "ConsoleFormatting.h"
 #include "Enums.h"
-
+#include <vector>
 
 class Battleship
 {
@@ -32,22 +32,23 @@ private:
 	struct Attributes {
 		ActorType actor = ActorType::UNDEFINEDACTOR;
 		Ships shipOfChoice = Ships::UNDEFINEDSHIP;
-		int health = 50;
+		ShipType typeOfShip;
+		std::vector<Armament> ShipArmaments;
+		std::vector<ShipSystems> Systems;
+		int health = 0;
+		int movement = 0;
 		bool action = true;
 		bool bonusAction = true;
-		int movement = 20;
 		bool aliveStatus = true;
 		bool spawned = false;
 		int position[2] = { -1,-1 };
-		int minAttackRange = 0;
-		int maxAttackRange = 0;
 
 	};
 
+	int defaultHealth = 0;
+	int defaultMovement = 0;
 	Attributes shipAttributes;
 	ConsoleFormatting cFormat;
-	const int defaultHealth = 50;
-	const int defaultMovement = 20;
 	std::string shipName;
 
 };

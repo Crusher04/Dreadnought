@@ -20,12 +20,20 @@ enum class MovementDirection
 	RIGHT
 };
 
+enum class ShipType
+{
+	Battleship,
+	Submarine,
+	AircraftCarrier
+};
+
 enum class Ships
 {
 	Dreadnought,
 	SunkenLady,
 	Idris,
 	SuperNova,
+	Neptune,
 	UNDEFINEDSHIP
 };
 
@@ -36,7 +44,28 @@ enum class ActorType
 	UNDEFINEDACTOR
 };
 
-enum class Weapon {
-
+enum class Armament {
+	NavalBattery250mm,
+	NavalBattery400mm,
+	AntiShipMissile, //ASM
+	AntiShipTorpedo,
+	SuperSonicCruiseMissile,
+	InterceptorSystem, //Point Defense Missile System PDSM
+	RailGun,
+	AntiAirGun,
+	F14Jet,
+	F18Jet
+	
+	
 }; 
+
+enum class ShipSystems
+{
+	FireControl,
+	HullRepair,
+	WaterDisplacement,
+	AntiMineRadar,
+	AdvancedShipRadar,
+	Sonar
+};
 #endif // !ENUM_H

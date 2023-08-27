@@ -8,8 +8,8 @@
 class AdvancedIO
 {
 public:
-	AdvancedIO() = delete;
-	~AdvancedIO() = delete;
+	AdvancedIO() = default;
+	~AdvancedIO() = default;
 
 	void GetUserInput(std::string& userInput_);
 	void PrintFromFile(std::string filename);
