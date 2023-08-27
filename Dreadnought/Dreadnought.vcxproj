@@ -131,6 +131,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="AdvancedIO.cpp" />
     <ClCompile Include="Dreadnought.cpp" />
     <ClCompile Include="Battleship.cpp" />
     <ClCompile Include="Board.cpp" />
@@ -140,6 +141,7 @@
     <ClCompile Include="SceneMenu.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AdvancedIO.h" />
     <ClInclude Include="Battleship.h" />
     <ClInclude Include="Board.h" />
     <ClInclude Include="ConsoleFormatting.h" />

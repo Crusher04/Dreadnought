@@ -21,7 +21,6 @@ class GameManager
 private:
 	class Scene* currentScene;
 
-	std::string userInput;
 	ConsoleFormatting cFormat;
 	bool* gameActive;
 

@@ -1,4 +1,6 @@
 #pragma once
+#ifndef ENUM_H
+#define ENUM_H
 
 enum class DiceType
 {
@@ -36,4 +38,5 @@ enum class ActorType
 
 enum class Weapon {
 
-};
+}; 
+#endif // !ENUM_H

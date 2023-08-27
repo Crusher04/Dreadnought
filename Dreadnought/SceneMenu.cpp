@@ -1,27 +1,13 @@
 #include "SceneMenu.h"
-#include <windows.h> 
-#include <sstream>
-#include <string>
-#include <algorithm>
+
 
 SceneMenu::SceneMenu(GameManager* game_)
 {
+	//Assign Game Manager
 	game = game_;
 
 	//Title
-	Title();
-	//Sleep(1000);
-	
-
-	/*std::string s{"Welcome Commander"};
-	
-	for (int i = 0; i < s.length(); i++)
-	{
-		std::cout << s[i];
-		Sleep(100);
-	}*/
-	
-	
+	Title();		
 }
 
 SceneMenu::~SceneMenu()
@@ -53,22 +39,12 @@ void SceneMenu::Update(bool* gameActive_)
 void SceneMenu::GetUserInput(bool* gameActive_)
 {
 	std::cout << "SELECTION -> ";
-	std::getline(std::cin, userInput);
-	
-	//Set input string to lower case.
-	std::transform(userInput.begin(), userInput.end(), userInput.begin(), [](unsigned char c) {return std::tolower(c); });
-	userInput.erase(std::remove_if(userInput.begin(), userInput.end(), [](unsigned char x) { return std::isspace(x); }), userInput.end());
+	IO.GetUserInput(userInput);
 
 	if (userInput.compare("howtoplay") == 0)
 	{
 		cFormat.ClearScreen();
-		std::string howtoplay;
-		std::ifstream myFile("howtoplay.txt");
-		while (std::getline(myFile, howtoplay))
-		{
-			std::cout << howtoplay << "\n";
-		}
-		myFile.close();
+		IO.PrintFromFile("howtoplay.txt");
 		cFormat.PauseAfterAction();
 		cFormat.ClearScreen();
 		Title();
@@ -85,18 +61,10 @@ void SceneMenu::GetUserInput(bool* gameActive_)
 
 void SceneMenu::Title()
 {
-	std::string asciiBanner;
-
-	std::ifstream myFile("asciiBanner.txt");
-
-	cFormat.SetColour(7);
+	cFormat.SetColour(7);	
 	
-	while (std::getline(myFile, asciiBanner))
-	{
-		std::cout << asciiBanner << "\n";
-	}
+	IO.PrintFromFile("asciiBanner.txt");
 
-	myFile.close();
 	cFormat.SetColour(15);
 	std::cout << std::flush;
 

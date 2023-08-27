@@ -22,6 +22,7 @@
     <ClCompile Include="SceneGame.cpp">
       <Filter>Source\Scenes</Filter>
     </ClCompile>
+    <ClCompile Include="AdvancedIO.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Battleship.h">
@@ -48,6 +49,7 @@
     <ClInclude Include="Enums.h">
       <Filter>Header</Filter>
     </ClInclude>
+    <ClInclude Include="AdvancedIO.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header">

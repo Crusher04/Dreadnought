@@ -2,6 +2,8 @@
 
 SceneGame::SceneGame(GameManager* game_)
 {
+	// Providing a seed value
+	std::srand((unsigned)time(NULL));
 
 	game = game_;
 
