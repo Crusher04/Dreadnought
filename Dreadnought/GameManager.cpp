@@ -6,6 +6,12 @@ GameManager::GameManager():currentScene{nullptr}, gameActive{nullptr}
 {	
 	//Console Title
 	SetConsoleTitleA("Dreadnought: Rogue-like Surival Game");
+	std::cout << "\n\t PLEASE MAXIMIZE WINDOW FOR FULL EXPERIENCE! THANKS :) \n";
+	Sleep(5000);
+	cFormat.ClearScreen();
+	IO.PrintFromFile("credits.txt");
+	Sleep(5000);
+	cFormat.ClearScreen();
 
 	//Set Game as active
 	if (gameActive == nullptr)

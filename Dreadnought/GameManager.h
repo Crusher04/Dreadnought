@@ -7,6 +7,7 @@
 #include "Scene.h"
 #include "SceneMenu.h"
 #include "SceneGame.h"
+#include "AdvancedIO.h"
 
 #include <algorithm>
 #include <cctype>
@@ -29,6 +30,7 @@ class GameManager
 private:
 	class Scene* currentScene;
 
+	AdvancedIO IO;
 	ConsoleFormatting cFormat;
 	bool* gameActive;
 
