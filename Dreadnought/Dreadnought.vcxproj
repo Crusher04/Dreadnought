@@ -138,6 +138,7 @@
     <ClCompile Include="ConsoleFormatting.cpp" />
     <ClCompile Include="GameManager.cpp" />
     <ClCompile Include="SceneGame.cpp" />
+    <ClCompile Include="SceneHowToPlay.cpp" />
     <ClCompile Include="SceneMenu.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -149,6 +150,7 @@
     <ClInclude Include="GameManager.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="SceneGame.h" />
+    <ClInclude Include="SceneHowToPlay.h" />
     <ClInclude Include="SceneMenu.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -44,8 +44,7 @@ void SceneMenu::GetUserInput()
 	{
 		cFormat.ClearScreen();
 		IO.PrintFromFile("howtoplay.txt");
-		cFormat.PauseAfterAction();
-		cFormat.ClearScreen();
+		game->BuildScene(SCENENUMBER::SCENE_HOWTOPLAY);
 		Title();
 	}
 	else if (userInput.compare("play") == 0)

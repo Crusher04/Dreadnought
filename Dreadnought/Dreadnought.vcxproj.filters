@@ -25,6 +25,7 @@
     <ClCompile Include="AdvancedIO.cpp">
       <Filter>Source</Filter>
     </ClCompile>
+    <ClCompile Include="SceneHowToPlay.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Battleship.h">
@@ -54,6 +55,7 @@
     <ClInclude Include="AdvancedIO.h">
       <Filter>Header</Filter>
     </ClInclude>
+    <ClInclude Include="SceneHowToPlay.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header">

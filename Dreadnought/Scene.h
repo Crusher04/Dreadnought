@@ -5,9 +5,10 @@
 #include <iostream>
 #include "ConsoleFormatting.h"
 
-enum SCENENUMBER {
+enum class SCENENUMBER {
 	SCENE_MAINMENU = 0,
-	SCENE_GAME = 1
+	SCENE_GAME = 1,
+	SCENE_HOWTOPLAY = 2
 };
 
 class Scene

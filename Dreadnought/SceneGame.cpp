@@ -183,7 +183,7 @@ void SceneGame::Update()
 		cFormat.SetColour(12);
 		std::cout << "\n\n\t ** YOU LOSE. GAME OVER! ** \n";
 		game->SetGameActive(false);
-		cFormat.PauseAfterAction();
+		cFormat.Pause();
 		return;
 	}
 
@@ -192,7 +192,7 @@ void SceneGame::Update()
 		cFormat.SetColour(10);
 		std::cout << "\n\n\t ** YOU WIN. CONGRATULATIONS! ** \n";
 		game->SetGameActive(false);
-		cFormat.PauseAfterAction();
+		cFormat.Pause();
 		return;
 	}
 
@@ -212,7 +212,7 @@ void SceneGame::Update()
 		cFormat.SetColour(12);
 		std::cout << "\n\n\t ** YOU LOSE. GAME OVER! ** \n";
 		game->SetGameActive(false);
-		cFormat.PauseAfterAction();
+		cFormat.Pause();
 		return;
 	}
 
@@ -221,7 +221,7 @@ void SceneGame::Update()
 		cFormat.SetColour(10);
 		std::cout << "\n\n\t ** YOU WIN. CONGRATULATIONS! ** \n";
 		game->SetGameActive(false);
-		cFormat.PauseAfterAction();
+		cFormat.Pause();
 		return;
 	}
 
@@ -515,7 +515,7 @@ void SceneGame::Attack(Battleship friendly, ActorType actor)
 		}
 	}
 
-	cFormat.PauseAfterAction();
+	cFormat.Pause();
 }
 
 int SceneGame::RandomNumber(DiceType dice, int lastNum)
@@ -683,7 +683,7 @@ void SceneGame::RunIntro()
 		Sleep(50);
 	}
 
-	cFormat.PauseAfterAction();
+	cFormat.Pause();
 	cFormat.ClearScreen();
 
 }

@@ -1,0 +1,102 @@
+  ___                                            _       
+ / _ \                                          | |      
+/ /_\ \_ __ _ __ ___   __ _ _ __ ___   ___ _ __ | |_ ___ 
+|  _  | '__| '_ ` _ \ / _` | '_ ` _ \ / _ \ '_ \| __/ __|
+| | | | |  | | | | | | (_| | | | | | |  __/ | | | |_\__ \
+\_| |_/_|  |_| |_| |_|\__,_|_| |_| |_|\___|_| |_|\__|___/
+                                                         
+                                                         
+----------------------------------------------------------
+
+
+Naval Battery (250mm)
+----------------------
+- Must use an action to use this weapon.
+- Deals 1D6 Damage to enemy ship.
+- Range of 30 Nautical Miles (NM).
+- Naval Batteries can come in Single, Duel, Triple or Quad
+	Assorment. Damage is multipled with their respective 
+	assortment. Dual = 2, Triple = 3, Quad = 4. 
+
+Naval Battery (400mm)
+---------------------
+- Must use an action to use this weapon.
+- Deals 1D10 Damage to enemy ship.
+- Range of 30 Nautical Miles (NM).
+- Naval Batteries can come in Single, Duel, or Triple
+	Assorment. Damage is multipled with their respective 
+	assortment. Dual = 2, Triple = 3.
+
+Anti-Ship Missile (ASM)
+-----------------------
+- Must be prepared with a bonus action before using an action
+	to launch the missile. 
+- Deals 1D12 Damage to enemy ship.
+- Can be shot down by enemy Interceptor System if equipped. 
+- Range of 50 Nautical Miles (NM).
+
+Anti-Ship Torpedo (AST)
+-----------------------
+- Can only be used by Submarines
+- Must be prepared before launching. 
+- Deals 2D12 Damage to enemy ship. 
+- Can Be intercepted by Anti-Torpedo Nets (ATN). 
+- Small chance to be out-maneuvered. 
+- Range of 50 Nautical Miles (NM).
+
+Super Sonic Cruise Missiles (SSCM)
+----------------------------
+- Can only be used by Destroyers. 
+- Must be prepared twice before launching. 
+- Deals 3D12 Dmage to enemy ship. 
+- Extremely High Accuracy to hit. 
+- Can be intercepted by Interceptor System.
+
+Active Defence System (ADS)
+---------------------------
+- Designed to intercept incoming missiles, 
+	torpedoes, railguns, and aircraft. 
+- If defence against attacks fails, if ADS system
+	is prepared, ADS can be a second wall for defense. The type 
+	of attack will have to make a save roll against this systems
+	save defense. 
+- Save Defense starts at 8. To increase ADS defense, ships can have
+	Advanced Radar Installed (+ 4 to Defense), 
+	Counter-Measure Detection Installed ( + 2 to Defense),
+	Early-Warning System Installed ( + 2 to Defense), 
+	Advanced-Tracking Installed (+ 4 to Defense).
+
+Rail Gun
+--------
+- Can only be used by destroyers
+- Must be prepared before use.
+- High Velocity, High Damage, High Accuracy. 
+- 4D10 Damage to enemy ship.
+- Can be intercepted by ADS. 
+
+F-14 Tomcat
+------------
+- Can only be used by Aircraft Carrier. 
+- No range, relies on Radar detection to detect enemy aircraft.
+- F-14 Tomcat is designed as an air superiority fighter and 
+	fleet defense interceptor. Its primary mission was 
+	to engage and destroy enemy aircraft
+- Rolls to attack enemy aircraft, if successful, attack averted.
+	If failed, enemy will roll to hit Tomcat, if successful Tomcat
+	is destroyed. If enemy fails to hit, enemy can still attempt to hit
+	friendly vessel. 
+- Can be prepared, preparing launches plane into air around vessel as standby. 
+	Can only be on standby for 3 turns.
+
+F/A-18 Hornet
+--------------
+- Can only be used by Aircraft Carrier. 
+- 60 NM range, relies on Radar detection to detect enemy aircraft.
+-The F/A-18 is a multirole fighter aircraft designed to perform a variety 
+	of tasks, including air-to-air combat, vessel attack, close air support.
+- Rolls to attack normally. 2D8 Damage to enemy vessels.
+- Can defend against missiles, must be in the air and will roll to hit missile,
+	If successful, missile is destroyed.
+- Can be prepared, preparing launches plane into air around vessel as standby. 
+	Can only be on standby for 3 turns.
+- Must be in the air to attack or defend (uses bonus action to launch).

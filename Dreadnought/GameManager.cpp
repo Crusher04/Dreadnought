@@ -72,6 +72,8 @@ bool GameManager::BuildScene(SCENENUMBER scene_)
 	case SCENENUMBER::SCENE_GAME:
 		currentScene = DBG_NEW SceneGame(this);
 		break;
+	case SCENENUMBER::SCENE_HOWTOPLAY:
+		currentScene = DBG_NEW SceneHowToPlay(this);
 	default:
 		std::cout << "ERROR: Scene cannot be found\n";
 		return false;

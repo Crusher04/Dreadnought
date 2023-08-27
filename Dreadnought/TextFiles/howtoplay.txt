@@ -1,0 +1,38 @@
+				$$\   $$\  $$$$$$\  $$\      $$\       $$$$$$$$\  $$$$$$\        $$$$$$$\  $$\        $$$$$$\ $$\     $$\ 
+				$$ |  $$ |$$  __$$\ $$ | $\  $$ |      \__$$  __|$$  __$$\       $$  __$$\ $$ |      $$  __$$\\$$\   $$  |
+				$$ |  $$ |$$ /  $$ |$$ |$$$\ $$ |         $$ |   $$ /  $$ |      $$ |  $$ |$$ |      $$ /  $$ |\$$\ $$  / 
+				$$$$$$$$ |$$ |  $$ |$$ $$ $$\$$ |         $$ |   $$ |  $$ |      $$$$$$$  |$$ |      $$$$$$$$ | \$$$$  /  
+				$$  __$$ |$$ |  $$ |$$$$  _$$$$ |         $$ |   $$ |  $$ |      $$  ____/ $$ |      $$  __$$ |  \$$  /   
+				$$ |  $$ |$$ |  $$ |$$$  / \$$$ |         $$ |   $$ |  $$ |      $$ |      $$ |      $$ |  $$ |   $$ |    
+				$$ |  $$ | $$$$$$  |$$  /   \$$ |         $$ |    $$$$$$  |      $$ |      $$$$$$$$\ $$ |  $$ |   $$ |    
+				\__|  \__| \______/ \__/     \__|         \__|    \______/       \__|      \________|\__|  \__|   \__|    
+                                                                                                          
+                                                                                                          
+
+	============================================================================================================================================
+									Welcome Commander!
+
+	Control the game by typing commands when prompted. There will be keywords to help you navigate through menus and through the game. 
+	You will control a battleship that is in enemy territories, the battleship will have different armaments, ship systems and features.
+	When typing commands, please have the correct spelling to have the terminal accept your command. 'Exit' or 'Quit' will take you out 
+	of the game, 'Menu' will take you back to the Main Menu. Type 'Keywords' for all keywords or commands pertaining to the game. More 
+	detailed descriptions for each feature is below. 
+
+	Good luck!
+	============================================================================================================================================
+
+
+		                  	  ___      _        _ _        _   ___                 _      _   _             
+					 |   \ ___| |_ __ _(_) |___ __| | |   \ ___ ___ __ _ _(_)_ __| |_(_)___ _ _  ___
+					 | |) / -_)  _/ _` | | / -_) _` | | |) / -_|_-</ _| '_| | '_ \  _| / _ \ ' \(_-<
+					 |___/\___|\__\__,_|_|_\___\__,_| |___/\___/__/\__|_| |_| .__/\__|_\___/_||_/__/
+					                                                        |_|                     
+
+					--------------------------------------------------------------------------------
+
+									Armaments
+									Combat
+									Movement
+									Ship Types
+									Shops
+									List Of Keywords

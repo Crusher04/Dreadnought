@@ -25,7 +25,7 @@ public:
 	/// <summary>
 	/// Pauses CMD and waits for user to press a button.
 	/// </summary>
-	void PauseAfterAction();
+	void Pause();
 
 	
 private:

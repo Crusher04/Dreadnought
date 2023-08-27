@@ -23,6 +23,7 @@ enum class MovementDirection
 enum class ShipType
 {
 	Battleship,
+	Destroyer,
 	Submarine,
 	AircraftCarrier
 };
@@ -50,11 +51,10 @@ enum class Armament {
 	AntiShipMissile, //ASM
 	AntiShipTorpedo,
 	SuperSonicCruiseMissile,
-	InterceptorSystem, //Point Defense Missile System PDSM
+	ActiveDefenceSystem,
 	RailGun,
-	AntiAirGun,
-	F14Jet,
-	F18Jets
+	F14Tomcat,
+	F18Hornet
 	
 	
 }; 

@@ -20,7 +20,7 @@ void ConsoleFormatting::ClearScreen()
 	
 }
 
-void ConsoleFormatting::PauseAfterAction()
+void ConsoleFormatting::Pause()
 {
 	SetColour(15);
 	std::cout << std::endl;
