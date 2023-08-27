@@ -19,7 +19,6 @@ void SceneGame::GetUserInput()
 	/*
 	* Basic user input to accept only keywords. No filtration system, wont find keywords in a mess of a sentence like ' asjflasjj quit '
 	*/
-
 	
 
 	cFormat.SetColour(14);

@@ -4,6 +4,7 @@
 #include <string>
 #include <algorithm>
 #include <fstream>
+#include <windows.h>
 
 class AdvancedIO
 {
@@ -13,6 +14,7 @@ public:
 
 	void GetUserInput(std::string& userInput_);
 	void PrintFromFile(std::string filename);
+	void PrintCursorPos();
 
 };
 

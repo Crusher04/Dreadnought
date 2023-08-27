@@ -3,6 +3,7 @@
 #include "ConsoleFormatting.h"
 #include "Enums.h"
 #include <vector>
+#include <unordered_map>
 
 class Battleship
 {
@@ -19,6 +20,7 @@ public:
 	bool EndOfTurn();
 	void RenderUI(int aiX, int aiY, int aiHealth, std::string aiShipName);
 	bool Spawn();
+
 	int GetPositionX() { return shipAttributes.position[0]; }
 	int GetPositionY() { return shipAttributes.position[1]; }
 	int GetMovement() { return shipAttributes.movement; }
@@ -33,8 +35,10 @@ private:
 		ActorType actor = ActorType::UNDEFINEDACTOR;
 		Ships shipOfChoice = Ships::UNDEFINEDSHIP;
 		ShipType typeOfShip;
-		std::vector<Armament> ShipArmaments;
-		std::vector<ShipSystems> Systems;
+		std::unordered_map<Armament, int> weapons;				//Armament, how many of said armament
+		std::unordered_map<ShipSystems, int> systems;			//system, how many uses of system
+		int weaponSlots = 0;
+		int systemSlots = 0;
 		int health = 0;
 		int movement = 0;
 		bool action = true;
@@ -42,7 +46,6 @@ private:
 		bool aliveStatus = true;
 		bool spawned = false;
 		int position[2] = { -1,-1 };
-
 	};
 
 	int defaultHealth = 0;

@@ -2,7 +2,6 @@
 #ifndef SCENEMENU_H
 #define SCENEMENU_H
 #include "Scene.h"	
-#include <iostream>
 #include <fstream>
 #include "ConsoleFormatting.h"
 #include "GameManager.h"

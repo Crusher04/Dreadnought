@@ -22,3 +22,11 @@ void AdvancedIO::PrintFromFile(std::string filename)
 
 }
 
+void AdvancedIO::PrintCursorPos()
+{
+	POINT point;
+	if (GetCursorPos(&point)) {
+		std::cout << point.x << "," << point.y << "\n";
+	}
+}
+

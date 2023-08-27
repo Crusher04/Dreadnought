@@ -38,9 +38,15 @@ void SceneMenu::Update(bool* gameActive_)
 
 void SceneMenu::GetUserInput(bool* gameActive_)
 {
+	
+
+
 	std::cout << "SELECTION -> ";
 	IO.GetUserInput(userInput);
-
+	if (userInput.compare("cursor") == 0)
+	{
+		IO.PrintCursorPos();
+	}
 	if (userInput.compare("howtoplay") == 0)
 	{
 		cFormat.ClearScreen();

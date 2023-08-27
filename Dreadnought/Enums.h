@@ -54,7 +54,7 @@ enum class Armament {
 	RailGun,
 	AntiAirGun,
 	F14Jet,
-	F18Jet
+	F18Jets
 	
 	
 }; 
