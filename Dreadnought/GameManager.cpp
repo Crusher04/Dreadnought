@@ -10,7 +10,7 @@ GameManager::GameManager():currentScene{nullptr}, gameActive{nullptr}
 	//Set Game as active
 	if (gameActive == nullptr)
 	{
-		gameActive = new bool;
+		gameActive = DBG_NEW bool;
 		*gameActive = true;
 	}
 
@@ -26,14 +26,12 @@ GameManager::~GameManager()
 	
 	if (currentScene) {
 		currentScene->OnDestroy();
-		currentScene = nullptr;
 		delete currentScene;
 		
 	}
 
 	if (gameActive)
 	{
-		gameActive = nullptr;
 		delete gameActive;
 	}
 
@@ -41,7 +39,7 @@ GameManager::~GameManager()
 
 void GameManager::Run()
 {
-	currentScene->Update(gameActive);
+	currentScene->Update();
 }
 
 void GameManager::Update()
@@ -63,10 +61,10 @@ bool GameManager::BuildScene(SCENENUMBER scene_)
 	switch (scene_)
 	{
 	case SCENENUMBER::SCENE_MAINMENU:
-		currentScene = new SceneMenu(this);
+		currentScene = DBG_NEW SceneMenu(this);
 		break;
 	case SCENENUMBER::SCENE_GAME:
-		currentScene = new SceneGame(this);
+		currentScene = DBG_NEW SceneGame(this);
 		break;
 	default:
 		std::cout << "ERROR: Scene cannot be found\n";

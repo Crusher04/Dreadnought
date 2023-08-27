@@ -2,24 +2,31 @@
 * Created & Designed by: Ahmed Hammoud
 * Dreadnought is a rogue-like windows terminal game.
 */
-#define _CRTDBG_MAP_ALLOC
+
+
 #include <stdlib.h>
 #include <crtdbg.h>
 #include "GameManager.h"
 
+
+
+#define _CRTDBG_MAP_ALLOC
+
+
 int main()
 {
-    GameManager game;
+    GameManager* game = DBG_NEW GameManager();
 
-    while (game.IsGameActive())
+    while (game->IsGameActive())
     {
-        game.Run();
+        game->Run();
     }
 
-    { _CrtDumpMemoryLeaks(); }
+    delete game;
 
-    
-
+    _CrtSetReportMode(_CRT_WARN, _CRTDBG_MODE_DEBUG);
+     _CrtDumpMemoryLeaks(); 
     return 0;
+
 }
 

@@ -16,7 +16,7 @@ public:
 	virtual ~Scene() {}
 	virtual bool OnCreate() = 0;
 	virtual void OnDestroy() = 0;
-	virtual void Update(bool* gameActive_) = 0;
+	virtual void Update() = 0;
 
 protected:
 	class GameManager* game = NULL;

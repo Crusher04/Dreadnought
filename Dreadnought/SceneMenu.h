@@ -14,8 +14,8 @@ public:
 	 virtual ~SceneMenu();
 	virtual bool OnCreate();
 	virtual void OnDestroy();
-	virtual void Update(bool* gameActive_);
-	void GetUserInput(bool* gameActive_);
+	virtual void Update();
+	void GetUserInput();
 	void Title();
 
 protected:

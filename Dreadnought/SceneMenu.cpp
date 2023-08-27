@@ -24,30 +24,23 @@ bool SceneMenu::OnCreate()
 
 void SceneMenu::OnDestroy()
 {
-	if (game->IsGameActive() == false && game != nullptr)
-	{
-		game = nullptr;
-		delete game;
-	}
 }
 
-void SceneMenu::Update(bool* gameActive_)
+void SceneMenu::Update()
 {
-	GetUserInput(gameActive_);
+	GetUserInput();
 }
 
-void SceneMenu::GetUserInput(bool* gameActive_)
+void SceneMenu::GetUserInput()
 {
 	
-
-
 	std::cout << "SELECTION -> ";
 	IO.GetUserInput(userInput);
 	if (userInput.compare("cursor") == 0)
 	{
 		IO.PrintCursorPos();
 	}
-	if (userInput.compare("howtoplay") == 0)
+	else if (userInput.compare("howtoplay") == 0)
 	{
 		cFormat.ClearScreen();
 		IO.PrintFromFile("howtoplay.txt");
@@ -60,7 +53,7 @@ void SceneMenu::GetUserInput(bool* gameActive_)
 		game->BuildScene(SCENENUMBER::SCENE_GAME);
 	}
 	else if (userInput.compare("quit") == 0 || userInput.compare("exit") == 0)
-		*gameActive_ = false;
+		game->SetGameActive(false);
 
 	std::cout << std::flush;
 }

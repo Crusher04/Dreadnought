@@ -22,7 +22,7 @@ public:
 	virtual bool OnCreate();
 	virtual void OnDestroy();
 
-	virtual void Update(bool* gameActive_);
+	virtual void Update();
 	void GetUserInput();
 	void Attack(Battleship friendly, ActorType actor);
 	int RandomNumber(DiceType dice, int lastNum);
