@@ -170,13 +170,7 @@ bool SceneGame::OnCreate()
 
 void SceneGame::OnDestroy()
 {
-	if (game->IsGameActive() == false && game != nullptr)
-	{
-		game = nullptr;
-		delete game;
-	}
-	else if (game != nullptr)
-		game = nullptr;
+
 }
 
 
