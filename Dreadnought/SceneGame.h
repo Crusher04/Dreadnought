@@ -36,7 +36,6 @@ private:
 	bool aiOldPosFlag = false;
 	
 	Board theBoard;
-	Battleship playerOne;
-	Battleship playerAI;
+	
 };
 

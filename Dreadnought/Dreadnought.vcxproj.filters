@@ -4,9 +4,6 @@
     <ClCompile Include="Dreadnought.cpp">
       <Filter>Source</Filter>
     </ClCompile>
-    <ClCompile Include="Battleship.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
     <ClCompile Include="Board.cpp">
       <Filter>Source</Filter>
     </ClCompile>
@@ -25,12 +22,15 @@
     <ClCompile Include="AdvancedIO.cpp">
       <Filter>Source</Filter>
     </ClCompile>
-    <ClCompile Include="SceneHowToPlay.cpp" />
+    <ClCompile Include="EngineComponent.cpp">
+      <Filter>Source\Component</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneHowToPlay.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Battleship.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Battleship.h">
-      <Filter>Header</Filter>
-    </ClInclude>
     <ClInclude Include="Board.h">
       <Filter>Header</Filter>
     </ClInclude>
@@ -55,7 +55,16 @@
     <ClInclude Include="AdvancedIO.h">
       <Filter>Header</Filter>
     </ClInclude>
-    <ClInclude Include="SceneHowToPlay.h" />
+    <ClInclude Include="Component.h">
+      <Filter>Header\Component</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineComponent.h">
+      <Filter>Header\Component</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneHowToPlay.h">
+      <Filter>Header</Filter>
+    </ClInclude>
+    <ClInclude Include="Battleship.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header">
@@ -69,6 +78,12 @@
     </Filter>
     <Filter Include="Header\Scenes">
       <UniqueIdentifier>{f85b6f2a-5ad1-4c93-94b3-b05f0ac89e09}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header\Component">
+      <UniqueIdentifier>{340f7e63-6e73-4201-a7a3-1353d55925dc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Component">
+      <UniqueIdentifier>{b4c83da8-0af5-4b03-9227-4e117d8adcbb}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
