@@ -22,6 +22,9 @@ public:
 	/// </summary>
 	~EngineComponent();
 
+	bool OnCreate();
+	void OnDestroy();
+
 	/// <summary>
 	/// Gets the movement left on the ship. 
 	/// </summary>

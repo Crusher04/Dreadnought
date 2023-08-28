@@ -1,6 +1,5 @@
 #pragma once
 #include "Scene.h"
-#include "Battleship.h"	
 #include "Board.h"
 #include <algorithm>
 #include "GameManager.h"
@@ -9,6 +8,8 @@
 #include <sstream>
 #include <string>
 #include "Enums.h"
+#include "Battleship.h"
+#include "EngineComponent.h"
 
 class SceneGame: public Scene
 {
@@ -36,6 +37,6 @@ private:
 	bool aiOldPosFlag = false;
 	
 	Board theBoard;
-	
+	std::shared_ptr<Battleship> player;
 };
 

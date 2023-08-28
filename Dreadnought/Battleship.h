@@ -14,6 +14,9 @@ public:
 	Battleship();
 	~Battleship();
 
+	bool OnCreate();
+	void OnDestroy();
+
 	template<typename ComponentTemplate>
 	bool AddComponent(Ref<ComponentTemplate> component_)
 	{
@@ -24,6 +27,22 @@ public:
 			return;
 		}
 		components.push_back(component_);
+	}
+
+	template<typename ComponentTemplate, typename ... Args>
+	void AddComponent(Args&& ... args_) {
+		/// before you add the component ask if you have the component in the list already,
+		/// if so - don't add a second one. 
+		if (GetComponent<ComponentTemplate>().get() != nullptr) {
+#ifdef _DEBUG
+			std::cerr << "WARNING: Trying to add a component type that is already added - ignored\n";
+#endif		
+			return;
+		}
+		/// If nothing else is messed up, finish building the component and
+		/// add the component to the list
+		/// Create the new object based on the template type and the argument list
+		components.push_back(std::make_shared<ComponentTemplate>(std::forward<Args>(args_)...));
 	}
 
 	template<typename ComponentTemplate>
@@ -37,5 +56,19 @@ public:
 		}
 		return Ref<ComponentTemplate>(nullptr);
 	}
+
+	template<typename ComponentTemplate>
+	void RemoveComponent() {
+		for (unsigned int i = 0; i < components.size(); i++) {
+			if (dynamic_cast<ComponentTemplate*>(components[i].get()) != nullptr) {
+				components.erase(components.begin() + i);
+				break;
+			}
+		}
+	}
+
+	void ListComponents() const;
+	void RemoveAllComponents();
+
 };
 

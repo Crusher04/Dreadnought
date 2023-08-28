@@ -10,6 +10,15 @@ EngineComponent::~EngineComponent()
 	isCreated = false;
 }
 
+bool EngineComponent::OnCreate()
+{
+	return false;
+}
+
+void EngineComponent::OnDestroy()
+{
+}
+
 int EngineComponent::GetMovement()
 {
 	return movement;

@@ -7,7 +7,7 @@ SceneGame::SceneGame(GameManager* game_)
 
 	game = game_;
 
-
+	OnCreate();
 }
 
 
@@ -18,6 +18,10 @@ SceneGame::~SceneGame()
 
 bool SceneGame::OnCreate()
 {
+	player = std::make_shared<Battleship>();
+	player->AddComponent<EngineComponent>();
+
+	player->ListComponents();
 	return true;
 }
 
@@ -27,6 +31,23 @@ void SceneGame::OnDestroy()
 }
 
 void SceneGame::Update()
+{
+}
+
+void SceneGame::GetUserInput()
+{
+}
+
+void SceneGame::Attack(Battleship friendly, ActorType actor)
+{
+}
+
+int SceneGame::RandomNumber(DiceType dice, int lastNum)
+{
+	return 0;
+}
+
+void SceneGame::InitializePlayer()
 {
 }
 
