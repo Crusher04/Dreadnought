@@ -47,6 +47,7 @@ void SceneHowToPlay::GetUserInput()
 		cFormat.ClearScreen();
 		IO.PrintFromFile("TextFiles/armaments.txt");
 		cFormat.Pause();
+
 	}
 	else if (input.compare("combat") == 0)
 	{

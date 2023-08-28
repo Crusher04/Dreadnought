@@ -26,3 +26,15 @@ void ConsoleFormatting::Pause()
 	std::cout << std::endl;
 	system("pause");
 }
+
+void ConsoleFormatting::SetConsoleCursorPos(COORD pos)
+{
+	SetConsoleCursorPosition(hConsole, pos);
+}
+
+void ConsoleFormatting::ScrollToTop() {
+	COORD coord;
+	coord.X = 0;
+	coord.Y = 0;
+	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), coord);
+}

@@ -27,7 +27,14 @@ public:
 	/// </summary>
 	void Pause();
 
+	/// <summary>
+	/// Sets Console Cursor position
+	/// </summary>
+	/// <param name="pos"></param>
+	void SetConsoleCursorPos(COORD pos);
 	
+	void ScrollToTop();
+
 private:
 	HANDLE  hConsole;
 

@@ -53,7 +53,15 @@ void SceneMenu::GetUserInput()
 	}
 	else if (userInput.compare("quit") == 0 || userInput.compare("exit") == 0)
 		game->SetGameActive(false);
-
+	else
+	{
+		cFormat.SetColour(12);
+		std::cout << "\n\tKeyword Not Recognized\n";
+		cFormat.SetColour(7);
+		cFormat.Pause();
+		cFormat.ClearScreen();
+		Title();
+	}
 	std::cout << std::flush;
 }
 
