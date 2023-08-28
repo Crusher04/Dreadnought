@@ -20,8 +20,6 @@ bool SceneGame::OnCreate()
 {
 	player = std::make_shared<Battleship>();
 	player->AddComponent<EngineComponent>();
-
-	player->ListComponents();
 	return true;
 }
 
