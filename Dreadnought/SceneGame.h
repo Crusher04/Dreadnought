@@ -26,7 +26,6 @@ public:
 
 	void Attack(Battleship friendly, ActorType actor);
 	int RandomNumber(DiceType dice, int lastNum);
-	void InitializePlayer();
 	void RunIntro();
 	void SelectStarterShip();
 

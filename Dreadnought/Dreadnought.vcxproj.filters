@@ -31,6 +31,7 @@
     <ClCompile Include="Battleship.cpp">
       <Filter>Source\Components</Filter>
     </ClCompile>
+    <ClCompile Include="Inventory.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Board.h">
@@ -69,6 +70,7 @@
     <ClInclude Include="Battleship.h">
       <Filter>Header\Components</Filter>
     </ClInclude>
+    <ClInclude Include="Inventory.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header">

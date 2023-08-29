@@ -11,6 +11,7 @@
 
 Naval Battery (250mm)
 ----------------------
+- Takes up one primary armament slot
 - Must use an action to use this weapon.
 - Deals 1D6 Damage to enemy ship.
 - Range of 30 Nautical Miles (NM).
@@ -20,6 +21,7 @@ Naval Battery (250mm)
 
 Naval Battery (400mm)
 ---------------------
+- Takes up one primary armament slot
 - Must use an action to use this weapon.
 - Deals 1D10 Damage to enemy ship.
 - Range of 30 Nautical Miles (NM).
@@ -29,6 +31,7 @@ Naval Battery (400mm)
 
 Anti-Ship Missile (ASM)
 -----------------------
+- Takes up one primary armament slot
 - Must be prepared with a bonus action before using an action
 	to launch the missile. 
 - Deals 1D12 Damage to enemy ship.
@@ -37,6 +40,7 @@ Anti-Ship Missile (ASM)
 
 Anti-Ship Torpedo (AST)
 -----------------------
+- Takes up one missile armament slot
 - Can only be used by Submarines
 - Must be prepared before launching. 
 - Deals 2D12 Damage to enemy ship. 
@@ -46,6 +50,7 @@ Anti-Ship Torpedo (AST)
 
 Super Sonic Cruise Missiles (SSCM)
 ----------------------------
+- Takes up one missile armament slot
 - Can only be used by Destroyers. 
 - Must be prepared twice before launching. 
 - Deals 3D12 Dmage to enemy ship. 
@@ -54,6 +59,7 @@ Super Sonic Cruise Missiles (SSCM)
 
 Active Defence System (ADS)
 ---------------------------
+- Takes up one primary armament slot
 - Designed to intercept incoming missiles, 
 	torpedoes, railguns, and aircraft. 
 - If defence against attacks fails, if ADS system
@@ -68,6 +74,7 @@ Active Defence System (ADS)
 
 Rail Gun
 --------
+- Takes up one primary armament slot
 - Can only be used by destroyers
 - Must be prepared before use.
 - High Velocity, High Damage, High Accuracy. 
@@ -76,6 +83,7 @@ Rail Gun
 
 F-14 Tomcat
 ------------
+- Takes up one jet armament slot
 - Can only be used by Aircraft Carrier. 
 - No range, relies on Radar detection to detect enemy aircraft.
 - F-14 Tomcat is designed as an air superiority fighter and 
@@ -90,6 +98,7 @@ F-14 Tomcat
 
 F/A-18 Hornet
 --------------
+- Takes up one jet armament slot
 - Can only be used by Aircraft Carrier. 
 - 60 NM range, relies on Radar detection to detect enemy aircraft.
 -The F/A-18 is a multirole fighter aircraft designed to perform a variety 

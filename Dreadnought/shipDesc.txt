@@ -8,12 +8,15 @@
 
 				Dreadnought
 				-----------
-Health: 50
-Movement 20 NM
-Main Weapon: Dual Artillery Canons 250mm (1D6 Damage per canon) (Action)
-Secondary Weapon: Empty
-Secondary Weapon: Empty
-Inventory Slots: 5 slots
+Health: 50 hitpoints
+Movement 20 Nautical Miles
+Installed Armaments & Subsystems:
+	- Dual Artillery Canons 250mm (1D6 Damage per canon) (Action)
+	- 10 Anti-Ship Missiles stored
+	- 4 missile slot systems
+- Total Primary armament slots: 2 slots (1 available)
+- Total Subsystem slots: 3 slots (1 available)
+
 				-----------
 				   Idris
 				-----------

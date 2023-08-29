@@ -44,10 +44,6 @@ int SceneGame::RandomNumber(DiceType dice, int lastNum)
 	return 0;
 }
 
-void SceneGame::InitializePlayer()
-{
-}
-
 void SceneGame::RunIntro()
 {
 	cFormat.ClearScreen();
@@ -87,6 +83,7 @@ void SceneGame::SelectStarterShip()
 	if (userInput->compare("dreadnought") == 0)
 	{
 		player->GetComponent<EngineComponent>()->ChangeEngineType(EngineType::EV20);
+		player->ChangeStarterShip(Ships::Dreadnought);
 
 		starterShpSelected = true;
 	}
@@ -94,15 +91,21 @@ void SceneGame::SelectStarterShip()
 	{
 		player->GetComponent<EngineComponent>()->ChangeEngineType(EngineType::EV20);
 
+		starterShpSelected = true;
+
 	}
 	else if (userInput->compare("sunkenlady") == 0)
 	{
 		player->GetComponent<EngineComponent>()->ChangeEngineType(EngineType::EV15);
 
+		starterShpSelected = true;
+
 	}
 	else if (userInput->compare("supernova") == 0)
 	{
 		player->GetComponent<EngineComponent>()->ChangeEngineType(EngineType::EV10);
+
+		starterShpSelected = true;
 
 	}
 	else

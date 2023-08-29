@@ -3,6 +3,7 @@
 Battleship::Battleship(Ships starterShip):shipType{Ships::UNDEFINEDSHIP}
 {
 	shipType = starterShip;
+
 }
 
 Battleship::~Battleship()

@@ -31,6 +31,7 @@
 					--------------------------------------------------------------------------------
 
 									Armaments
+									Subsystems
 									Combat
 									Movement
 									Ship Types

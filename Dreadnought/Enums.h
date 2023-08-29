@@ -77,4 +77,45 @@ enum class EngineType {
 	EV30 = 30,
 	E_NULL = 0
 };
+
+/// <summary>
+/// Subsystems that can be installed on ships. 
+/// </summary>
+enum class Subsystems {
+
+	ADVANCED_RADAR,
+	COUNTERMEASURE_DETECTION,
+	EARLY_WARNING,
+	ADVANCED_TRACKING,
+	AUTO_WATER_DISPLACER,
+	MISSILE_LAUNCHER_4SLOT,
+	MISSILE_LAUNCHER_6SLOT,
+	MISSILE_LAUNCHER_8SLOT, 
+	MISSILE_STORAGE_5,
+	MISSILE_STORAGE_10,
+	MISSILE_STORAGE_15,
+	MISSILE_STORAGE_20,
+	MISSILE_STORAGE_25,
+	Armour_25,
+	Armour_30,
+	Armour_35,
+	Armour_40,
+	Armour_50
+
+};
+
+enum class Items {
+	HULL_REPAIRKIT,
+	FIRE_DETERENT,
+	SUBSYSTEM_REPAIRKIT,
+	ARMAMENT_REPAIRKIT
+};
+
+enum class IventoryType {
+	PRIMARY,
+	SUBSYSTEM,
+	JET,
+	MISSILES,
+	ITEMS
+};
 #endif // !ENUM_H
