@@ -4,6 +4,7 @@
 
 #include <iostream>
 #include "ConsoleFormatting.h"
+#include "AdvancedIO.h"
 
 enum class SCENENUMBER {
 	SCENE_MAINMENU = 0,
@@ -21,8 +22,9 @@ public:
 
 protected:
 	class GameManager* game = NULL;
-	std::string userInput;
+	std::unique_ptr<std::string> userInput = std::make_unique<std::string>();
 	ConsoleFormatting cFormat;
+	AdvancedIO myIO;
 
 };
 

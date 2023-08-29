@@ -1,10 +1,16 @@
 #include "EngineComponent.h"
 
-EngineComponent::EngineComponent()
+EngineComponent::EngineComponent(EngineType eType)
 {
-	isCreated = true;
+	defaultNauticalMiles = (int)eType;
+	if (OnCreate())
+		isCreated = true;
+	else
+	{
+		std::cout << "ERROR: Failed to create Engine Component!\n";
+		return;
+	}
 }
-
 EngineComponent::~EngineComponent()
 {
 	isCreated = false;
@@ -12,26 +18,19 @@ EngineComponent::~EngineComponent()
 
 bool EngineComponent::OnCreate()
 {
-	return false;
+	movement = defaultNauticalMiles;
+	setMovemementFlag = true;
+	return true;
 }
 
 void EngineComponent::OnDestroy()
 {
+
 }
 
 int EngineComponent::GetMovement()
 {
 	return movement;
-}
-
-void EngineComponent::SetMovement(int newMovement)
-{
-	if (setMovemementFlag == false)
-	{
-		defaultNauticalMiles = newMovement;
-		movement = defaultNauticalMiles;
-		setMovemementFlag = true;
-	}
 }
 
 void EngineComponent::SetSpawn(int x, int y)
@@ -50,4 +49,10 @@ void EngineComponent::MoveShip(int x, int y)
 {
 	position[0] = x;
 	position[1] = y;
+}
+
+void EngineComponent::ChangeEngineType(EngineType eType)
+{
+	if(defaultNauticalMiles = (int)eType)
+		movement = defaultNauticalMiles;
 }

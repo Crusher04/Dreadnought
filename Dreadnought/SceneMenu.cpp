@@ -35,23 +35,23 @@ void SceneMenu::GetUserInput()
 {
 	
 	std::cout << "SELECTION -> ";
-	IO.GetUserInput(userInput);
-	if (userInput.compare("cursor") == 0)
+	IO.GetUserInput(*userInput);
+	if (userInput->compare("cursor") == 0)
 	{
 		IO.PrintCursorPos();
 	}
-	else if (userInput.compare("howtoplay") == 0)
+	else if (userInput->compare("howtoplay") == 0)
 	{
 		cFormat.ClearScreen();
 		IO.PrintFromFile("howtoplay.txt");
 		game->BuildScene(SCENENUMBER::SCENE_HOWTOPLAY);
 		Title();
 	}
-	else if (userInput.compare("play") == 0)
+	else if (userInput->compare("play") == 0)
 	{
 		game->BuildScene(SCENENUMBER::SCENE_GAME);
 	}
-	else if (userInput.compare("quit") == 0 || userInput.compare("exit") == 0)
+	else if (userInput->compare("quit") == 0 || userInput->compare("exit") == 0)
 		game->SetGameActive(false);
 	else
 	{

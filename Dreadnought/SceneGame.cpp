@@ -18,8 +18,8 @@ SceneGame::~SceneGame()
 
 bool SceneGame::OnCreate()
 {
-	player = std::make_shared<Battleship>();
-	player->AddComponent<EngineComponent>();
+	player = std::make_shared<Battleship>(Ships::UNDEFINEDSHIP);
+	player->AddComponent<EngineComponent>(EngineType::E_NULL);
 	return true;
 }
 
@@ -30,10 +30,9 @@ void SceneGame::OnDestroy()
 
 void SceneGame::Update()
 {
-}
+	while(!starterShpSelected)
+		SelectStarterShip();
 
-void SceneGame::GetUserInput()
-{
 }
 
 void SceneGame::Attack(Battleship friendly, ActorType actor)
@@ -76,7 +75,40 @@ void SceneGame::RunIntro()
 	}
 
 	cFormat.Pause();
+
+}
+
+void SceneGame::SelectStarterShip()
+{
 	cFormat.ClearScreen();
+	myIO.PrintFromFile("shipDesc.txt");
+	std::cout << "\nSELECTION -> ";
+	myIO.GetUserInput(*userInput);
+	if (userInput->compare("dreadnought") == 0)
+	{
+		player->GetComponent<EngineComponent>()->ChangeEngineType(EngineType::EV20);
+
+		starterShpSelected = true;
+	}
+	else if (userInput->compare("idris") == 0)
+	{
+		player->GetComponent<EngineComponent>()->ChangeEngineType(EngineType::EV20);
+
+	}
+	else if (userInput->compare("sunkenlady") == 0)
+	{
+		player->GetComponent<EngineComponent>()->ChangeEngineType(EngineType::EV15);
+
+	}
+	else if (userInput->compare("supernova") == 0)
+	{
+		player->GetComponent<EngineComponent>()->ChangeEngineType(EngineType::EV10);
+
+	}
+	else
+	{
+		std::cout << "ERROR: ship not available, please select another ship.\n";
+	}
 
 }
 

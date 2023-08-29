@@ -20,7 +20,7 @@ enum class MovementDirection
 	RIGHT
 };
 
-enum class ShipType
+enum class ShipClassification
 {
 	Battleship,
 	Destroyer,
@@ -67,5 +67,14 @@ enum class ShipSystems
 	AntiMineRadar,
 	AdvancedShipRadar,
 	Sonar
+};
+
+enum class EngineType {
+	EV10 = 10,
+	EV15 = 15,
+	EV20 = 20,
+	EV25 = 25,
+	EV30 = 30,
+	E_NULL = 0
 };
 #endif // !ENUM_H

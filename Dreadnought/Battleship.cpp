@@ -1,7 +1,8 @@
 #include "Battleship.h"
 
-Battleship::Battleship()
+Battleship::Battleship(Ships starterShip):shipType{Ships::UNDEFINEDSHIP}
 {
+	shipType = starterShip;
 }
 
 Battleship::~Battleship()
@@ -30,4 +31,9 @@ void Battleship::ListComponents() const
 void Battleship::RemoveAllComponents()
 {
 	components.clear();
+}
+
+void Battleship::ChangeStarterShip(Ships ship)
+{
+	shipType = ship;
 }

@@ -7,11 +7,11 @@ class Battleship: public Component
 {
 protected:
 	std::vector<Ref<Component>> components;
-
+	Ships shipType;
 
 public:
 
-	Battleship();
+	Battleship(Ships starterShip);
 	~Battleship();
 
 	bool OnCreate();
@@ -20,25 +20,12 @@ public:
 	template<typename ComponentTemplate>
 	bool AddComponent(Ref<ComponentTemplate> component_)
 	{
-		if (GetComponent<ComponentTemplate>().get() != nullptr) {
-#ifdef _DEBUG
-			std::cerr << "WARNING: Trying to add a component type that is already added - ignored\n";
-#endif
-			return;
-		}
 		components.push_back(component_);
 	}
 
 	template<typename ComponentTemplate, typename ... Args>
 	void AddComponent(Args&& ... args_) {
-		/// before you add the component ask if you have the component in the list already,
-		/// if so - don't add a second one. 
-		if (GetComponent<ComponentTemplate>().get() != nullptr) {
-#ifdef _DEBUG
-			std::cerr << "WARNING: Trying to add a component type that is already added - ignored\n";
-#endif		
-			return;
-		}
+
 		/// If nothing else is messed up, finish building the component and
 		/// add the component to the list
 		/// Create the new object based on the template type and the argument list
@@ -69,6 +56,7 @@ public:
 
 	void ListComponents() const;
 	void RemoveAllComponents();
+	void ChangeStarterShip(Ships ship);
 
 };
 

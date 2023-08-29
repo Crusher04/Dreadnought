@@ -1,6 +1,7 @@
 #pragma once
 //Controls the movement and position of the ship
 #include "Component.h"
+#include <iostream>
 
 class EngineComponent: public Component
 {
@@ -15,7 +16,7 @@ public:
 	/// <summary>
 	/// Engine Constructor
 	/// </summary>
-	EngineComponent();
+	EngineComponent(EngineType eType);
 
 	///<summary>
 	///Engine Deconstructor
@@ -30,12 +31,6 @@ public:
 	/// </summary>
 	/// <returns>int</returns>
 	int GetMovement();
-
-	/// <summary>
-	/// Sets the movement of the ship once.
-	/// </summary>
-	/// <param name="newMovement"></param>
-	void SetMovement(int newMovement);
 
 	/// <summary>
 	/// Sets the initial spawn point of the ship
@@ -55,6 +50,8 @@ public:
 	/// <param name="x"></param>
 	/// <param name="y"></param>
 	void MoveShip(int x, int y);
+
+	void ChangeEngineType(EngineType eType);
 
 
 

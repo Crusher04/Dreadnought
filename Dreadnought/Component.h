@@ -1,5 +1,6 @@
 #pragma once
 #include <memory>
+#include "Enums.h"
 
 template<typename T>
 using Ref = std::shared_ptr <T>;

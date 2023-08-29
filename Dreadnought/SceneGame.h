@@ -24,13 +24,14 @@ public:
 	virtual void OnDestroy();
 	virtual void Update();
 
-	void GetUserInput();
 	void Attack(Battleship friendly, ActorType actor);
 	int RandomNumber(DiceType dice, int lastNum);
 	void InitializePlayer();
 	void RunIntro();
+	void SelectStarterShip();
 
 private:
+	bool starterShpSelected = false;
 	bool helpFlag = false;
 	bool moveFlag = false;
 	bool endTurn = false;
@@ -38,5 +39,7 @@ private:
 	
 	Board theBoard;
 	std::shared_ptr<Battleship> player;
+	
+
 };
 
