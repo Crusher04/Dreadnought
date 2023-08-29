@@ -16,15 +16,16 @@ Installed Armaments & Subsystems:
 	- 4 missile slot systems
 - Total Primary armament slots: 2 slots (1 available)
 - Total Subsystem slots: 3 slots (1 available)
+- Total Item slots: 2 slots (1 available), you have one fire deterent available
 
 				-----------
 				   Idris
 				-----------
-Health: 50
-Movement 20 NM
-Main Weapon: Triple Artillery Canons 250mm (1D6 Damage per canon) (Action)
-Secondary Weapon: Empty
-Inventory Slots: 4 slots
+Health: 50 hitpoints
+Movement 20 Nautical Miles
+Installed Armamnets & Subsystems:
+	- Triple Artillery Canons 250mm (1D6 Damage per canon) (Action)
+	- Active Defence System (ADS) 
 
 				-----------
 				SunkenLady
