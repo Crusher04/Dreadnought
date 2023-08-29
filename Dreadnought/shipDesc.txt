@@ -10,40 +10,60 @@
 				-----------
 Health: 50 hitpoints
 Movement 20 Nautical Miles
+Class: Battleship
 Installed Armaments & Subsystems:
 	- Dual Artillery Canons 250mm (1D6 Damage per canon) (Action)
 	- 10 Anti-Ship Missiles stored
-	- 4 missile slot systems
-- Total Primary armament slots: 2 slots (1 available)
-- Total Subsystem slots: 3 slots (1 available)
-- Total Item slots: 2 slots (1 available), you have one fire deterent available
+	- 15 Missile storage system
+	- 4 slot missile launcher system
+Total Primary armament slots: 2 slots (1 available)
+Total Subsystem slots: 3 slots (1 available)
+Total Item slots: 2 slots (1 available), you have one fire deterent available.
 
 				-----------
 				   Idris
 				-----------
 Health: 50 hitpoints
 Movement 20 Nautical Miles
+Class: Battleship
 Installed Armamnets & Subsystems:
 	- Triple Artillery Canons 250mm (1D6 Damage per canon) (Action)
 	- Active Defence System (ADS) 
-
+Total Primary armament slots: 3 slots (1 available)
+Total Subsystem slots: 2 slots (2 available)
+Total Item slots: 2 slots (1 available), you have one fire deterent available.
 				-----------
 				SunkenLady
 				-----------
 
-Health: 75
-Movement: 15 NM
-Main Weapon: Single Artillery Canon 400mm (1D12 Damage per canon) (Action)
-Secondary Weapon: Long Range Missile (1D8 Damage) (Must be prepared with Bonus Action, Action to use missile)
-Inventory Slots: 4 slots
+Health: 75 hitpoints
+Class: Destroyer
+Movement: 15 Nautical Miles
+Installed Armaments & Subsystems:
+	- Single Artillery Canon 400mm (1D12 Damage per canon) (Action)
+	- 5 Super Sonic Cruise Missiles stored (SSCM)
+	- 5 Anti-Ship Missiles stored (ASM)
+	- 10 Missile storage system
+	- 4 slot missile launcher system
+Total Primary armament slots: 3 slots (1 available)
+Total Subsystem slots: 2 Slots (1 available)
+Total Item slots: 1 slots (1 available)
 
 
 				-----------
 				 SuperNova
 				-----------
 
-Health: 50
-Movement: 10 NM
-Main Weapon: Dual Artillery Canon 400mm (1D12 Damage per canon) (Action)
-Secondary Weapon: Anti-Missile Defense (Must be prepared with Bonus Action)
-Inventory Slots: 2 slots
+Health: 50 hitpoints 
+Ship Class: Aircraft Carrier
+Movement: 10 Nautical Miles
+Installed Armaments & Subsystems:
+	- 4 slot missile launcher system
+	- 5 Missile storage system
+	- Active Defence System (ADS)
+	- 2 Tomcat Jets
+	- 2 Hornet Jets
+Total Primary armmament slots: 2 slots (0 available)
+Total Subsystem slots: 2 slots (1 available)
+Total Jet slots: 6 slots (2 available)
+Inventory Slots: 4 slots (4 available)

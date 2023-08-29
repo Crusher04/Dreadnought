@@ -8,6 +8,9 @@
 
 class AdvancedIO
 {
+protected:
+	std::string keywords[5] = { "menu", "quit", "exit", "help", "back" };
+
 public:
 	AdvancedIO() = default;
 	~AdvancedIO() = default;

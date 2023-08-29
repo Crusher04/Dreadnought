@@ -20,10 +20,21 @@ protected:
 	Ships shipType;
 public:
 	
+	/// <summary>
+	/// Inventory Constructor. Passes the type of ship. 
+	/// </summary>
+	/// <param name="shipType_"></param>
 	Inventory(Ships shipType_);
 
+	/// <summary>
+	/// Inventory deconstructor
+	/// </summary>
 	~Inventory();
 
+	/// <summary>
+	/// Initializes the inventory to match the ship selection
+	/// </summary>
+	/// <returns></returns>
 	bool OnCreate();
 
 	void OnDestroy();

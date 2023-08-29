@@ -57,6 +57,12 @@ Super Sonic Cruise Missiles (SSCM)
 - Extremely High Accuracy to hit. 
 - Can be intercepted by Interceptor System.
 
+Missile Launcher Slots
+-----------------------
+In order to launch missiles you need a missile launcher. 
+This comes in four, six or eight missile slots. Loading a 
+launcher must be prepared. 
+
 Active Defence System (ADS)
 ---------------------------
 - Takes up one primary armament slot
@@ -68,7 +74,6 @@ Active Defence System (ADS)
 	save defense. 
 - Save Defense starts at 8. To increase ADS defense, ships can have
 	Advanced Radar Installed (+ 4 to Defense), 
-	Counter-Measure Detection Installed ( + 2 to Defense),
 	Early-Warning System Installed ( + 2 to Defense), 
 	Advanced-Tracking Installed (+ 4 to Defense).
 

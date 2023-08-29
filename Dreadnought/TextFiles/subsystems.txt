@@ -1,0 +1,50 @@
+  ____        _                   _                     
+ / ___| _   _| |__  ___ _   _ ___| |_ ___ _ __ ___  ___ 
+ \___ \| | | | '_ \/ __| | | / __| __/ _ \ '_ ` _ \/ __|
+  ___) | |_| | |_) \__ \ |_| \__ \ ||  __/ | | | | \__ \
+ |____/ \__,_|_.__/|___/\__, |___/\__\___|_| |_| |_|___/
+                        |___/                           
+
+----------------------------------------------------------
+
+Advanced Radar
+---------------
+This system adds +10 to radar dectection and adds +4 to 
+Active Defence System (ADS) defence. Passive System. 
+
+Advanced Tracking
+------------------
+This system adds +4 to ADS defense and provides advantage
+towards missile strikes.  
+
+Counter-Measure Detection
+--------------------------
+This system provides advantage towards defending with the
+Active Defence System.
+
+Early Warning System
+-------------------------
+This adds +2 to the ADS defence. Passive System. 
+
+Auto Water Displacer
+----------------------
+Will slowly empty water off ship every turn. Removes
+5% of water. Does not consume an action or bonus action. 
+
+Auto Fire Deterent
+----------------------
+Will automatically use stored fire deterent to douse 
+onboard fire. Does not consume an action or bonus action. 
+
+Missile Storage System
+------------------------
+This system stores missiles on the ship. Missile storage
+comes in 5, 10, 15, 20, 25 storage slots. There if a small
+chance that direct hits to the ship can cause this system to
+explode dealing damage based on number of missiles stored. 
+
+Armour Plate Protection
+-------------------------
+This is a passive subsystem which adds temporary hitpoints to
+the ship. Comes in 20, 30, 35, 40, and 50 hitpoints. 
+
