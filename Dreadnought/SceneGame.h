@@ -11,6 +11,7 @@
 #include "Battleship.h"
 #include "EngineComponent.h"
 #include "InventoryComponent.h"
+#include "JAMISAsset.h"
 
 class SceneGame: public Scene
 {
@@ -28,6 +29,9 @@ public:
 	int RandomNumber(DiceType dice, int lastNum);
 	void RunIntro();
 	void SelectStarterShip();
+	void LoadAssets();
+
+
 
 private:
 	bool starterShpSelected = false;
@@ -38,6 +42,10 @@ private:
 	
 	Board theBoard;
 	std::shared_ptr<Battleship> player;
+
+
+	//All Ship Assets
+	
 	
 };
 

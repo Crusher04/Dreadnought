@@ -32,8 +32,8 @@ Naval Battery (400mm)
 Anti-Ship Missile (ASM)
 -----------------------
 - Takes up one primary armament slot
-- Must be prepared with a bonus action before using an action
-	to launch the missile. 
+- Must be prepared twice before launching. 
+	Preperation takes a bonus action. Lanching = Action.
 - Deals 1D12 Damage to enemy ship.
 - Can be shot down by enemy Interceptor System if equipped. 
 - Range of 50 Nautical Miles (NM).
@@ -43,9 +43,9 @@ Anti-Ship Torpedo (AST)
 - Takes up one missile armament slot
 - Can only be used by Submarines
 - Must be prepared before launching. 
+	Preperation takes a bonus action. Lanching = Action.
 - Deals 2D12 Damage to enemy ship. 
 - Can Be intercepted by Anti-Torpedo Nets (ATN). 
-- Small chance to be out-maneuvered. 
 - Range of 50 Nautical Miles (NM).
 
 Super Sonic Cruise Missiles (SSCM)
@@ -53,19 +53,23 @@ Super Sonic Cruise Missiles (SSCM)
 - Takes up one missile armament slot
 - Can only be used by Destroyers. 
 - Must be prepared twice before launching. 
+	Preperation takes a bonus action. Lanching = Action.
 - Deals 3D12 Dmage to enemy ship. 
-- Extremely High Accuracy to hit. 
 - Can be intercepted by Interceptor System.
+- Range of 70 Nautical Miles (NM).
 
 Missile Launcher Slots
 -----------------------
 In order to launch missiles you need a missile launcher. 
 This comes in four, six or eight missile slots. Loading a 
-launcher must be prepared. 
+launcher must be prepared. When loading a launcher you load
+one missile at a time. You can expend an action or bonus action
+to load a missile.
 
 Active Defence System (ADS)
 ---------------------------
 - Takes up one primary armament slot
+- Must be prepared by a bonus action or action.
 - Designed to intercept incoming missiles, 
 	torpedoes, railguns, and aircraft. 
 - ADS system can be a second wall for defense (must be prepared).
@@ -80,23 +84,24 @@ Rail Gun
 --------
 - Takes up one primary armament slot
 - Can only be used by destroyers
-- Must be prepared before use.
-- High Velocity, High Damage, High Accuracy. 
+- Must use an action to use this weapon.
+	Must be prepared before use. Preparing uses a bonus action.
 - 4D10 Damage to enemy ship.
-- Can be intercepted by ADS. 
+- Can be intercepted by ADS though Rail Guns have advantage on save.
 
 F-14 Tomcat
 ------------
 - Takes up one jet armament slot
 - Can only be used by Aircraft Carrier. 
-- No range, relies on Radar detection to detect enemy aircraft.
+- Attacks can be done within 5 Nautical Miles, 
+	relies on Radar detection to detect enemy aircraft.
 - F-14 Tomcat is designed as an air superiority fighter and 
-	fleet defense interceptor. Its primary mission was 
+	fleet defense interceptor. Its primary mission is 
 	to engage and destroy enemy aircraft
-- Rolls to attack enemy aircraft, if successful, attack averted.
-	If failed, enemy will roll to hit Tomcat, if successful Tomcat
+- Rolls to attack enemy aircraft, if successful, attack destroys enemy.
+	If failed, enemy will roll to hit Tomcat, if enemy is successful Tomcat
 	is destroyed. If enemy fails to hit, enemy can still attempt to hit
-	friendly vessel. 
+	friendly vessel, Tomcat survives. 
 - Can be prepared, preparing launches plane into air around vessel as standby. 
 	Can only be on standby for 3 turns.
 
@@ -104,7 +109,8 @@ F/A-18 Hornet
 --------------
 - Takes up one jet armament slot
 - Can only be used by Aircraft Carrier. 
-- 60 NM range, relies on Radar detection to detect enemy aircraft.
+- Attacks can be done within 5 Nautical Miles, 
+	relies on Radar detection to detect enemy aircraft.
 -The F/A-18 is a multirole fighter aircraft designed to perform a variety 
 	of tasks, including air-to-air combat, vessel attack, close air support.
 - Rolls to attack normally. 2D8 Damage to enemy vessels.
@@ -119,5 +125,5 @@ Mine-Deployment System
 - Stores and deploys up to 5 mines that are close proximity mines. Once Exploded they 
 	will send a ping to your radar. Shows up as an 'X' on the radar and a '?' after 
 	it exploded.
-- Takes up one armament slot.
+- Takes up one primary armament slot.
 - Mine range is 5 Nautical Miles

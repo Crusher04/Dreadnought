@@ -139,6 +139,7 @@
     <ClCompile Include="EngineComponent.cpp" />
     <ClCompile Include="GameManager.cpp" />
     <ClCompile Include="InventoryComponent.cpp" />
+    <ClCompile Include="JAMISAsset.cpp" />
     <ClCompile Include="SceneGame.cpp" />
     <ClCompile Include="SceneHowToPlay.cpp" />
     <ClCompile Include="SceneMenu.cpp" />
@@ -157,7 +158,7 @@
     <ClInclude Include="SceneGame.h" />
     <ClInclude Include="SceneHowToPlay.h" />
     <ClInclude Include="SceneMenu.h" />
-    <ClInclude Include="ShipJAMIS.h" />
+    <ClInclude Include="JAMISAsset.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="ComponentDesigns.txt" />

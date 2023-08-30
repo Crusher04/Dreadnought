@@ -2,7 +2,7 @@
 #include "Component.h"
 #include <iostream>
 #include <unordered_map>
-#include "ShipJAMIS.h"
+#include "JAMISAsset.h"
 
 class InventoryComponent: public Component
 {
@@ -12,12 +12,10 @@ private:
 	char primarySlots[2] = { 0,0 };
 	char subsystemSlots[2] = { 0,0 };
 	char jetSlots[2] = { 0,0 };
-	char missileSlots[2] = { 0,0 };
-	char itemSlots[2] = { 0, 0};		
-	
-	
+	char itemSlots[2] = {0, 0};
 
-	Ships shipType;
+	std::vector<JAMISAsset> assets;
+
 public:
 	
 	/// <summary>
@@ -39,16 +37,11 @@ public:
 
 	void OnDestroy();
 
-	void IncreaseInvType(InventoryType iType);
-
-	void DecreaseInvType(InventoryType iType);
-
 	void RemoveItem();
 
 	void PrintMaxInventorySlots();
 
 	char GetMaxSlots(InventoryType iType);
-
 
 
 	void ListItemsInInventory() const;

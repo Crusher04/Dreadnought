@@ -114,3 +114,8 @@ void SceneGame::SelectStarterShip()
 	}
 
 }
+
+void SceneGame::LoadAssets()
+{
+
+}

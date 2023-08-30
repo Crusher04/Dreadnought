@@ -32,6 +32,7 @@
       <Filter>Source\Components</Filter>
     </ClCompile>
     <ClCompile Include="InventoryComponent.cpp" />
+    <ClCompile Include="JAMISAsset.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Board.h">
@@ -71,6 +72,7 @@
       <Filter>Header\Components</Filter>
     </ClInclude>
     <ClInclude Include="InventoryComponent.h" />
+    <ClInclude Include="JAMISAsset.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header">
@@ -91,5 +93,31 @@
     <Filter Include="Header\Components">
       <UniqueIdentifier>{340f7e63-6e73-4201-a7a3-1353d55925dc}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Text Files">
+      <UniqueIdentifier>{d41bd02b-73d6-4e15-b341-62876d9359b5}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="TextFiles\howtoplay.txt">
+      <Filter>Text Files</Filter>
+    </Text>
+    <Text Include="TextFiles\credits.txt">
+      <Filter>Text Files</Filter>
+    </Text>
+    <Text Include="TextFiles\armaments.txt">
+      <Filter>Text Files</Filter>
+    </Text>
+    <Text Include="TextFiles\asciiBanner.txt">
+      <Filter>Text Files</Filter>
+    </Text>
+    <Text Include="ComponentDesigns.txt">
+      <Filter>Text Files</Filter>
+    </Text>
+    <Text Include="TextFiles\shipDesc.txt">
+      <Filter>Text Files</Filter>
+    </Text>
+    <Text Include="TextFiles\subsystems.txt">
+      <Filter>Text Files</Filter>
+    </Text>
   </ItemGroup>
 </Project>

@@ -9,13 +9,15 @@ enum class DiceType
 	D8 = 8,
 	D10 = 10,
 	D12 = 12,
-	D20 = 20
+	D20 = 20,
+	DICE_NULL
 };
 
 enum class ActionType {
 	ACTION,
 	BONUS_ACTION,
-	PASSIVE
+	PASSIVE,
+	ACTION_NULL
 };
 
 enum class MovementDirection
@@ -126,10 +128,11 @@ enum class Items {
 /// </summary>
 /// <param name="PRIMARY, SUBSYSTEM, JET, MISSILES, ITEMS"></param>
 enum class InventoryType {
-	PRIMARY,
+	ARMAMENT,
 	SUBSYSTEM,
 	JET,
 	MISSILES,
-	ITEMS
+	ITEMS,
+	INV_NULL
 };
 #endif // !ENUM_H
