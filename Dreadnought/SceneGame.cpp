@@ -117,5 +117,6 @@ void SceneGame::SelectStarterShip()
 
 void SceneGame::LoadAssets()
 {
+	NavalBattery250 = std::make_shared<JAMISAsset>("Naval Battery 250mm", InventoryType::ARMAMENT);
 
 }

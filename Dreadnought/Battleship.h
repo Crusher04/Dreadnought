@@ -12,6 +12,8 @@ protected:
 	int health;
 	char armour;
 	bool isAlive;
+	int myMoney;
+	char saveDefense;
 
 public:
 

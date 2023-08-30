@@ -32,7 +32,7 @@ Naval Battery (400mm)
 Anti-Ship Missile (ASM)
 -----------------------
 - Takes up one primary armament slot
-- Must be prepared twice before launching. 
+- Must be prepared before launching.
 	Preperation takes a bonus action. Lanching = Action.
 - Deals 1D12 Damage to enemy ship.
 - Can be shot down by enemy Interceptor System if equipped. 
@@ -52,7 +52,7 @@ Super Sonic Cruise Missiles (SSCM)
 ----------------------------
 - Takes up one missile armament slot
 - Can only be used by Destroyers. 
-- Must be prepared twice before launching. 
+- Must be prepared before launching. 
 	Preperation takes a bonus action. Lanching = Action.
 - Deals 3D12 Dmage to enemy ship. 
 - Can be intercepted by Interceptor System.
@@ -64,7 +64,8 @@ In order to launch missiles you need a missile launcher.
 This comes in four, six or eight missile slots. Loading a 
 launcher must be prepared. When loading a launcher you load
 one missile at a time. You can expend an action or bonus action
-to load a missile.
+to load a missile. Missile launcher can launch all prepared slots
+at once.
 
 Active Defence System (ADS)
 ---------------------------
@@ -92,6 +93,7 @@ Rail Gun
 F-14 Tomcat
 ------------
 - Takes up one jet armament slot
+- Moves upto 20 Nautical Miles in one turn.
 - Can only be used by Aircraft Carrier. 
 - Attacks can be done within 5 Nautical Miles, 
 	relies on Radar detection to detect enemy aircraft.
@@ -108,6 +110,7 @@ F-14 Tomcat
 F/A-18 Hornet
 --------------
 - Takes up one jet armament slot
+- Moves upto 20 Nautical Miles in one turn.
 - Can only be used by Aircraft Carrier. 
 - Attacks can be done within 5 Nautical Miles, 
 	relies on Radar detection to detect enemy aircraft.
@@ -122,6 +125,7 @@ F/A-18 Hornet
 
 Mine-Deployment System
 -----------------------
+- Uses an Action or Bonus Action to deploy mines
 - Stores and deploys up to 5 mines that are close proximity mines. Once Exploded they 
 	will send a ping to your radar. Shows up as an 'X' on the radar and a '?' after 
 	it exploded.

@@ -54,19 +54,19 @@ enum class ActorType
 };
 
 enum class Armament {
-	NavalBattery250mm,
-	NavalBattery400mm,
-	AntiShipMissile, 
-	AntiShipTorpedo,
-	SuperSonicCruiseMissile,
-	ActiveDefenceSystem,
-	RailGun,
-	F14Tomcat,
-	F18Hornet,
+	NavalBattery250mm = 0,
+	NavalBattery400mm = 1,
+	AntiShipMissile = 2, 
+	AntiShipTorpedo = 3,
+	SuperSonicCruiseMissile = 5,
+	ActiveDefenceSystem = 7,
+	RailGun = 9,
+	F14Tomcat = 10,
+	F18Hornet = 11,
 	MissileLauncher_4 = 4,
 	MissileLauncher_6 = 6,
 	MissileLauncher_8 = 8,
-	MineDeployment,
+	MineDeployment = 12,
 	ARMAMENT_NULL
 	
 }; 
@@ -87,22 +87,22 @@ enum class EngineType {
 
 enum class Subsystems {
 
-	ADVANCED_RADAR,
-	ADVANCED_TRACKING,
-	COUNTERMEASURE_DETECTION,
-	EARLY_WARNING,
-	AUTO_WATER_DISPLACER,
-	AUTO_FIRE_DETERENT,
-	MISSILE_STORAGE_5 = 5,
-	MISSILE_STORAGE_10 = 10,
-	MISSILE_STORAGE_15 = 15,
-	MISSILE_STORAGE_20 = 20,
-	MISSILE_STORAGE_25 = 25,
-	Armour_20 = 20,
-	Armour_30 = 30,
-	Armour_35 = 35,
-	Armour_40 = 40,
-	Armour_50 = 50,
+	ADVANCED_RADAR = 0,
+	ADVANCED_TRACKING = 1,
+	COUNTERMEASURE_DETECTION = 2,
+	EARLY_WARNING = 3,
+	AUTO_WATER_DISPLACER = 4,
+	AUTO_FIRE_DETERENT = 6,
+	MISSILE_STORAGE_5,
+	MISSILE_STORAGE_10,
+	MISSILE_STORAGE_15,
+	MISSILE_STORAGE_20,
+	MISSILE_STORAGE_25,
+	Armour_20,
+	Armour_30,
+	Armour_35,
+	Armour_40,
+	Armour_50,
 	ANTIMINE_RADAR,
 	SUBSYSTEM_NULL
 

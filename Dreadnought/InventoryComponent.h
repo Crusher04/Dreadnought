@@ -29,21 +29,6 @@ public:
 	/// </summary>
 	~InventoryComponent();
 
-	/// <summary>
-	/// Initializes the inventory to match the ship selection
-	/// </summary>
-	/// <returns></returns>
-	bool OnCreate();
-
-	void OnDestroy();
-
-	void RemoveItem();
-
-	void PrintMaxInventorySlots();
-
-	char GetMaxSlots(InventoryType iType);
-
-
 	void ListItemsInInventory() const;
 };
 

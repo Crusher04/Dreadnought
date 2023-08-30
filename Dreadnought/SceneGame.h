@@ -45,7 +45,7 @@ private:
 
 
 	//All Ship Assets
-	
+	std::shared_ptr<JAMISAsset> NavalBattery250;
 	
 };
 

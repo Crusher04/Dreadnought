@@ -31,6 +31,7 @@ private:
 	bool isDestroyed;
 	bool mustBePrepared;
 	bool prepared;
+	bool returningToCarrier;
 
 public:
 
@@ -41,7 +42,7 @@ public:
 	/// Intialize Armament
 	/// </summary>
 	/// <param name="armType"></param>
-	void Initialize(Armament armType);
+	void Initialize(Armament armType, char diceMultiplier_);
 
 	/// <summary>
 	/// Initialize Subsystem
@@ -55,6 +56,10 @@ public:
 	/// <param name="itemType_"></param>
 	void Initialize(Items itemType_);
 
+
+	///////GETTERS///////
+	const std::string GetName() { return name; }
+	const char GetStorageOrSlot() { return storageOrSlots; }
 
 
 };
