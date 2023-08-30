@@ -3,19 +3,16 @@
 #include <iostream>
 #include <unordered_map>
 
-class Inventory: public Component
+class InventoryComponent: public Component
 {
 protected:
-	char primaryArmamentSlotMax = 0;		
-	char subsystemSlotMax = 0;				
-	char jetSlotMax = 0;					
-	char missileSlotMax = 0;				
-	char itemSlotMax = 0;	
-
-	/// <summary>
-	/// Inventory Type and how many are installed on ship.
-	/// </summary>
-	std::unordered_map<InventoryType, char> myInventory;		
+	//[Max Amount to have, slots used]
+	char primarySlots[2] = { 0,0 };
+	char subsystemSlots[2] = { 0,0 };
+	char jetSlots[2] = { 0,0 };
+	char missileSlots[2] = { 0,0 };
+	char itemSlots[2] = { 0, 0};
+	std::unordered_map<InventoryType, char[]> s;
 	std::string slotNames[5] = { "Primary Armament ", "Subsytem ", "Jet ", "Missile ", "Item "};
 	Ships shipType;
 public:
@@ -24,12 +21,12 @@ public:
 	/// Inventory Constructor. Passes the type of ship. 
 	/// </summary>
 	/// <param name="shipType_"></param>
-	Inventory(Ships shipType_);
+	InventoryComponent(Ships shipType_);
 
 	/// <summary>
 	/// Inventory deconstructor
 	/// </summary>
-	~Inventory();
+	~InventoryComponent();
 
 	/// <summary>
 	/// Initializes the inventory to match the ship selection
@@ -45,10 +42,12 @@ public:
 
 	void AddItem();
 
+	void RemoveItem();
+
 	void PrintMaxInventorySlots();
 
 	char GetMaxSlots(InventoryType iType);
 
-	
+	void CheckInventory();
 };
 

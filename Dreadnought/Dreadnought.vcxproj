@@ -138,7 +138,7 @@
     <ClCompile Include="ConsoleFormatting.cpp" />
     <ClCompile Include="EngineComponent.cpp" />
     <ClCompile Include="GameManager.cpp" />
-    <ClCompile Include="Inventory.cpp" />
+    <ClCompile Include="InventoryComponent.cpp" />
     <ClCompile Include="SceneGame.cpp" />
     <ClCompile Include="SceneHowToPlay.cpp" />
     <ClCompile Include="SceneMenu.cpp" />
@@ -152,7 +152,7 @@
     <ClInclude Include="EngineComponent.h" />
     <ClInclude Include="Enums.h" />
     <ClInclude Include="GameManager.h" />
-    <ClInclude Include="Inventory.h" />
+    <ClInclude Include="InventoryComponent.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="SceneGame.h" />
     <ClInclude Include="SceneHowToPlay.h" />
