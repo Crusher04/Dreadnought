@@ -18,8 +18,7 @@ SceneGame::~SceneGame()
 
 bool SceneGame::OnCreate()
 {
-	player = std::make_shared<Battleship>(Ships::UNDEFINEDSHIP);
-	player->AddComponent<EngineComponent>(EngineType::E_NULL);
+	player = std::make_shared<Battleship>(ActorType::PLAYER);
 	return true;
 }
 
@@ -33,11 +32,10 @@ void SceneGame::Update()
 	while(!starterShpSelected)
 		SelectStarterShip();
 
+	
+	game->SetGameActive(false);
 }
 
-void SceneGame::Attack(Battleship friendly, ActorType actor)
-{
-}
 
 int SceneGame::RandomNumber(DiceType dice, int lastNum)
 {
@@ -82,10 +80,12 @@ void SceneGame::SelectStarterShip()
 	myIO.GetUserInput(*userInput);
 	if (userInput->compare("dreadnought") == 0)
 	{
-		player->GetComponent<EngineComponent>()->ChangeEngineType(EngineType::EV20);
-		player->ChangeStarterShip(Ships::Dreadnought);
+		player->AddComponent<EngineComponent>(EngineType::EV20);
+		player->AddComponent<InventoryComponent>();
 
 		starterShpSelected = true;
+
+
 	}
 	else if (userInput->compare("idris") == 0)
 	{
@@ -114,4 +114,3 @@ void SceneGame::SelectStarterShip()
 	}
 
 }
-

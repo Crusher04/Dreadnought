@@ -157,6 +157,16 @@
     <ClInclude Include="SceneGame.h" />
     <ClInclude Include="SceneHowToPlay.h" />
     <ClInclude Include="SceneMenu.h" />
+    <ClInclude Include="ShipJAMIS.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="ComponentDesigns.txt" />
+    <Text Include="TextFiles\armaments.txt" />
+    <Text Include="TextFiles\asciiBanner.txt" />
+    <Text Include="TextFiles\credits.txt" />
+    <Text Include="TextFiles\howtoplay.txt" />
+    <Text Include="TextFiles\shipDesc.txt" />
+    <Text Include="TextFiles\subsystems.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

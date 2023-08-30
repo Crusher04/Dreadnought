@@ -1,18 +1,23 @@
 #include "Battleship.h"
 
-Battleship::Battleship(Ships starterShip):shipType{Ships::UNDEFINEDSHIP}
+Battleship::Battleship(ActorType aType):shipType{Ships::UNDEFINEDSHIP}, thisActor{ActorType::UNDEFINEDACTOR}, health{0}, armour{0}, isAlive{true}
 {
-	shipType = starterShip;
-
+	thisActor = aType;
 }
 
 Battleship::~Battleship()
 {
+
 }
 
-bool Battleship::OnCreate()
+
+bool Battleship::OnCreate(ActorType thisActor_, Ships shipType_, int health_, char armour_)
 {
-	return false;
+	thisActor = thisActor_;
+	shipType = shipType_;
+	health = health_;
+	armour = armour_;
+	return true;
 }
 
 void Battleship::OnDestroy()
@@ -34,7 +39,28 @@ void Battleship::RemoveAllComponents()
 	components.clear();
 }
 
-void Battleship::ChangeStarterShip(Ships ship)
+void Battleship::TakeDamage(int damage)
 {
-	shipType = ship;
+	int incomingDMG = damage;
+	if (armour > 0 && armour > damage)
+		armour -= damage;
+	else
+	{
+		if (armour > 0 && damage > armour)
+		{
+			incomingDMG -= armour;
+			armour = 0;
+		}
+
+		health -= incomingDMG;	
+	}
+
+	if (health <= 0)
+		isAlive = false;
 }
+
+void Battleship::AddArmour(char armour_)
+{
+	armour += armour_;
+}
+

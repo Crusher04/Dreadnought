@@ -7,10 +7,16 @@
 
 ----------------------------------------------------------
 
-Advanced Radar
+Radar Systems
 ---------------
-This system adds +10 to radar dectection and adds +4 to 
-Active Defence System (ADS) defence. Passive System. 
+(Standard Ship Eyesight is 10 Nautical Miles).
+	Standard Radar (installed on all ships):
+		Provides a radar detection of 50 Nautical
+		Miles. 
+	Advanced Radar (Upgrade):
+		This system adds +10 NM to radar dectection 
+		and adds +4 to Active Defence System (ADS) 
+		defence. Passive System. 
 
 Advanced Tracking
 ------------------
@@ -47,4 +53,15 @@ Armour Plate Protection
 -------------------------
 This is a passive subsystem which adds temporary hitpoints to
 the ship. Comes in 20, 30, 35, 40, and 50 hitpoints. 
+
+Anti-Mine Radar
+-------------------------
+This system alows you to detect mines in a 10 NM radius.
+
+Anti-Torpedo Nets (ATN)
+-------------------------
+Stores and deployes upto 5 nets around your ship that cover
+5 Nautical Miles (bonus action to deploy)
+
+
 

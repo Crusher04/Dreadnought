@@ -10,8 +10,6 @@ public:
 
 	Component(): isCreated(false) {}
 	virtual ~Component() = default;
-	virtual bool OnCreate() = 0;
-	virtual void OnDestroy() = 0;
 
 protected:
 	bool isCreated;

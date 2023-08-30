@@ -4,12 +4,18 @@
 
 enum class DiceType
 {
-	D4,
-	D6,
-	D8,
-	D10,
-	D12,
-	D20
+	D4 = 4,
+	D6 = 6,
+	D8 = 8,
+	D10 = 10,
+	D12 = 12,
+	D20 = 20
+};
+
+enum class ActionType {
+	ACTION,
+	BONUS_ACTION,
+	PASSIVE
 };
 
 enum class MovementDirection
@@ -48,26 +54,21 @@ enum class ActorType
 enum class Armament {
 	NavalBattery250mm,
 	NavalBattery400mm,
-	AntiShipMissile, //ASM
+	AntiShipMissile, 
 	AntiShipTorpedo,
 	SuperSonicCruiseMissile,
 	ActiveDefenceSystem,
 	RailGun,
 	F14Tomcat,
-	F18Hornet
-	
+	F18Hornet,
+	MissileLauncher_4 = 4,
+	MissileLauncher_6 = 6,
+	MissileLauncher_8 = 8,
+	MineDeployment,
+	ARMAMENT_NULL
 	
 }; 
 
-enum class ShipSystems
-{
-	FireControl,
-	HullRepair,
-	WaterDisplacement,
-	AntiMineRadar,
-	AdvancedShipRadar,
-	Sonar
-};
 
 /// <summary>
 /// Types of engine install onto ship. 
@@ -82,39 +83,14 @@ enum class EngineType {
 	E_NULL = 0
 };
 
-/// <summary>
-/// Subsystems that can be installed on ships. 
-/// </summary>
-/// <param name="ADVANCED_RADAR,
-///COUNTERMEASURE_DETECTION,
-///EARLY_WARNING,
-///ADVANCED_TRACKING,
-///AUTO_WATER_DISPLACER,
-///MISSILE_LAUNCHER_4SLOT,
-///MISSILE_LAUNCHER_6SLOT,
-///MISSILE_LAUNCHER_8SLOT,
-///MISSILE_STORAGE_5,
-///MISSILE_STORAGE_10,
-///MISSILE_STORAGE_15,
-///MISSILE_STORAGE_20,
-///MISSILE_STORAGE_25,
-///Armour_25,
-///Armour_30,
-///Armour_35,
-///Armour_40,
-///Armour_50"></param>
 enum class Subsystems {
 
 	ADVANCED_RADAR,
 	ADVANCED_TRACKING,
 	COUNTERMEASURE_DETECTION,
 	EARLY_WARNING,
-	ADVANCED_TRACKING,
 	AUTO_WATER_DISPLACER,
 	AUTO_FIRE_DETERENT,
-	MISSILE_LAUNCHER_4SLOT = 4,
-	MISSILE_LAUNCHER_6SLOT = 6,
-	MISSILE_LAUNCHER_8SLOT = 8, 
 	MISSILE_STORAGE_5 = 5,
 	MISSILE_STORAGE_10 = 10,
 	MISSILE_STORAGE_15 = 15,
@@ -124,7 +100,9 @@ enum class Subsystems {
 	Armour_30 = 30,
 	Armour_35 = 35,
 	Armour_40 = 40,
-	Armour_50 = 50
+	Armour_50 = 50,
+	ANTIMINE_RADAR,
+	SUBSYSTEM_NULL
 
 };
 
@@ -137,7 +115,8 @@ enum class Items {
 	HULL_REPAIRKIT,
 	FIRE_DETERENT,
 	SUBSYSTEM_REPAIRKIT,
-	ARMAMENT_REPAIRKIT
+	ARMAMENT_REPAIRKIT,
+	ITEM_NULL
 };
 
 /// <summary>

@@ -10,6 +10,7 @@
 #include "Enums.h"
 #include "Battleship.h"
 #include "EngineComponent.h"
+#include "InventoryComponent.h"
 
 class SceneGame: public Scene
 {
@@ -24,7 +25,6 @@ public:
 	virtual void OnDestroy();
 	virtual void Update();
 
-	void Attack(Battleship friendly, ActorType actor);
 	int RandomNumber(DiceType dice, int lastNum);
 	void RunIntro();
 	void SelectStarterShip();
@@ -39,6 +39,5 @@ private:
 	Board theBoard;
 	std::shared_ptr<Battleship> player;
 	
-
 };
 

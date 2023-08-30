@@ -2,18 +2,21 @@
 #include "Component.h"
 #include <iostream>
 #include <unordered_map>
+#include "ShipJAMIS.h"
 
 class InventoryComponent: public Component
 {
-protected:
+private:
+
 	//[Max Amount to have, slots used]
 	char primarySlots[2] = { 0,0 };
 	char subsystemSlots[2] = { 0,0 };
 	char jetSlots[2] = { 0,0 };
 	char missileSlots[2] = { 0,0 };
-	char itemSlots[2] = { 0, 0};
-	std::unordered_map<InventoryType, char[]> s;
-	std::string slotNames[5] = { "Primary Armament ", "Subsytem ", "Jet ", "Missile ", "Item "};
+	char itemSlots[2] = { 0, 0};		
+	
+	
+
 	Ships shipType;
 public:
 	
@@ -21,7 +24,7 @@ public:
 	/// Inventory Constructor. Passes the type of ship. 
 	/// </summary>
 	/// <param name="shipType_"></param>
-	InventoryComponent(Ships shipType_);
+	InventoryComponent();
 
 	/// <summary>
 	/// Inventory deconstructor
@@ -40,14 +43,14 @@ public:
 
 	void DecreaseInvType(InventoryType iType);
 
-	void AddItem();
-
 	void RemoveItem();
 
 	void PrintMaxInventorySlots();
 
 	char GetMaxSlots(InventoryType iType);
 
-	void CheckInventory();
+
+
+	void ListItemsInInventory() const;
 };
 

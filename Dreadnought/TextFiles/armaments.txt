@@ -68,10 +68,9 @@ Active Defence System (ADS)
 - Takes up one primary armament slot
 - Designed to intercept incoming missiles, 
 	torpedoes, railguns, and aircraft. 
-- If defence against attacks fails, if ADS system
-	is prepared, ADS can be a second wall for defense. The type 
-	of attack will have to make a save roll against this systems
-	save defense. 
+- ADS system can be a second wall for defense (must be prepared).
+	The type of attack will have to make a save roll against 
+	this systems save defense. 
 - Save Defense starts at 8. To increase ADS defense, ships can have
 	Advanced Radar Installed (+ 4 to Defense), 
 	Early-Warning System Installed ( + 2 to Defense), 
@@ -114,3 +113,11 @@ F/A-18 Hornet
 - Can be prepared, preparing launches plane into air around vessel as standby. 
 	Can only be on standby for 3 turns.
 - Must be in the air to attack or defend (uses bonus action to launch).
+
+Mine-Deployment System
+-----------------------
+- Stores and deploys up to 5 mines that are close proximity mines. Once Exploded they 
+	will send a ping to your radar. Shows up as an 'X' on the radar and a '?' after 
+	it exploded.
+- Takes up one armament slot.
+- Mine range is 5 Nautical Miles

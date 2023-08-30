@@ -1,0 +1,8 @@
+Battleship:
+	Engine Component
+		Movement
+		Position
+	Inventory Component
+		Stores JAMIS (Jets, Armaments, Missiles, Items, Subsystems)
+	Radar Component
+		Detection Range

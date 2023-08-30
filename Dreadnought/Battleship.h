@@ -7,14 +7,18 @@ class Battleship: public Component
 {
 protected:
 	std::vector<Ref<Component>> components;
+	ActorType thisActor;
 	Ships shipType;
+	int health;
+	char armour;
+	bool isAlive;
 
 public:
 
-	Battleship(Ships starterShip);
+	Battleship(ActorType aType);
 	~Battleship();
 
-	bool OnCreate();
+	bool OnCreate(ActorType thisActor_, Ships shipType_, int health_, char armour_);
 	void OnDestroy();
 
 	template<typename ComponentTemplate>
@@ -25,10 +29,6 @@ public:
 
 	template<typename ComponentTemplate, typename ... Args>
 	void AddComponent(Args&& ... args_) {
-
-		/// If nothing else is messed up, finish building the component and
-		/// add the component to the list
-		/// Create the new object based on the template type and the argument list
 		components.push_back(std::make_shared<ComponentTemplate>(std::forward<Args>(args_)...));
 	}
 
@@ -36,8 +36,6 @@ public:
 	Ref<ComponentTemplate> GetComponent() const {
 		for (auto component : components) {
 			if (dynamic_cast<ComponentTemplate*>(component.get()) != nullptr) {
-				/// This is a dynamic cast designed for shared_ptr's
-				/// https://en.cppreference.com/w/cpp/memory/shared_ptr/pointer_cast
 				return std::dynamic_pointer_cast<ComponentTemplate>(component);
 			}
 		}
@@ -56,7 +54,9 @@ public:
 
 	void ListComponents() const;
 	void RemoveAllComponents();
-	void ChangeStarterShip(Ships ship);
+
+	void TakeDamage(int damage);
+	void AddArmour(char armour_);
 
 };
 

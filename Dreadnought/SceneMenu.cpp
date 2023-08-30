@@ -43,7 +43,7 @@ void SceneMenu::GetUserInput()
 	else if (userInput->compare("howtoplay") == 0)
 	{
 		cFormat.ClearScreen();
-		IO.PrintFromFile("howtoplay.txt");
+		IO.PrintFromFile("TextFiles/howtoplay.txt");
 		game->BuildScene(SCENENUMBER::SCENE_HOWTOPLAY);
 		Title();
 	}
@@ -69,7 +69,7 @@ void SceneMenu::Title()
 {
 	cFormat.SetColour(7);	
 	
-	IO.PrintFromFile("asciiBanner.txt");
+	IO.PrintFromFile("TextFiles/asciiBanner.txt");
 
 	cFormat.SetColour(15);
 	std::cout << std::flush;
