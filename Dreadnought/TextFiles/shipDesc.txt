@@ -5,6 +5,8 @@
  |___/\___|_\___\__|\__|   |_|\___/\_,_|_|   |___/\__\__,_|_|  \__\___|_|   |___/_||_|_| .__/
                                                                                        |_|   
 
+* All Ships come stanadard with Engine, Standard Radar, and Command Center.
+	Engine and Command Center do not take up a slot on your ship. *
 
 				Dreadnought
 				-----------
@@ -16,7 +18,8 @@ Installed Armaments & Subsystems:
 	- 10 Anti-Ship Missiles stored
 	- 15 Missile storage system
 	- 4 slot missile launcher system
-Total Primary armament slots: 2 slots (1 available)
+	- Standard Radar (50 Nautical Mile Detection)
+Total Primary armament slots: 3 slots (1 available)
 Total Subsystem slots: 3 slots (1 available)
 Total Item slots: 2 slots (1 available), you have one fire deterent available.
 

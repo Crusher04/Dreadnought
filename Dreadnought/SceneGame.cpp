@@ -88,11 +88,7 @@ void SceneGame::SelectStarterShip()
 	if (userInput->compare("dreadnought") == 0)
 	{
 
-
 		NavalBattery250->Initialize(Armament::NavalBattery250mm, 2);
-		
-		
-
 
 		
 		starterShpSelected = true;

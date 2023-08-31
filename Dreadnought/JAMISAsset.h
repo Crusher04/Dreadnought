@@ -58,6 +58,7 @@ public:
 	void Initialize(Items itemType_);
 
 	///////GETTERS///////
+	const InventoryType GetInventoryType() { return invType; }
 	const std::string GetName() { return name; }
 	const char GetStorageOrSlot() { return storageOrSlots; }
 	const DiceType GetDiceType() { return damageDice; }

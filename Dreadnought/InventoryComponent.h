@@ -9,10 +9,11 @@ class InventoryComponent: public Component
 private:
 
 	//[Max Amount to have, slots used]
-	char primarySlots[2] = { 0,0 };
+	char armamentSlots[2] = { 0,0 };
 	char subsystemSlots[2] = { 0,0 };
 	char jetSlots[2] = { 0,0 };
 	char itemSlots[2] = {0, 0};
+	char missileStorage[2] = { 0,0 };
 
 public:
 
@@ -24,12 +25,12 @@ public:
 	/// Inventory Constructor. Passes the type of ship. 
 	/// </summary>
 	/// <param name="shipType_"></param>
-	InventoryComponent() {}
+	InventoryComponent();
 
 	/// <summary>
 	/// Inventory deconstructor
 	/// </summary>
-	~InventoryComponent() { shipInventory.clear(); }
+	~InventoryComponent();
 
 	void ListItemsInInventory() const {
 
@@ -38,16 +39,12 @@ public:
 			std::cout << a.first << "\n";
 	}
 
-	void AddToInventory(JAMISAsset asset_) {
-		
-		if (shipInventory.find(asset_.GetName()) == shipInventory.end())
-			shipInventory.insert({ asset_.GetName(), asset_ });
-	}
+	void AddToInventory(JAMISAsset asset_);
 
-	void RemoveFromInventory(JAMISAsset asset_) {
-		auto it = shipInventory.find(asset_.GetName())->first;
-		shipInventory.erase(it);
-	}
+	void RemoveFromInventory(JAMISAsset asset_);
 
+	void AddStorageCapacity(InventoryType iType, int amount);
+
+	void RemoveStorageCapacity(InventoryType iType);
 };
 
