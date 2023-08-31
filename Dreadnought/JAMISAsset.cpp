@@ -131,6 +131,10 @@ void JAMISAsset::Initialize(Armament armType, char diceMultiplier_)
 
 void JAMISAsset::Initialize(Subsystems subType)
 {
+	switch(subType) {
+		
+	}
+
 }
 
 void JAMISAsset::Initialize(Items itemType_)

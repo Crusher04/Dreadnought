@@ -81,23 +81,13 @@ void SceneGame::SelectStarterShip()
 	myIO.GetUserInput(*userInput);
 	if (userInput->compare("dreadnought") == 0)
 	{
+		//Base Components
 		player->AddComponent<EngineComponent>(EngineType::EV20);
 		player->AddComponent<InventoryComponent>();
 		
 		NavalBattery250->Initialize(Armament::NavalBattery250mm, 2);
-		ADS->Initialize(Armament::ActiveDefenceSystem, 0);
-
-		player->GetComponent<InventoryComponent>()->AddToInventory(*NavalBattery250);
-		player->GetComponent<InventoryComponent>()->AddToInventory(*ADS);
-
-		std::cout << "\nInventory Assets: \n";
-		for (auto a : player->GetComponent<InventoryComponent>()->shipInventory)
-			std::cout << a.first << "\t isDestroyed = " << a.second.CheckIfDestroyed();
-
-		std::cout << "\nInventory Assets: \n";
-		player->GetComponent<InventoryComponent>()->RemoveFromInventory(*NavalBattery250);
-		for (auto a : player->GetComponent<InventoryComponent>()->shipInventory)
-			std::cout << a.first << "\t isDestroyed = " << a.second.CheckIfDestroyed();
+		
+		
 
 
 		
@@ -136,6 +126,9 @@ void SceneGame::SelectStarterShip()
 void SceneGame::LoadAssets()
 {
 	NavalBattery250 = std::make_shared<JAMISAsset>("Naval Battery 250mm", InventoryType::ARMAMENT);
+	NavalBattery400 = std::make_shared<JAMISAsset>("Naval Battery 400mm", InventoryType::ARMAMENT);
+	ASM = std::make_shared<JAMISAsset>("Anti-Ship Missile", InventoryType::MISSILES);
+	AST = std::make_shared<JAMISAsset>("Anti-Ship Torpedo", InventoryType::MISSILES);
 	ADS = std::make_shared<JAMISAsset>("Active Defense System", InventoryType::ARMAMENT);
 	
 }

@@ -6,3 +6,8 @@ Battleship:
 		Stores JAMIS (Jets, Armaments, Missiles, Items, Subsystems)
 	Radar Component
 		Detection Range
+	Command Center Component
+		Health
+		Armour
+		Money
+		ArmourClassDefense

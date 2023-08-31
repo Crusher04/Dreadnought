@@ -9,11 +9,6 @@ protected:
 	std::vector<Ref<Component>> components;
 	ActorType thisActor;
 	Ships shipType;
-	int health;
-	char armour;
-	bool isAlive;
-	int myMoney;
-	char saveDefense;
 
 public:
 

@@ -31,7 +31,6 @@
     <ClCompile Include="Battleship.cpp">
       <Filter>Source\Components</Filter>
     </ClCompile>
-    <ClCompile Include="InventoryComponent.cpp" />
     <ClCompile Include="JAMISAsset.cpp" />
   </ItemGroup>
   <ItemGroup>

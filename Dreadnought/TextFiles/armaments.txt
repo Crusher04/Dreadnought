@@ -110,7 +110,7 @@ F-14 Tomcat
 F/A-18 Hornet
 --------------
 - Takes up one jet armament slot
-- Moves upto 20 Nautical Miles in one turn.
+- Moves up to 20 Nautical Miles in one turn.
 - Can only be used by Aircraft Carrier. 
 - Attacks can be done within 5 Nautical Miles, 
 	relies on Radar detection to detect enemy aircraft.
@@ -123,7 +123,7 @@ F/A-18 Hornet
 	Can only be on standby for 3 turns.
 - Must be in the air to attack or defend (uses bonus action to launch).
 
-Mine-Deployment System
+Mine-Deployment System (MDS)
 -----------------------
 - Uses an Action or Bonus Action to deploy mines
 - Stores and deploys up to 5 mines that are close proximity mines. Once Exploded they 

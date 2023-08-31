@@ -14,22 +14,29 @@ private:
 	char jetSlots[2] = { 0,0 };
 	char itemSlots[2] = {0, 0};
 
-	std::vector<JAMISAsset> assets;
 public:
+
+	//Quick access through to inventory. Don't really need to hide it for now
+	//as it was causing problems.
 	std::unordered_map<std::string, JAMISAsset> shipInventory;
 
 	/// <summary>
 	/// Inventory Constructor. Passes the type of ship. 
 	/// </summary>
 	/// <param name="shipType_"></param>
-	InventoryComponent();
+	InventoryComponent() {}
 
 	/// <summary>
 	/// Inventory deconstructor
 	/// </summary>
-	~InventoryComponent();
+	~InventoryComponent() { shipInventory.clear(); }
 
-	void ListItemsInInventory() const;
+	void ListItemsInInventory() const {
+
+		std::cout << "\nShip Loadout: \n";
+		for (auto a : shipInventory)
+			std::cout << a.first << "\n";
+	}
 
 	void AddToInventory(JAMISAsset asset_) {
 		
