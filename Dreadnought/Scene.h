@@ -24,7 +24,7 @@ protected:
 	class GameManager* game = NULL;
 	std::unique_ptr<std::string> userInput = std::make_unique<std::string>();
 	ConsoleFormatting cFormat;
-	AdvancedIO myIO;
+	AdvancedIO IO;
 
 };
 

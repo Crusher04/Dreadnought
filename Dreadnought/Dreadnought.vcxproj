@@ -133,12 +133,14 @@
   <ItemGroup>
     <ClCompile Include="AdvancedIO.cpp" />
     <ClCompile Include="Battleship.cpp" />
+    <ClCompile Include="CommandCenterComponent.cpp" />
     <ClCompile Include="Dreadnought.cpp" />
     <ClCompile Include="Board.cpp" />
     <ClCompile Include="ConsoleFormatting.cpp" />
     <ClCompile Include="EngineComponent.cpp" />
     <ClCompile Include="GameManager.cpp" />
     <ClCompile Include="JAMISAsset.cpp" />
+    <ClCompile Include="RadarComponent.cpp" />
     <ClCompile Include="SceneGame.cpp" />
     <ClCompile Include="SceneHowToPlay.cpp" />
     <ClCompile Include="SceneMenu.cpp" />
@@ -147,12 +149,14 @@
     <ClInclude Include="AdvancedIO.h" />
     <ClInclude Include="Battleship.h" />
     <ClInclude Include="Board.h" />
+    <ClInclude Include="CommandCenterComponent.h" />
     <ClInclude Include="Component.h" />
     <ClInclude Include="ConsoleFormatting.h" />
     <ClInclude Include="EngineComponent.h" />
     <ClInclude Include="Enums.h" />
     <ClInclude Include="GameManager.h" />
     <ClInclude Include="InventoryComponent.h" />
+    <ClInclude Include="RadarComponent.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="SceneGame.h" />
     <ClInclude Include="SceneHowToPlay.h" />

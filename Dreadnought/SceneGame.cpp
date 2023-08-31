@@ -20,6 +20,12 @@ SceneGame::~SceneGame()
 bool SceneGame::OnCreate()
 {
 	player = std::make_shared<Battleship>(ActorType::PLAYER);
+	
+	//Base Components
+	player->AddComponent<EngineComponent>(EngineType::E_NULL);
+	player->AddComponent<InventoryComponent>();
+	player->AddComponent<CommandCenterComponent>();
+
 	return true;
 }
 
@@ -76,15 +82,13 @@ void SceneGame::RunIntro()
 void SceneGame::SelectStarterShip()
 {
 	cFormat.ClearScreen();
-	myIO.PrintFromFile("TextFiles/shipDesc.txt");
+	IO.PrintFromFile("TextFiles/shipDesc.txt");
 	std::cout << "\nSELECTION -> ";
-	myIO.GetUserInput(*userInput);
+	IO.GetUserInput(*userInput);
 	if (userInput->compare("dreadnought") == 0)
 	{
-		//Base Components
-		player->AddComponent<EngineComponent>(EngineType::EV20);
-		player->AddComponent<InventoryComponent>();
-		
+
+
 		NavalBattery250->Initialize(Armament::NavalBattery250mm, 2);
 		
 		

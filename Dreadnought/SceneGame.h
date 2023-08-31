@@ -1,17 +1,20 @@
 #pragma once
 #include "Scene.h"
 #include "Board.h"
-#include <algorithm>
 #include "GameManager.h"
+#include "Enums.h"
+
+#include <algorithm>
 #include <iostream>
 #include <fstream>
 #include <sstream>
 #include <string>
-#include "Enums.h"
+
 #include "Battleship.h"
 #include "EngineComponent.h"
 #include "InventoryComponent.h"
 #include "JAMISAsset.h"
+#include "CommandCenterComponent.h"
 
 class SceneGame: public Scene
 {

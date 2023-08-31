@@ -9,14 +9,17 @@
 
 Radar Systems
 ---------------
-(Standard Ship Eyesight is 10 Nautical Miles).
+(Standard Ship Eyesight is 10 Nautical Miles(NM) ).
 	Standard Radar (installed on all ships):
 		Provides a radar detection of 50 Nautical
 		Miles. 
 	Advanced Radar (Upgrade):
-		This system adds +10 NM to radar dectection 
+		This system adds +10 NM to radar detection 
 		and adds +4 to Active Defence System (ADS) 
 		defence. Passive System. 
+	Satelite Radar (Upgrade):
+		This system adds +30 NM to radar detection
+		and adds +8 to Active Defence System (ADS)
 
 Advanced Tracking
 ------------------

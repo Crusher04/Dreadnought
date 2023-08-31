@@ -31,7 +31,13 @@
     <ClCompile Include="Battleship.cpp">
       <Filter>Source\Components</Filter>
     </ClCompile>
-    <ClCompile Include="JAMISAsset.cpp" />
+    <ClCompile Include="JAMISAsset.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="CommandCenterComponent.cpp">
+      <Filter>Source\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="RadarComponent.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Board.h">
@@ -70,8 +76,16 @@
     <ClInclude Include="Battleship.h">
       <Filter>Header\Components</Filter>
     </ClInclude>
-    <ClInclude Include="InventoryComponent.h" />
-    <ClInclude Include="JAMISAsset.h" />
+    <ClInclude Include="InventoryComponent.h">
+      <Filter>Header\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="CommandCenterComponent.h">
+      <Filter>Header\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="JAMISAsset.h">
+      <Filter>Header</Filter>
+    </ClInclude>
+    <ClInclude Include="RadarComponent.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header">

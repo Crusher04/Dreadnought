@@ -9,13 +9,14 @@ protected:
 	std::vector<Ref<Component>> components;
 	ActorType thisActor;
 	Ships shipType;
+	bool isAlive;
 
 public:
 
 	Battleship(ActorType aType);
 	~Battleship();
 
-	bool OnCreate(ActorType thisActor_, Ships shipType_, int health_, char armour_);
+	bool OnCreate();
 	void OnDestroy();
 
 	template<typename ComponentTemplate>
@@ -51,9 +52,5 @@ public:
 
 	void ListComponents() const;
 	void RemoveAllComponents();
-
-	void TakeDamage(int damage);
-	void AddArmour(char armour_);
-
 };
 

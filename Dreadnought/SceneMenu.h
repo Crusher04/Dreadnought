@@ -3,9 +3,8 @@
 #define SCENEMENU_H
 #include "Scene.h"	
 #include <fstream>
-#include "ConsoleFormatting.h"
 #include "GameManager.h"
-#include "AdvancedIO.h"
+
 
 class SceneMenu : public Scene
 {
@@ -19,7 +18,6 @@ public:
 	void Title();
 
 protected:
-	AdvancedIO IO;
 
 };
 
