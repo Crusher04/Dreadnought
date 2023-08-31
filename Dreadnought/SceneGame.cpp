@@ -7,6 +7,7 @@ SceneGame::SceneGame(GameManager* game_)
 
 	game = game_;
 
+	LoadAssets();
 	OnCreate();
 }
 
@@ -82,7 +83,8 @@ void SceneGame::SelectStarterShip()
 	{
 		player->AddComponent<EngineComponent>(EngineType::EV20);
 		player->AddComponent<InventoryComponent>();
-
+		player->GetComponent<InventoryComponent>()->AddComponent(NavalBattery250);
+		std::cout << "\n Player Inventory first slot: " << player->GetComponent<InventoryComponent>()->GetAssets().at(0).GetName();
 		starterShpSelected = true;
 
 
@@ -118,5 +120,5 @@ void SceneGame::SelectStarterShip()
 void SceneGame::LoadAssets()
 {
 	NavalBattery250 = std::make_shared<JAMISAsset>("Naval Battery 250mm", InventoryType::ARMAMENT);
-
+	
 }

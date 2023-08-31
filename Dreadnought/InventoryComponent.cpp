@@ -9,15 +9,3 @@ InventoryComponent::~InventoryComponent()
 
 }
 
-bool InventoryComponent::OnCreate()
-{
-	
-	
-
-	return true;
-}
-
-void InventoryComponent::OnDestroy()
-{
-}
-
