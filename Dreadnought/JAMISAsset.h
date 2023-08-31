@@ -60,8 +60,22 @@ public:
 	///////GETTERS///////
 	const std::string GetName() { return name; }
 	const char GetStorageOrSlot() { return storageOrSlots; }
+	const DiceType GetDiceType() { return damageDice; }
+	const ActionType GetActionType() { return myAction; }
+	const char GetRangeOfAttack() { return rangeOfAttack; }
+	const char GetDiceMultiplier() { return diceMultiplier; }
+	const char GetMaxTimeInAir() { return maxTimeInAir; }
+	const char GetTimeInAir() { return timeInAir; }
+	const bool CheckIfDestroyed() { return isDestroyed; }
+	const bool GetMustBePrepared() { return mustBePrepared; }
+	const bool GetPreparedStatus() { return prepared; }
+	const bool CheckIfReturningToCarrier() { return returningToCarrier; }
 
-
+	///////SETTERS///////
+	void SetTimeInAir(char timeInAir_) { timeInAir = timeInAir_; }
+	void DestroyFlag() { isDestroyed = true; }
+	void SetPreparedStatus(bool p) { prepared = p; }
+	void SetReturningToCarrierStatus(bool r) { returningToCarrier = r; }
 };
 
 
