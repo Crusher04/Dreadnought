@@ -76,15 +76,31 @@ void SceneGame::RunIntro()
 void SceneGame::SelectStarterShip()
 {
 	cFormat.ClearScreen();
-	myIO.PrintFromFile("shipDesc.txt");
+	myIO.PrintFromFile("TextFiles/shipDesc.txt");
 	std::cout << "\nSELECTION -> ";
 	myIO.GetUserInput(*userInput);
 	if (userInput->compare("dreadnought") == 0)
 	{
 		player->AddComponent<EngineComponent>(EngineType::EV20);
 		player->AddComponent<InventoryComponent>();
-		player->GetComponent<InventoryComponent>()->AddComponent(NavalBattery250);
-		std::cout << "\n Player Inventory first slot: " << player->GetComponent<InventoryComponent>()->GetAssets().at(0).GetName();
+		
+		NavalBattery250->Initialize(Armament::NavalBattery250mm, 2);
+		ADS->Initialize(Armament::ActiveDefenceSystem, 0);
+
+		player->GetComponent<InventoryComponent>()->AddToInventory(*NavalBattery250);
+		player->GetComponent<InventoryComponent>()->AddToInventory(*ADS);
+
+		std::cout << "\nInventory Assets: \n";
+		for (auto a : player->GetComponent<InventoryComponent>()->shipInventory)
+			std::cout << a.first << "\t isDestroyed = " << a.second.CheckIfDestroyed();
+
+		std::cout << "\nInventory Assets: \n";
+		player->GetComponent<InventoryComponent>()->RemoveFromInventory(*NavalBattery250);
+		for (auto a : player->GetComponent<InventoryComponent>()->shipInventory)
+			std::cout << a.first << "\t isDestroyed = " << a.second.CheckIfDestroyed();
+
+
+		
 		starterShpSelected = true;
 
 
@@ -120,5 +136,6 @@ void SceneGame::SelectStarterShip()
 void SceneGame::LoadAssets()
 {
 	NavalBattery250 = std::make_shared<JAMISAsset>("Naval Battery 250mm", InventoryType::ARMAMENT);
+	ADS = std::make_shared<JAMISAsset>("Active Defense System", InventoryType::ARMAMENT);
 	
 }

@@ -37,6 +37,7 @@ public:
 
 	JAMISAsset(std::string name_, InventoryType iType);
 	~JAMISAsset();
+	
 
 	/// <summary>
 	/// Intialize Armament
@@ -56,7 +57,6 @@ public:
 	/// <param name="itemType_"></param>
 	void Initialize(Items itemType_);
 
-
 	///////GETTERS///////
 	const std::string GetName() { return name; }
 	const char GetStorageOrSlot() { return storageOrSlots; }
@@ -73,6 +73,9 @@ public:
 
 	///////SETTERS///////
 	void SetTimeInAir(char timeInAir_) { timeInAir = timeInAir_; }
+	void DestroyFlag(bool flag) {
+		isDestroyed = flag;
+	}
 	void DestroyFlag() { isDestroyed = true; }
 	void SetPreparedStatus(bool p) { prepared = p; }
 	void SetReturningToCarrierStatus(bool r) { returningToCarrier = r; }
