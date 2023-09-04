@@ -39,7 +39,9 @@ void SceneGame::Update()
 	while(!starterShpSelected)
 		SelectStarterShip();
 
-	
+	player->GetComponent<InventoryComponent>()->ListItemsInInventory();
+	player->GetComponent<InventoryComponent>()->ListStorageCapacities();
+
 	game->SetGameActive(false);
 }
 
@@ -87,13 +89,17 @@ void SceneGame::SelectStarterShip()
 	IO.GetUserInput(*userInput);
 	if (userInput->compare("dreadnought") == 0)
 	{
-
+		player->GetComponent<InventoryComponent>()->AddStorageCapacity(InventoryType::ARMAMENT, 3);
 		NavalBattery250->Initialize(Armament::NavalBattery250mm, 2);
-
+		NavalBattery400->Initialize(Armament::NavalBattery400mm, 2);
+		ADS->Initialize(Armament::ActiveDefenceSystem, 0);
 		
+
+		player->GetComponent<InventoryComponent>()->AddToInventory(*NavalBattery250);
+		player->GetComponent<InventoryComponent>()->AddToInventory(*NavalBattery400);
+		player->GetComponent<InventoryComponent>()->AddToInventory(*ADS);
+		player->GetComponent<InventoryComponent>()->AddToInventory(*MissileLauncher);
 		starterShpSelected = true;
-
-
 	}
 	else if (userInput->compare("idris") == 0)
 	{
@@ -130,5 +136,6 @@ void SceneGame::LoadAssets()
 	ASM = std::make_shared<JAMISAsset>("Anti-Ship Missile", InventoryType::MISSILES);
 	AST = std::make_shared<JAMISAsset>("Anti-Ship Torpedo", InventoryType::MISSILES);
 	ADS = std::make_shared<JAMISAsset>("Active Defense System", InventoryType::ARMAMENT);
-	
+	SSCM = std::make_shared<JAMISAsset>("Super Sonic Cruise Missile", InventoryType::MISSILES);
+	MissileLauncher = std::make_shared<JAMISAsset>("Missile Launcher", InventoryType::ARMAMENT);
 }

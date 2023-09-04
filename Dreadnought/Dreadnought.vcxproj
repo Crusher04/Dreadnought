@@ -139,6 +139,7 @@
     <ClCompile Include="ConsoleFormatting.cpp" />
     <ClCompile Include="EngineComponent.cpp" />
     <ClCompile Include="GameManager.cpp" />
+    <ClCompile Include="InventoryComponent.cpp" />
     <ClCompile Include="JAMISAsset.cpp" />
     <ClCompile Include="RadarComponent.cpp" />
     <ClCompile Include="SceneGame.cpp" />

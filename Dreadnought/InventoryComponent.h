@@ -9,11 +9,11 @@ class InventoryComponent: public Component
 private:
 
 	//[Max Amount to have, slots used]
-	char armamentSlots[2] = { 0,0 };
-	char subsystemSlots[2] = { 0,0 };
-	char jetSlots[2] = { 0,0 };
-	char itemSlots[2] = {0, 0};
-	char missileStorage[2] = { 0,0 };
+	int armamentSlots[2] = { 0,0 };
+	int subsystemSlots[2] = { 0,0 };
+	int jetSlots[2] = { 0,0 };
+	int itemSlots[2] = {0, 0};
+	int missileStorage[2] = { 0,0 };
 
 public:
 
@@ -37,6 +37,16 @@ public:
 		std::cout << "\nShip Loadout: \n";
 		for (auto a : shipInventory)
 			std::cout << a.first << "\n";
+	}
+
+	void ListStorageCapacities() const {
+		std::cout << "\nStorage Capacities(used/max capacity): \n";
+		std::cout << "Armament Slots: " << armamentSlots[1] << "/" << armamentSlots[0] << "\n";
+		std::cout << "Subsytem Slots: " << subsystemSlots[1] << "/" << subsystemSlots[0] << "\n";
+		std::cout << "Item Slots: " << itemSlots[1] << "/" << itemSlots[0] << "\n";
+		std::cout << "Jet Slots: " << jetSlots[1] << "/" << jetSlots[0] << "\n";
+		std::cout << "Missile Slots: " << missileStorage[1] << "/" << missileStorage[0] << "\n";
+
 	}
 
 	void AddToInventory(JAMISAsset asset_);

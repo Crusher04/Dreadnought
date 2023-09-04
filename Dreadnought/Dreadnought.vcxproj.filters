@@ -38,6 +38,7 @@
       <Filter>Source\Components</Filter>
     </ClCompile>
     <ClCompile Include="RadarComponent.cpp" />
+    <ClCompile Include="InventoryComponent.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Board.h">
