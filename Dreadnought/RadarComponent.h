@@ -6,17 +6,12 @@ class RadarComponent : public Component
 private:
 	const int shipEyeSight = 10;
 	const int radarDefaultDistance = 50;
-	int totalRaderDetection;
-
-	bool StandardRadarActive;
-	bool AdvancedRadarActive;
-	bool SatelliteRadarActive;
+	int totalRadarDetection;
+	Subsystems coreSubsystemType = Subsystems::RADAR;
 
 public:
 
-	RadarComponent();
+	RadarComponent(Subsystems typeOfRadar);
 	~RadarComponent();
-	
-	int RadarDection(Subsystems typeOfRadar);
 };
 

@@ -6,50 +6,52 @@
                                                                                        |_|   
 
 * All Ships come stanadard with Engine, Standard Radar, and Command Center.
-	Engine and Command Center do not take up a slot on your ship. *
+	These systems are classified as subsystems.*
 
 				Dreadnought
 				-----------
-Health: 50 hitpoints
-Movement 20 Nautical Miles
 Class: Battleship
 Installed Armaments & Subsystems:
+	- Engine-V20: Movement is upto 20 Nautical Miles
+ 	- Standard Radar: 50 Nautical Mile Detection
+	- Command Center: total health is 50 hitpoints
 	- Dual Artillery Canons 250mm (1D6 Damage per canon) (Action)
 	- 10 Anti-Ship Missiles stored
 	- 15 Missile storage system
 	- 4 slot missile launcher system
-	- Standard Radar (50 Nautical Mile Detection)
 Total Primary armament slots: 3 slots (1 available)
-Total Subsystem slots: 3 slots (1 available)
+Total Subsystem slots: 5 slots (1 available)
 Total Item slots: 2 slots (1 available), you have one fire deterent available.
 
 				-----------
 				   Idris
 				-----------
-Health: 50 hitpoints
-Movement 20 Nautical Miles
 Class: Battleship
 Installed Armamnets & Subsystems:
+	- Engine-V20: Movement is upto 20 Nautical Miles
+	- Command Center: total health is 50 hitpoints
+	- Standard Radar: 50 Nautical Mile Dectection
 	- Triple Artillery Canons 250mm (1D6 Damage per canon) (Action)
 	- Active Defence System (ADS) 
-Total Primary armament slots: 3 slots (1 available)
-Total Subsystem slots: 2 slots (2 available)
+Total Primary armament slots: 4 slots (0 available)
+Total Subsystem slots: 4 slots (1 available)
 Total Item slots: 2 slots (1 available), you have one fire deterent available.
 				-----------
 				SunkenLady
 				-----------
 
-Health: 75 hitpoints
 Class: Destroyer
-Movement: 15 Nautical Miles
 Installed Armaments & Subsystems:
+	- Engine-V15: Movement is upto 15 Nautical Miles
+	- Command Center: total health is 75 hitpoints
+	- Standard Radar: 50 Nautical Mile Dectection
 	- Single Artillery Canon 400mm (1D12 Damage per canon) (Action)
 	- 5 Super Sonic Cruise Missiles stored (SSCM)
 	- 5 Anti-Ship Missiles stored (ASM)
 	- 10 Missile storage system
 	- 4 slot missile launcher system
 Total Primary armament slots: 3 slots (1 available)
-Total Subsystem slots: 2 Slots (1 available)
+Total Subsystem slots: 5 Slots (1 available)
 Total Item slots: 1 slots (1 available)
 
 
@@ -57,10 +59,11 @@ Total Item slots: 1 slots (1 available)
 				 SuperNova
 				-----------
 
-Health: 50 hitpoints 
 Ship Class: Aircraft Carrier
-Movement: 10 Nautical Miles
 Installed Armaments & Subsystems:
+	- Engine-V10: Movement is upto 10 Nautical Miles
+	- Command Center: total health is 50 hitpoints
+	- Standard Radar: 50 Nautical Mile Dectection
 	- 4 slot missile launcher system
 	- 5 Missile storage system
 	- Active Defence System (ADS)

@@ -1,0 +1,20 @@
+
+
+Here is your list of keywords that can be used to navigate the menu
+and to navigate throughout the game. These keywords are words that
+are generally not displayed on the screen to type as a command.
+
+
+Keywords
+---------
+
+'Quit' or 'Exit'
+	Either of these keywords will immediately exit and stop the game from
+	running.
+
+'Menu'
+	This keyword will return you back to the main menu.
+
+'Back'
+	This keyword will return you to the previous screen.
+

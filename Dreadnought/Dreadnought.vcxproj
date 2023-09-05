@@ -139,8 +139,6 @@
     <ClCompile Include="ConsoleFormatting.cpp" />
     <ClCompile Include="EngineComponent.cpp" />
     <ClCompile Include="GameManager.cpp" />
-    <ClCompile Include="InventoryComponent.cpp" />
-    <ClCompile Include="JAMISAsset.cpp" />
     <ClCompile Include="RadarComponent.cpp" />
     <ClCompile Include="SceneGame.cpp" />
     <ClCompile Include="SceneHowToPlay.cpp" />
@@ -156,13 +154,11 @@
     <ClInclude Include="EngineComponent.h" />
     <ClInclude Include="Enums.h" />
     <ClInclude Include="GameManager.h" />
-    <ClInclude Include="InventoryComponent.h" />
     <ClInclude Include="RadarComponent.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="SceneGame.h" />
     <ClInclude Include="SceneHowToPlay.h" />
     <ClInclude Include="SceneMenu.h" />
-    <ClInclude Include="JAMISAsset.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="ComponentDesigns.txt" />
@@ -170,6 +166,7 @@
     <Text Include="TextFiles\asciiBanner.txt" />
     <Text Include="TextFiles\credits.txt" />
     <Text Include="TextFiles\howtoplay.txt" />
+    <Text Include="TextFiles\listofkeywords.txt" />
     <Text Include="TextFiles\shipDesc.txt" />
     <Text Include="TextFiles\subsystems.txt" />
   </ItemGroup>

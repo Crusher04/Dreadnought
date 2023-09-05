@@ -106,7 +106,10 @@ enum class Subsystems {
 	Armour_40,
 	Armour_50,
 	ANTIMINE_RADAR,
-	SUBSYSTEM_NULL
+	SUBSYSTEM_NULL,
+	RADAR,
+	ENGINE,
+	COMMAND_CENTER
 
 };
 

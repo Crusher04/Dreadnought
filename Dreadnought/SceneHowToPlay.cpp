@@ -31,11 +31,11 @@ void SceneHowToPlay::GetUserInput()
 	std::cout << "\n SELECTION -> ";
 	IO.GetUserInput(input);
 
-	if (input.compare("menu") == 0)
+	if (input.compare("menu") == 0 || input.compare("back") == 0)
 	{
 		cFormat.ClearScreen();
 		game->BuildScene(SCENENUMBER::SCENE_MAINMENU);
-		
+
 	}
 	else if (input.compare("quit") == 0 || input.compare("exit") == 0)
 	{
@@ -48,6 +48,12 @@ void SceneHowToPlay::GetUserInput()
 		IO.PrintFromFile("TextFiles/armaments.txt");
 		cFormat.Pause();
 
+	}
+	else if (input.compare("subsystems") == 0 || input.compare("subsystem") == 0)
+	{
+		cFormat.ClearScreen();
+		IO.PrintFromFile("TextFiles/subsystems.txt");
+		cFormat.Pause();
 	}
 	else if (input.compare("combat") == 0)
 	{
@@ -67,6 +73,9 @@ void SceneHowToPlay::GetUserInput()
 	}
 	else if (input.compare("listofkeywords") == 0)
 	{
+			cFormat.ClearScreen();
+			IO.PrintFromFile("TextFiles/listofkeywords.txt");
+			cFormat.Pause();
 
 	}
 	else 

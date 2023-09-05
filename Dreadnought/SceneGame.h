@@ -47,19 +47,7 @@ private:
 	std::shared_ptr<Battleship> player;
 
 
-	//All Ship Assets
-	std::shared_ptr<JAMISAsset> NavalBattery250;
-	std::shared_ptr<JAMISAsset> NavalBattery400;
-	std::shared_ptr<JAMISAsset> ASM;
-	std::shared_ptr<JAMISAsset> AST;
-	std::shared_ptr<JAMISAsset> SSCM;
-	std::shared_ptr<JAMISAsset> MissileLauncher;
-	std::shared_ptr<JAMISAsset> ADS;
-	std::shared_ptr<JAMISAsset> RailGun;
-	std::shared_ptr<JAMISAsset> F14Tomcat;
-	std::shared_ptr<JAMISAsset> F18Hornet;
-	std::shared_ptr<JAMISAsset> MDS;
-	
+
 	
 };
 

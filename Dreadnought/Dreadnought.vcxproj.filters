@@ -1,9 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="Dreadnought.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
     <ClCompile Include="Board.cpp">
       <Filter>Source</Filter>
     </ClCompile>
@@ -19,26 +16,27 @@
     <ClCompile Include="SceneGame.cpp">
       <Filter>Source\Scenes</Filter>
     </ClCompile>
-    <ClCompile Include="AdvancedIO.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
     <ClCompile Include="EngineComponent.cpp">
       <Filter>Source\Components</Filter>
-    </ClCompile>
-    <ClCompile Include="SceneHowToPlay.cpp">
-      <Filter>Source</Filter>
     </ClCompile>
     <ClCompile Include="Battleship.cpp">
       <Filter>Source\Components</Filter>
     </ClCompile>
-    <ClCompile Include="JAMISAsset.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
     <ClCompile Include="CommandCenterComponent.cpp">
       <Filter>Source\Components</Filter>
     </ClCompile>
-    <ClCompile Include="RadarComponent.cpp" />
-    <ClCompile Include="InventoryComponent.cpp" />
+    <ClCompile Include="SceneHowToPlay.cpp">
+      <Filter>Source\Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="AdvancedIO.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Dreadnought.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="RadarComponent.cpp">
+      <Filter>Source\Components</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Board.h">
@@ -71,22 +69,18 @@
     <ClInclude Include="EngineComponent.h">
       <Filter>Header\Components</Filter>
     </ClInclude>
-    <ClInclude Include="SceneHowToPlay.h">
-      <Filter>Header</Filter>
-    </ClInclude>
     <ClInclude Include="Battleship.h">
-      <Filter>Header\Components</Filter>
-    </ClInclude>
-    <ClInclude Include="InventoryComponent.h">
       <Filter>Header\Components</Filter>
     </ClInclude>
     <ClInclude Include="CommandCenterComponent.h">
       <Filter>Header\Components</Filter>
     </ClInclude>
-    <ClInclude Include="JAMISAsset.h">
-      <Filter>Header</Filter>
+    <ClInclude Include="SceneHowToPlay.h">
+      <Filter>Header\Scenes</Filter>
     </ClInclude>
-    <ClInclude Include="RadarComponent.h" />
+    <ClInclude Include="RadarComponent.h">
+      <Filter>Header\Components</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header">
@@ -131,6 +125,9 @@
       <Filter>Text Files</Filter>
     </Text>
     <Text Include="TextFiles\subsystems.txt">
+      <Filter>Text Files</Filter>
+    </Text>
+    <Text Include="TextFiles\listofkeywords.txt">
       <Filter>Text Files</Filter>
     </Text>
   </ItemGroup>

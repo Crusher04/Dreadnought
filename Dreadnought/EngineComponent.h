@@ -11,6 +11,7 @@ private:
 	int movement = 0;
 	int defaultNauticalMiles = 0;
 	int position[2] = { 0,0 };
+	
 
 public:
 	/// <summary>
