@@ -37,7 +37,12 @@
     <ClCompile Include="RadarComponent.cpp">
       <Filter>Source\Components</Filter>
     </ClCompile>
-    <ClCompile Include="MissileStorageComponent.cpp" />
+    <ClCompile Include="MissileStorageComponent.cpp">
+      <Filter>Source\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="MissileComponent.cpp">
+      <Filter>Source\Components</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Board.h">
@@ -82,7 +87,12 @@
     <ClInclude Include="RadarComponent.h">
       <Filter>Header\Components</Filter>
     </ClInclude>
-    <ClInclude Include="MissileStorageComponent.h" />
+    <ClInclude Include="MissileStorageComponent.h">
+      <Filter>Header\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="MissileComponent.h">
+      <Filter>Header\Components</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header">

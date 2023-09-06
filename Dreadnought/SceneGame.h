@@ -15,6 +15,7 @@
 #include "CommandCenterComponent.h"
 #include "RadarComponent.h"
 #include "MissileStorageComponent.h"
+#include "MissileComponent.h"
 
 class SceneGame: public Scene
 {

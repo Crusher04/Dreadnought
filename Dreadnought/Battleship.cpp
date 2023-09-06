@@ -1,5 +1,6 @@
 #include "Battleship.h"
 #include "MissileStorageComponent.h"
+#include "MissileComponent.h"
 
 void Battleship::InitializeCapacities()
 {
@@ -67,6 +68,7 @@ void Battleship::UpdateFromComponents()
 		{
 			missileCapacity[0] = dynamic_cast<MissileStorageComponent*>(theComponent.get())->GetStorageAmount();
 		}
+
 	}
 }
 

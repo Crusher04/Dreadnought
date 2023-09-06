@@ -33,11 +33,15 @@ void SceneGame::OnDestroy()
 
 void SceneGame::Update()
 {
+	//Select starter ship once
 	while(!starterShpSelected)
 		SelectStarterShip();
-	
+
+	//Always pull updates to battleship from components
+	player->UpdateFromComponents();
 
 
+	cFormat.Pause();
 	game->SetGameActive(false);
 }
 
@@ -85,27 +89,25 @@ void SceneGame::SelectStarterShip()
 	IO.GetUserInput(*userInput);
 	if (userInput->compare("dreadnought") == 0)
 	{
+		//Set Ship Type
 		player->SetShipType(Ships::Dreadnought);
 
-		//Base Components
-		engine = std::make_shared<EngineComponent>(EngineType::EV20);
-		if (player->AddComponent(engine))
-			std::cout << "\n ENGINE ADDED \n";
-
-		radar = std::make_shared<RadarComponent>(Subsystems::STANDARD_RADAR);
-		if (player->AddComponent(radar))
-			std::cout << "\n RADAR ADDED \n";
-
-		if (player->AddComponent<CommandCenterComponent>())
-			std::cout << "\n Command Center ADDED \n";
+		//Components
+		player->AddComponent<EngineComponent>(EngineType::EV20);
+		player->AddComponent<RadarComponent>(Subsystems::STANDARD_RADAR);
+		player->AddComponent<CommandCenterComponent>();
 		player->GetComponent<CommandCenterComponent>()->OnCreate(50, 0, 250, 0);
+		player->AddComponent<MissileStorageComponent>(Subsystems::MISSILE_STORAGE_15);
+		player->UpdateFromComponents();
+		for(int i = 0; i < 10; i++)
+			if (player->AddComponent<MissileComponent>(Armament::AntiShipMissile))
 
-		if (player->AddComponent<MissileStorageComponent>(Subsystems::MISSILE_STORAGE_15));
-			std::cout << "\n Missile Storage of size 15 ADDED \n";
+		player->UpdateFromComponents();
 
 
-			player->UpdateFromComponents();
-
+		//DEBUG ONLY. SET TO FALSE FOR PRODUCTION RELEASE.
+		if (true)
+		{
 			std::cout << "\n DEBUG CHECKS: \n"
 				<< "Engine Type: " << player->GetComponent<EngineComponent>()->GetMovement() << "\n"
 				<< "Radar Distance: " << player->GetComponent<RadarComponent>()->GetRadarDistance() << "\n"
@@ -115,7 +117,10 @@ void SceneGame::SelectStarterShip()
 				<< "ADS Defense: " << player->GetComponent<CommandCenterComponent>()->GetADSDefence() << "\n";
 
 			player->PrintCapacities();
-			
+
+		}
+		
+		//STARTER SHIP SELECTED
 		starterShpSelected = true;
 	}
 	else if (userInput->compare("idris") == 0)

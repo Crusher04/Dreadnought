@@ -139,6 +139,7 @@
     <ClCompile Include="ConsoleFormatting.cpp" />
     <ClCompile Include="EngineComponent.cpp" />
     <ClCompile Include="GameManager.cpp" />
+    <ClCompile Include="MissileComponent.cpp" />
     <ClCompile Include="MissileStorageComponent.cpp" />
     <ClCompile Include="RadarComponent.cpp" />
     <ClCompile Include="SceneGame.cpp" />
@@ -155,6 +156,7 @@
     <ClInclude Include="EngineComponent.h" />
     <ClInclude Include="Enums.h" />
     <ClInclude Include="GameManager.h" />
+    <ClInclude Include="MissileComponent.h" />
     <ClInclude Include="MissileStorageComponent.h" />
     <ClInclude Include="RadarComponent.h" />
     <ClInclude Include="Scene.h" />
