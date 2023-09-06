@@ -50,7 +50,8 @@ void Battleship::InitializeCapacities()
 
 }
 
-Battleship::Battleship(ActorType aType):shipType{Ships::UNDEFINEDSHIP}, thisActor{ActorType::UNDEFINEDACTOR}, isAlive{true}
+Battleship::Battleship(ActorType aType):shipType{Ships::UNDEFINEDSHIP}, thisActor{ActorType::UNDEFINEDACTOR}, isAlive{true}, isSinking{false},
+										onFire{false}, onboardWaterAmount{NULL}
 {
 	thisActor = aType;
 }

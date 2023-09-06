@@ -98,11 +98,14 @@ void SceneGame::SelectStarterShip()
 		player->AddComponent<CommandCenterComponent>();
 		player->GetComponent<CommandCenterComponent>()->OnCreate(50, 0, 250, 0);
 		player->AddComponent<MissileStorageComponent>(Subsystems::MISSILE_STORAGE_15);
-		player->UpdateFromComponents();
-		for(int i = 0; i < 10; i++)
-			if (player->AddComponent<MissileComponent>(Armament::AntiShipMissile))
+		player->UpdateFromComponents();	//IF you dont update battleship capacities the missiles wont be added!!
+		
+		for (int i = 0; i < 10; i++)
+			player->AddComponent<MissileComponent>(Armament::AntiShipMissile);
 
-		player->UpdateFromComponents();
+		player->AddComponent<NavalBatteriesComponent>(Armament::NavalBattery250mm, 2);
+
+		player->UpdateFromComponents(); //Final update check.
 
 
 		//DEBUG ONLY. SET TO FALSE FOR PRODUCTION RELEASE.
@@ -117,6 +120,7 @@ void SceneGame::SelectStarterShip()
 				<< "ADS Defense: " << player->GetComponent<CommandCenterComponent>()->GetADSDefence() << "\n";
 
 			player->PrintCapacities();
+			player->ListComponents();
 
 		}
 		

@@ -43,6 +43,9 @@
     <ClCompile Include="MissileComponent.cpp">
       <Filter>Source\Components</Filter>
     </ClCompile>
+    <ClCompile Include="NavalBatteriesComponent.cpp">
+      <Filter>Source\Components</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Board.h">
@@ -91,6 +94,9 @@
       <Filter>Header\Components</Filter>
     </ClInclude>
     <ClInclude Include="MissileComponent.h">
+      <Filter>Header\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="NavalBatteriesComponent.h">
       <Filter>Header\Components</Filter>
     </ClInclude>
   </ItemGroup>

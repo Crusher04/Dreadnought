@@ -141,6 +141,7 @@
     <ClCompile Include="GameManager.cpp" />
     <ClCompile Include="MissileComponent.cpp" />
     <ClCompile Include="MissileStorageComponent.cpp" />
+    <ClCompile Include="NavalBatteriesComponent.cpp" />
     <ClCompile Include="RadarComponent.cpp" />
     <ClCompile Include="SceneGame.cpp" />
     <ClCompile Include="SceneHowToPlay.cpp" />
@@ -158,6 +159,7 @@
     <ClInclude Include="GameManager.h" />
     <ClInclude Include="MissileComponent.h" />
     <ClInclude Include="MissileStorageComponent.h" />
+    <ClInclude Include="NavalBatteriesComponent.h" />
     <ClInclude Include="RadarComponent.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="SceneGame.h" />

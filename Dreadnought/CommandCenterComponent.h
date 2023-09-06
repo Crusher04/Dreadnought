@@ -11,6 +11,10 @@ private:
 	int money;
 	int adsDefence;
 
+	//Actions
+	bool action;
+	bool bonusAction;
+
 public:
 
 	CommandCenterComponent();
@@ -26,9 +30,15 @@ public:
 	void RemoveFromADS(int amount);
 	bool RemoveMoney(int amount);
 
+	void UseAction() { action = false; }
+	void UseBonuseAction() { bonusAction = false; }
+	void ResetActions() { action = true; bonusAction = true; }
+
 	const int GetArmour() { return armour; }
 	const int GetHealth() { return health; }
 	const int GetADSDefence() { return adsDefence; }
 	const int GetMoney() { return money; }
+	const bool GetAction() { return action; }
+	const bool GetBonusAction() { return bonusAction; }
 };
 

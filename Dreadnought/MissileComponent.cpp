@@ -6,6 +6,9 @@ MissileComponent::MissileComponent(Armament missileType_) :
 	//Set Component type to missiless
 	componentType = InventoryType::MISSILES;
 	
+	//Set ActionType
+	componentAction = ActionType::ACTION;
+
 	//Assign variables to passed through vars
 	missileType = missileType_;
 
