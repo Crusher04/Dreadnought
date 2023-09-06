@@ -31,7 +31,7 @@ Naval Battery (400mm)
 
 Anti-Ship Missile (ASM)
 -----------------------
-- Takes up one primary armament slot
+- Takes up one missile storage slot
 - Must be prepared before launching.
 	Preperation takes a bonus action. Lanching = Action.
 - Deals 1D12 Damage to enemy ship.
@@ -40,7 +40,7 @@ Anti-Ship Missile (ASM)
 
 Anti-Ship Torpedo (AST)
 -----------------------
-- Takes up one missile armament slot
+- Takes up one missile storage slot
 - Can only be used by Submarines
 - Must be prepared before launching. 
 	Preperation takes a bonus action. Lanching = Action.
@@ -50,7 +50,7 @@ Anti-Ship Torpedo (AST)
 
 Super Sonic Cruise Missiles (SSCM)
 ----------------------------
-- Takes up one missile armament slot
+- Takes up one missile storage slot
 - Can only be used by Destroyers. 
 - Must be prepared before launching. 
 	Preperation takes a bonus action. Lanching = Action.
