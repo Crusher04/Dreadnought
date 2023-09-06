@@ -22,11 +22,42 @@ void AdvancedIO::PrintFromFile(std::string filename)
 
 }
 
+void AdvancedIO::PrintFromFile(std::string filename, bool csvFile)
+{
+	std::string stringVar;
+	std::ifstream myFile(filename);
+	while (!myFile.eof())
+	{
+		std::getline(myFile, stringVar, ',');
+		std::cout << stringVar << "\n";
+	}
+	myFile.close();
+}
+
 void AdvancedIO::PrintCursorPos()
 {
 	POINT point;
 	if (GetCursorPos(&point)) {
 		std::cout << point.x << "," << point.y << "\n";
 	}
+}
+
+void AdvancedIO::PrintFromUMap(std::unordered_map<std::string, bool> &uMap)
+{
+	for (auto i : uMap)
+		std::cout << "\n" << i.first << "\n";
+}
+
+void AdvancedIO::ReadFileToUMap(std::unordered_map<std::string, bool> &keywordMap, std::string filename)
+{
+	std::string stringVar;
+	std::ifstream myFile(filename);
+	while (!myFile.eof())
+	{
+		std::getline(myFile, stringVar, ',');
+		keywordMap.insert({ stringVar, true });
+	}
+
+	myFile.close();
 }
 

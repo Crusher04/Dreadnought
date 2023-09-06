@@ -17,6 +17,10 @@
 #include "MissileStorageComponent.h"
 #include "MissileComponent.h"
 #include "NavalBatteriesComponent.h"
+#include "MissileLauncherComponent.h"
+
+
+#include "DiceRoller.h"
 class SceneGame: public Scene
 {
 
@@ -35,6 +39,7 @@ public:
 	void SelectStarterShip();
 	void LoadAssets();
 
+	void GetUserInput();
 
 
 private:
@@ -53,5 +58,6 @@ private:
 	std::shared_ptr<EngineComponent> engine;
 
 	
+	DiceRoller dRoller;
 };
 

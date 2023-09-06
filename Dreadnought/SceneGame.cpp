@@ -1,6 +1,5 @@
 #include "SceneGame.h"
 #include "Enums.h"
-
 SceneGame::SceneGame(GameManager* game_)
 {
 	// Providing a seed value
@@ -40,9 +39,7 @@ void SceneGame::Update()
 	//Always pull updates to battleship from components
 	player->UpdateFromComponents();
 
-
-	cFormat.Pause();
-	game->SetGameActive(false);
+	GetUserInput();
 }
 
 
@@ -104,6 +101,8 @@ void SceneGame::SelectStarterShip()
 			player->AddComponent<MissileComponent>(Armament::AntiShipMissile);
 
 		player->AddComponent<NavalBatteriesComponent>(Armament::NavalBattery250mm, 2);
+		player->AddComponent<MissileLauncherComponent>(Armament::MissileLauncher_4);
+
 
 		player->UpdateFromComponents(); //Final update check.
 
@@ -159,4 +158,64 @@ void SceneGame::LoadAssets()
 {
 	
 	
+}
+
+void SceneGame::GetUserInput()
+{
+	cFormat.ClearScreen();
+	std::cout << "COMMAND -> ";
+	IO.GetUserInput(*userInput);
+
+	if (false)
+	{
+
+	}
+	else if (userInput->compare("silostatus") == 0)
+	{
+		if (player->GetComponent<MissileLauncherComponent>() != nullptr)
+		{
+			for (int i = 0; i < player->GetComponent<MissileLauncherComponent>()->GetSiloAmount(); i++)
+			{
+				if (player->GetComponent<MissileLauncherComponent>()->GetSiloStatus(i) == true)
+					std::cout << "\n Silo #" << i << ": " << "LOADED.";
+				else
+					std::cout << "\n Silo #" << i << ": " << "VACANT.";
+			}
+		}
+		else
+			std::cout << "\n\t YOU DO NOT HAVE A MISSILE LAUNCHER ARMAMENT. \n";
+
+	}
+	else if (userInput->compare("loadmissile") == 0)
+	{
+		auto  missile = player->GetComponent<MissileComponent>();
+		auto launcher = player->GetComponent<MissileLauncherComponent>();
+		if (missile != nullptr && launcher != nullptr)
+		{
+
+		}
+	}
+	else if (userInput->compare("roll") == 0)
+	{
+		dRoller.RollDice(DiceType::D20);
+
+	}
+	else if (userInput->compare("keywords") == 0) 
+	{
+		std::unique_ptr<std::unordered_map<std::string, bool>> keywordsMap = std::make_unique<std::unordered_map<std::string, bool>>();
+		IO.ReadFileToUMap(*keywordsMap, "TextFiles/keywords.csv");
+		IO.PrintFromUMap(*keywordsMap);
+	}
+	else if (userInput->compare("quit") == 0 || userInput->compare("exit") == 0)
+	{
+		game->SetGameActive(false);
+	}
+	else
+	{
+		cFormat.SetColour(12);
+		std::cout << "\n\Command Not Recognized\n";
+		cFormat.SetColour(7);
+	}
+
+	cFormat.Pause();
 }
