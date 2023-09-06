@@ -2,8 +2,6 @@
 #include <vector>
 #include <iostream>
 #include "Component.h"
-#include "EngineComponent.h"
-#include "RadarComponent.h"
 
 class Battleship: public Component
 {
@@ -11,8 +9,13 @@ protected:
 	std::vector<Ref<Component>> components;
 	ActorType thisActor;
 	Ships shipType;
+
+	//Conditional Variables
 	bool isAlive;
-	
+	bool onFire;
+	bool isSinking;
+	int  onboardWaterAmount;
+
 	//Storage types {MaxCapacity, CapacityUsed}
 	int armamentCapacity[2] = { 0,0 };
 	int subsystemCapacity[2] = { 0,0 };
@@ -28,22 +31,32 @@ public:
 
 	Battleship(ActorType aType);
 	~Battleship();
+	
+	void UpdateFromComponents();
 
 	bool OnCreate();
 	void OnDestroy();
 
 	template<typename ComponentTemplate>
-	void AddComponent(Ref<ComponentTemplate> component_)
+	bool AddComponent(Ref<ComponentTemplate> component_)
 	{
-		if(AddComponentChecker(component_))
+		if (AddComponentChecker(component_))
 			components.push_back(component_);
+		else
+			return false;
+		return true;
 	}
 
-	//template<typename ComponentTemplate, typename ... Args>
-	//void AddComponent(Args&& ... args_) 
-	//{
-	//	components.push_back(std::make_shared<ComponentTemplate>(std::forward<Args>(args_)...));
-	//}
+	template<typename ComponentTemplate, typename ... Args>
+	bool AddComponent(Args&& ... args_) 
+	{
+		auto component = std::make_shared<ComponentTemplate>(std::forward<Args>(args_)...);
+		if (AddComponentChecker(component))
+			components.push_back(std::make_shared<ComponentTemplate>(std::forward<Args>(args_)...));
+		else
+			return false;
+		return true;
+	}
 
 	template<typename ComponentTemplate>
 	Ref<ComponentTemplate> GetComponent() const {
@@ -93,5 +106,6 @@ public:
 	void RemoveAllComponents();
 	void SetShipType(Ships shipType_) { shipType = shipType_; InitializeCapacities(); }
 	bool AddComponentChecker(Ref<Component> component_);
+	void PrintCapacities();
 };
 

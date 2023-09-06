@@ -10,6 +10,7 @@ public:
 
 	Component(): isCreated(false) {}
 	virtual ~Component() = default;
+
 	const InventoryType GetComponentType() { return componentType; }
 
 protected:

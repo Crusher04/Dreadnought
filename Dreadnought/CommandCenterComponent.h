@@ -9,7 +9,7 @@ private:
 	int health;
 	int armour;
 	int money;
-	int acDefence;
+	int adsDefence;
 
 public:
 
@@ -22,7 +22,13 @@ public:
 	void Heal(int healAmount);
 	void AddArmour(int armourAmount);
 	void AddMoney(int amount);
+	void AddToADS(int amount);
+	void RemoveFromADS(int amount);
 	bool RemoveMoney(int amount);
-	int GetACDefence();
+
+	const int GetArmour() { return armour; }
+	const int GetHealth() { return health; }
+	const int GetADSDefence() { return adsDefence; }
+	const int GetMoney() { return money; }
 };
 

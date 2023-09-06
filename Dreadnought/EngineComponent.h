@@ -24,6 +24,7 @@ public:
 	/// </summary>
 	~EngineComponent();
 
+
 	bool OnCreate();
 	void OnDestroy();
 

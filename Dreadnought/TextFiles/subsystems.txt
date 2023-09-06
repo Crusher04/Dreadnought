@@ -24,7 +24,7 @@ Radar Systems
 Advanced Tracking
 ------------------
 This system adds +4 to ADS defense and provides advantage
-towards missile strikes.  
+towards missile strikes.
 
 Counter-Measure Detection
 --------------------------
@@ -33,7 +33,7 @@ Active Defence System.
 
 Early Warning System
 -------------------------
-This adds +2 to the ADS defence. Passive System. 
+This adds +2 to the ADS defence.
 
 Auto Water Displacer
 ----------------------

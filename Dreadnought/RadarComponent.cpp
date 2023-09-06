@@ -26,3 +26,4 @@ RadarComponent::~RadarComponent()
 {
 	totalRadarDetection = 0;
 }
+

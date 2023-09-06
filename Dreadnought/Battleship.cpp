@@ -1,4 +1,5 @@
 #include "Battleship.h"
+#include "MissileStorageComponent.h"
 
 void Battleship::InitializeCapacities()
 {
@@ -58,6 +59,16 @@ Battleship::~Battleship()
 
 }
 
+void Battleship::UpdateFromComponents()
+{
+	for (auto theComponent : components)
+	{
+		if (dynamic_cast<MissileStorageComponent*>(theComponent.get()) != nullptr)
+		{
+			missileCapacity[0] = dynamic_cast<MissileStorageComponent*>(theComponent.get())->GetStorageAmount();
+		}
+	}
+}
 
 bool Battleship::OnCreate()
 {
@@ -94,12 +105,21 @@ bool Battleship::AddComponentChecker(Ref<Component> component_)
 			armamentCapacity[1] += 1;
 			return true;
 		}
+		else
+		{
+			std::cout << "\nNO MORE SPACE FOR ARMAMENTS\n";
+		}
 		break;
 	case InventoryType::SUBSYSTEM:	
 		if (subsystemCapacity[1] < subsystemCapacity[0])
 		{
 			subsystemCapacity[1] += 1;
+
 			return true;
+		}
+		else
+		{
+			std::cout << "\nNO MORE SPACE FOR SUBSYSTEMS\n";
 		}
 		break;
 	case InventoryType::JET:
@@ -108,6 +128,10 @@ bool Battleship::AddComponentChecker(Ref<Component> component_)
 			jetCapacity[1] += 1;
 			return true;
 		}
+		else
+		{
+			std::cout << "\nNO MORE SPACE FOR JETS\n";
+		}
 		break;
 	case InventoryType::MISSILES:
 		if (missileCapacity[1] < missileCapacity[0])
@@ -115,6 +139,11 @@ bool Battleship::AddComponentChecker(Ref<Component> component_)
 			missileCapacity[1] += 1;
 			return true;
 		}
+		else
+		{
+			std::cout << "\n MISSILE STORAGE FULL!\n";
+		}
+
 		break;
 	case InventoryType::ITEMS:
 		if (itemCapacity[1] < itemCapacity[0])
@@ -122,10 +151,23 @@ bool Battleship::AddComponentChecker(Ref<Component> component_)
 			itemCapacity[1] += 1;
 			return true;
 		}
+		else
+		{
+			std::cout << "\nNO MORE ROOM FOR ITEMS\n";
+		}
 		break;
-
 	}
+
 	return false;
+}
+
+void Battleship::PrintCapacities()
+{
+	std::cout << "\n Capcities \nArmaments: " << armamentCapacity[1] << "/" << armamentCapacity[0]
+		<< "\nSubsystems: " << subsystemCapacity[1] << "/" << subsystemCapacity[0]
+		<< "\nItems: " << itemCapacity[1] << "/" << itemCapacity[0]
+		<< "\nMissiles: " << missileCapacity[1] << "/" << missileCapacity[0]
+		<< "\nJets: " << jetCapacity[1] << "/" << jetCapacity[0] << "\n";
 }
 
 

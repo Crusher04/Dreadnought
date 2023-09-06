@@ -37,6 +37,7 @@
     <ClCompile Include="RadarComponent.cpp">
       <Filter>Source\Components</Filter>
     </ClCompile>
+    <ClCompile Include="MissileStorageComponent.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Board.h">
@@ -81,6 +82,7 @@
     <ClInclude Include="RadarComponent.h">
       <Filter>Header\Components</Filter>
     </ClInclude>
+    <ClInclude Include="MissileStorageComponent.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header">

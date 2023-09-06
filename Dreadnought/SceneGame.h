@@ -12,9 +12,9 @@
 
 #include "Battleship.h"
 #include "EngineComponent.h"
-#include "InventoryComponent.h"
-#include "JAMISAsset.h"
 #include "CommandCenterComponent.h"
+#include "RadarComponent.h"
+#include "MissileStorageComponent.h"
 
 class SceneGame: public Scene
 {
@@ -46,7 +46,10 @@ private:
 	Board theBoard;
 	std::shared_ptr<Battleship> player;
 
-
+	//Base Components
+	std::shared_ptr<CommandCenterComponent> cmdCenter;
+	std::shared_ptr<RadarComponent> radar;
+	std::shared_ptr<EngineComponent> engine;
 
 	
 };

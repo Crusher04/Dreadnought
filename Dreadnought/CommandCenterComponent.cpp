@@ -1,7 +1,8 @@
 #include "CommandCenterComponent.h"
 
-CommandCenterComponent::CommandCenterComponent(): health{NULL}, armour{NULL}, money{NULL}, acDefence{NULL}
+CommandCenterComponent::CommandCenterComponent(): health{NULL}, armour{NULL}, money{NULL}, adsDefence{NULL}
 {
+	componentType = InventoryType::SUBSYSTEM;
 }
 
 CommandCenterComponent::~CommandCenterComponent()
@@ -9,15 +10,16 @@ CommandCenterComponent::~CommandCenterComponent()
 	health = NULL;
 	armour = NULL;
 	money = NULL;
-	acDefence = NULL;
+	adsDefence = NULL;
 }
+
 
 bool CommandCenterComponent::OnCreate(int health_, int armour_, int money_, int acDefence_)
 {
 	health = health_;
 	armour = armour_;
 	money = money_;
-	acDefence = acDefence_;
+	adsDefence = acDefence_;
 	
 	return true;
 }
@@ -50,6 +52,16 @@ void CommandCenterComponent::AddMoney(int amount)
 	money += amount;
 }
 
+void CommandCenterComponent::AddToADS(int amount)
+{
+	adsDefence += amount;
+}
+
+void CommandCenterComponent::RemoveFromADS(int amount)
+{
+	adsDefence -= amount;
+}
+
 bool CommandCenterComponent::RemoveMoney(int amount)
 {
 	if (money >= amount)
@@ -59,9 +71,4 @@ bool CommandCenterComponent::RemoveMoney(int amount)
 	}
 	
 		return false;
-}
-
-int CommandCenterComponent::GetACDefence()
-{
-	return acDefence;
 }

@@ -70,6 +70,6 @@ Installed Armaments & Subsystems:
 	- 2 Tomcat Jets
 	- 2 Hornet Jets
 Total Primary armmament slots: 2 slots (0 available)
-Total Subsystem slots: 2 slots (1 available)
+Total Subsystem slots: 5 slots (1 available)
 Total Jet slots: 6 slots (2 available)
 Inventory Slots: 4 slots (4 available)

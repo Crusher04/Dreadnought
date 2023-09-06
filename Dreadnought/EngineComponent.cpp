@@ -17,6 +17,7 @@ EngineComponent::~EngineComponent()
 	isCreated = false;
 }
 
+
 bool EngineComponent::OnCreate()
 {
 	movement = defaultNauticalMiles;

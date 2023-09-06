@@ -1,4 +1,5 @@
 #include "SceneGame.h"
+#include "Enums.h"
 
 SceneGame::SceneGame(GameManager* game_)
 {
@@ -34,6 +35,7 @@ void SceneGame::Update()
 {
 	while(!starterShpSelected)
 		SelectStarterShip();
+	
 
 
 	game->SetGameActive(false);
@@ -83,11 +85,36 @@ void SceneGame::SelectStarterShip()
 	IO.GetUserInput(*userInput);
 	if (userInput->compare("dreadnought") == 0)
 	{
+		player->SetShipType(Ships::Dreadnought);
+
 		//Base Components
-		std::shared_ptr<EngineComponent> v20 = std::make_shared<EngineComponent>(EngineType::EV20);
-		player->AddComponent(v20);
+		engine = std::make_shared<EngineComponent>(EngineType::EV20);
+		if (player->AddComponent(engine))
+			std::cout << "\n ENGINE ADDED \n";
+
+		radar = std::make_shared<RadarComponent>(Subsystems::STANDARD_RADAR);
+		if (player->AddComponent(radar))
+			std::cout << "\n RADAR ADDED \n";
+
+		if (player->AddComponent<CommandCenterComponent>())
+			std::cout << "\n Command Center ADDED \n";
+
+		if (player->AddComponent<MissileStorageComponent>(Subsystems::MISSILE_STORAGE_15));
+			std::cout << "\n Missile Storage of size 15 ADDED \n";
 
 
+			player->UpdateFromComponents();
+
+			std::cout << "\n DEBUG CHECKS: \n"
+				<< "Engine Type: " << player->GetComponent<EngineComponent>()->GetMovement() << "\n"
+				<< "Radar Distance: " << player->GetComponent<RadarComponent>()->GetRadarDistance() << "\n"
+				<< "Health Amount: " << player->GetComponent<CommandCenterComponent>()->GetHealth() << "\n"
+				<< "Armour amount: " << player->GetComponent<CommandCenterComponent>()->GetHealth() << "\n"
+				<< "Money Amount: " << player->GetComponent<CommandCenterComponent>()->GetMoney() << "\n"
+				<< "ADS Defense: " << player->GetComponent<CommandCenterComponent>()->GetADSDefence() << "\n";
+
+			player->PrintCapacities();
+			
 		starterShpSelected = true;
 	}
 	else if (userInput->compare("idris") == 0)
