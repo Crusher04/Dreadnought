@@ -98,6 +98,7 @@ void SceneGame::SelectStarterShip()
 
 		if (player->AddComponent<CommandCenterComponent>())
 			std::cout << "\n Command Center ADDED \n";
+		player->GetComponent<CommandCenterComponent>()->OnCreate(50, 0, 250, 0);
 
 		if (player->AddComponent<MissileStorageComponent>(Subsystems::MISSILE_STORAGE_15));
 			std::cout << "\n Missile Storage of size 15 ADDED \n";
@@ -109,7 +110,7 @@ void SceneGame::SelectStarterShip()
 				<< "Engine Type: " << player->GetComponent<EngineComponent>()->GetMovement() << "\n"
 				<< "Radar Distance: " << player->GetComponent<RadarComponent>()->GetRadarDistance() << "\n"
 				<< "Health Amount: " << player->GetComponent<CommandCenterComponent>()->GetHealth() << "\n"
-				<< "Armour amount: " << player->GetComponent<CommandCenterComponent>()->GetHealth() << "\n"
+				<< "Armour amount: " << player->GetComponent<CommandCenterComponent>()->GetArmour() << "\n"
 				<< "Money Amount: " << player->GetComponent<CommandCenterComponent>()->GetMoney() << "\n"
 				<< "ADS Defense: " << player->GetComponent<CommandCenterComponent>()->GetADSDefence() << "\n";
 
