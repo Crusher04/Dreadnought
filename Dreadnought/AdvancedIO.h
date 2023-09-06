@@ -6,6 +6,7 @@
 #include <fstream>
 #include <windows.h>
 #include <unordered_map>
+#include "Enums.h"
 
 class AdvancedIO
 {
@@ -19,7 +20,7 @@ public:
 	void PrintFromFile(std::string filename);
 	void PrintFromFile(std::string filename, bool csvFile);
 	void PrintCursorPos();
-	void ReadFileToUMap(std::unordered_map<std::string, bool> &keywordMap, std::string filename);
-	void PrintFromUMap (std::unordered_map<std::string, bool> &uMap);
+	void ReadFileToUMap(std::unordered_map<std::string, Keywords> &keywordMap, std::string filename);
+	void PrintFromUMap (std::unordered_map<std::string, Keywords> &uMap);
 };
 

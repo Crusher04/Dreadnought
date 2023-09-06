@@ -140,4 +140,16 @@ enum class InventoryType {
 	ITEMS,
 	INV_NULL
 };
+
+enum class Keywords {
+	KEYWORD_NULL,
+	Quit,
+	Menu,
+	Back,
+	Help,
+	Attack,
+	Move,
+	Silo_Status,
+
+};
 #endif // !ENUM_H

@@ -51,6 +51,7 @@ private:
 	
 	Board theBoard;
 	std::shared_ptr<Battleship> player;
+	std::unique_ptr<std::unordered_map<std::string, Keywords>> keywordsMap = std::make_unique<std::unordered_map<std::string, Keywords>>();
 
 	//Base Components
 	std::shared_ptr<CommandCenterComponent> cmdCenter;

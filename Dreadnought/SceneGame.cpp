@@ -7,6 +7,7 @@ SceneGame::SceneGame(GameManager* game_)
 
 	game = game_;
 
+	IO.ReadFileToUMap(*keywordsMap, "TextFiles/keywords.csv");
 	LoadAssets();
 	OnCreate();
 }
@@ -165,13 +166,26 @@ void SceneGame::GetUserInput()
 	cFormat.ClearScreen();
 	std::cout << "COMMAND -> ";
 	IO.GetUserInput(*userInput);
-
-	if (false)
+	Keywords key = Keywords::KEYWORD_NULL;
+	for (auto i : *keywordsMap)
 	{
-
+		if (*userInput == i.first)
+		{
+			key = i.second;
+			break;
+		}
 	}
-	else if (userInput->compare("silostatus") == 0)
+
+	switch (key)
 	{
+	case Keywords::Quit:
+		game->SetGameActive(false);
+		break;
+	case Keywords::Menu:
+		break;
+	case Keywords::Back:
+		break;
+	case Keywords::Silo_Status:
 		if (player->GetComponent<MissileLauncherComponent>() != nullptr)
 		{
 			for (int i = 0; i < player->GetComponent<MissileLauncherComponent>()->GetSiloAmount(); i++)
@@ -184,38 +198,60 @@ void SceneGame::GetUserInput()
 		}
 		else
 			std::cout << "\n\t YOU DO NOT HAVE A MISSILE LAUNCHER ARMAMENT. \n";
-
-	}
-	else if (userInput->compare("loadmissile") == 0)
-	{
-		auto  missile = player->GetComponent<MissileComponent>();
-		auto launcher = player->GetComponent<MissileLauncherComponent>();
-		if (missile != nullptr && launcher != nullptr)
-		{
-
-		}
-	}
-	else if (userInput->compare("roll") == 0)
-	{
-		dRoller.RollDice(DiceType::D20);
-
-	}
-	else if (userInput->compare("keywords") == 0) 
-	{
-		std::unique_ptr<std::unordered_map<std::string, bool>> keywordsMap = std::make_unique<std::unordered_map<std::string, bool>>();
-		IO.ReadFileToUMap(*keywordsMap, "TextFiles/keywords.csv");
-		IO.PrintFromUMap(*keywordsMap);
-	}
-	else if (userInput->compare("quit") == 0 || userInput->compare("exit") == 0)
-	{
-		game->SetGameActive(false);
-	}
-	else
-	{
-		cFormat.SetColour(12);
-		std::cout << "\n\Command Not Recognized\n";
-		cFormat.SetColour(7);
+			cFormat.Pause();
+		break;
+	default:
+		break;
 	}
 
-	cFormat.Pause();
+
+	//if (false)
+	//{
+
+	//}
+	//else if (userInput->compare("silostatus") == 0)
+	//{
+	//	if (player->GetComponent<MissileLauncherComponent>() != nullptr)
+	//	{
+	//		for (int i = 0; i < player->GetComponent<MissileLauncherComponent>()->GetSiloAmount(); i++)
+	//		{
+	//			if (player->GetComponent<MissileLauncherComponent>()->GetSiloStatus(i) == true)
+	//				std::cout << "\n Silo #" << i << ": " << "LOADED.";
+	//			else
+	//				std::cout << "\n Silo #" << i << ": " << "VACANT.";
+	//		}
+	//	}
+	//	else
+	//		std::cout << "\n\t YOU DO NOT HAVE A MISSILE LAUNCHER ARMAMENT. \n";
+
+	//}
+	//else if (userInput->compare("loadmissile") == 0)
+	//{
+	//	auto  missile = player->GetComponent<MissileComponent>();
+	//	auto launcher = player->GetComponent<MissileLauncherComponent>();
+	//	if (missile != nullptr && launcher != nullptr)
+	//	{
+
+	//	}
+	//}
+	//else if (userInput->compare("roll") == 0)
+	//{
+	//	dRoller.RollDice(DiceType::D20);
+
+	//}
+	//else if (userInput->compare("keywords") == 0) 
+	//{
+	//	IO.PrintFromUMap(*keywordsMap);
+	//}
+	//else if (userInput->compare("quit") == 0 || userInput->compare("exit") == 0)
+	//{
+	//	game->SetGameActive(false);
+	//}
+	//else
+	//{
+	//	cFormat.SetColour(12);
+	//	std::cout << "\n\Command Not Recognized\n";
+	//	cFormat.SetColour(7);
+	//}
+
 }
