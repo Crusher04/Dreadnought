@@ -61,7 +61,5 @@ void MissileLauncherComponent::LoadMissile(MissileComponent &missile)
 
 void MissileLauncherComponent::LaunchMissiles()
 {
-	int amountToLaunch = 0;
-
 	
 }

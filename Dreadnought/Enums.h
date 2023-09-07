@@ -150,7 +150,8 @@ enum class Keywords {
 	Attack,
 	Move,
 	Silo_Status,
-	Load_Missile
+	Load_Missile,
+	
 
 };
 #endif // !ENUM_H

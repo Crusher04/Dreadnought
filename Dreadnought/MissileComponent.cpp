@@ -19,16 +19,19 @@ MissileComponent::MissileComponent(Armament missileType_) :
 		rangeOfAttack = 50;
 		damageDice = DiceType::D12;
 		diceMultiplier = 1;
+		name = "Anti-Ship Missile";
 		break;
 	case Armament::AntiShipTorpedo:
 		rangeOfAttack = 50;
 		damageDice = DiceType::D12;
 		diceMultiplier = 2;
+		name = "Anit-Ship Torpedo";
 		break;
 	case Armament::SuperSonicCruiseMissile:
 		rangeOfAttack = 70;
 		damageDice = DiceType::D12;
 		diceMultiplier = 3;
+		name = "Super Sonice Cruise Missile";
 		break;
 	}
 

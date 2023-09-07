@@ -9,7 +9,7 @@ protected:
 	int rangeOfAttack;
 	int diceMultiplier;
 	DiceType damageDice;
-	
+	std::string name;
 public:
 
 	/// <summary>
@@ -41,5 +41,10 @@ public:
 	/// <returns>batteryType of Armament</returns>
 	const Armament GetBatteryType() { return batteryType; }
 	
+	/// <summary>
+	/// Gets the name of the battery. Generally this will just say if its 250mm or 400mm
+	/// </summary>
+	/// <returns>name as std::string</returns>
+	const std::string GetName() { return name; }
 };
 

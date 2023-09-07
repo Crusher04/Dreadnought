@@ -38,9 +38,9 @@ public:
 	void RunIntro();
 	void SelectStarterShip();
 	void LoadAssets();
-
 	void GetUserInput();
-
+	void PlayerAttack();
+	void TypeWrite(std::string s, int speed);
 
 private:
 	bool starterShpSelected = false;

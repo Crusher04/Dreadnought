@@ -197,6 +197,9 @@ void SceneGame::GetUserInput()
 		break;
 	case Keywords::Back:
 		break;
+	case Keywords::Attack:
+		PlayerAttack();
+		break;
 	case Keywords::Silo_Status:
 		if (player->GetComponent<MissileLauncherComponent>() != nullptr)
 		{
@@ -240,5 +243,24 @@ LOADMISSILE:
 	}
 
 	cFormat.Pause();
+
+}
+
+void SceneGame::PlayerAttack()
+{
+	std::string question = "\nWhat armament would you like to attack with?\n";
+	TypeWrite(question, 40);
+	
+	if(player->GetComponent<NavalBatteriesComponent>())
+
+}
+
+void SceneGame::TypeWrite(std::string s, int speed)
+{
+	for (int i = 0; i < s.length(); i++)
+	{
+		std::cout << s[i];
+		Sleep(speed);
+	}
 
 }

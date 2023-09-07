@@ -20,12 +20,14 @@ NavalBatteriesComponent::NavalBatteriesComponent(Armament batteryType_, int cano
 		if(canonVariant > 0 && canonVariant < 5)
 			diceMultiplier = canonVariant;
 		damageDice = DiceType::D6;
+		name = "Naval Battery 250mm";
 		break;
 	case Armament::NavalBattery400mm:
 		rangeOfAttack = 30;
 		if(canonVariant < 4 && canonVariant > 0)
 			diceMultiplier = canonVariant;
 		damageDice = DiceType::D10;
+		name = "Naval Battery 400mm";
 		break;
 	}
 

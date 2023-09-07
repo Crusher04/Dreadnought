@@ -11,6 +11,7 @@ protected:
     DiceType damageDice;
     int rangeOfAttack;
     int diceMultiplier;
+    std::string name;
 
 public:
 
@@ -76,5 +77,11 @@ public:
     /// </summary>
     /// <returns>bool loaded</returns>
     const bool CheckIfLoaded() { return loaded; }
+
+    /// <summary>
+    /// Returns the name of the missile.
+    /// </summary>
+    /// <returns>name as std::string</returns>
+    const std::string GetName() { return name; }
 };
 
