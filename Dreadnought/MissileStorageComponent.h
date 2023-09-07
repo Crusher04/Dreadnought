@@ -1,12 +1,10 @@
 #pragma once
 #include "Component.h"
-#include <iostream>
 class MissileStorageComponent :
     public Component
 {
 protected:
     int storage;
-    std::string name;
 public:
 
     /// <summary>

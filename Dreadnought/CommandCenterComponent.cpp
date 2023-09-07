@@ -2,6 +2,7 @@
 
 CommandCenterComponent::CommandCenterComponent(): health{NULL}, armour{NULL}, money{NULL}, adsDefence{NULL}
 {
+	name = "Command Center";
 	componentType = InventoryType::SUBSYSTEM;
 }
 

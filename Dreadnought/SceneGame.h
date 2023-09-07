@@ -39,6 +39,7 @@ public:
 	void SelectStarterShip();
 	void LoadAssets();
 	void GetUserInput();
+	void KeywordSelection();
 	void PlayerAttack();
 	void TypeWrite(std::string s, int speed);
 
@@ -48,6 +49,7 @@ private:
 	bool moveFlag = false;
 	bool endTurn = false;
 	bool aiOldPosFlag = false;
+	bool attackFlag = false;
 	
 	Board theBoard;
 	std::shared_ptr<Battleship> player;

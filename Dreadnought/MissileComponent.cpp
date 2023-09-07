@@ -31,7 +31,7 @@ MissileComponent::MissileComponent(Armament missileType_) :
 		rangeOfAttack = 70;
 		damageDice = DiceType::D12;
 		diceMultiplier = 3;
-		name = "Super Sonice Cruise Missile";
+		name = "Super Sonic Cruise Missile";
 		break;
 	}
 

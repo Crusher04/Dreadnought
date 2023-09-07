@@ -15,14 +15,17 @@ MissileLauncherComponent::MissileLauncherComponent(Armament launcherType_)
 	switch (launcherType)
 	{
 	case Armament::MissileLauncher_4:
+		name = "Missile Launcher 4 Slot";
 		for (int i = 0; i < 4; i++)
 			silos.insert({ i, false });
 		break;
 	case Armament::MissileLauncher_6:
+		name = "Missile Launcher 6 Slot";
 		for (int i = 0; i < 6; i++)
 			silos.insert({ i, false });
 		break;
 	case Armament::MissileLauncher_8:
+		name = "Missile Launcher 8 Slot";
 		for (int i = 0; i < 8; i++)
 			silos.insert({ i, false });
 		break;

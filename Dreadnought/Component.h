@@ -1,6 +1,7 @@
 #pragma once
 #include <memory>
 #include "Enums.h"
+#include <iostream>
 
 template<typename T>
 using Ref = std::shared_ptr <T>;
@@ -14,9 +15,16 @@ public:
 	const InventoryType GetComponentType() { return componentType; }
 	const ActionType GetActionType() { return componentAction; }
 
+	/// <summary>
+	/// Gets the name of the battery. Generally this will just say if its 250mm or 400mm
+	/// </summary>
+	/// <returns>name as std::string</returns>
+	std::string GetName() const { return name; }
+
 protected:
 	bool isCreated;
 	InventoryType componentType;
 	ActionType componentAction;
+	std::string name;
 	
 };

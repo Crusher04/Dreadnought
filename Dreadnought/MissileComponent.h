@@ -11,7 +11,6 @@ protected:
     DiceType damageDice;
     int rangeOfAttack;
     int diceMultiplier;
-    std::string name;
 
 public:
 

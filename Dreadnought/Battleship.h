@@ -80,6 +80,17 @@ public:
 		return i;
 	}
 
+	const void GetArmamentComponents(std::string &s) {
+		for (auto component : components) {
+			if (component.get()->GetComponentType() == InventoryType::ARMAMENT)
+			{
+				s.append(component.get()->GetName());
+				s.append(",");
+			}
+	
+		}
+	}
+
 	template<typename ComponentTemplate>
 	void RemoveComponent() {
 		for (unsigned int i = 0; i < components.size(); i++) {
@@ -114,6 +125,8 @@ public:
 		}
 	}
 
+
+	void ListMissileComponents() const;
 	void ListComponents() const;
 	void RemoveAllComponents();
 	void SetShipType(Ships shipType_) { shipType = shipType_; InitializeCapacities(); }

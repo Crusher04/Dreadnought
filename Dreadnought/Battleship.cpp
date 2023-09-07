@@ -83,6 +83,33 @@ void Battleship::OnDestroy()
 {
 }
 
+void Battleship::ListMissileComponents() const
+{
+	int ASM = 0, AST = 0 , SSCM = 0;
+
+	for (auto component : components)
+	{
+		if (component->GetComponentType() == InventoryType::MISSILES)
+		{
+			if (component->GetName().compare("Anti-Ship Missile") == 0)
+				ASM++;
+			else if (component->GetName().compare("Anti-Ship Torpedo") == 0)
+				AST++;
+			else if (component->GetName().compare("Super Sonic Cruise Missile") == 0)
+				SSCM++;
+		}
+	}
+
+	if (ASM > 0)
+		std::cout << "\nAnti-Ship Missile x" << ASM;
+
+	if (AST > 0)
+		std::cout << "\nAnti-Ship Torpedo x" << AST;
+
+	if (SSCM > 0)
+		std::cout << "\nSuper Sonic Cruise Missile x" << SSCM;
+}
+
 void Battleship::ListComponents() const
 {
 	std::cout << std::endl;

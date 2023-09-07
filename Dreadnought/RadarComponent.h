@@ -13,7 +13,7 @@ public:
 
 	/// <summary>
 	/// Type of radar to be added; Standard, Advanced, Satellite.
-	/// </summary>
+	/// </summary>s
 	/// <param name="typeOfRadar"></param>
 	RadarComponent(Subsystems typeOfRadar);
 

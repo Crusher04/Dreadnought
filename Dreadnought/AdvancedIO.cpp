@@ -56,8 +56,11 @@ void AdvancedIO::ReadFileToUMap(std::unordered_map<std::string, Keywords> &keywo
 
 	while (!myFile.eof())
 	{
+		key = Keywords::KEYWORD_NULL;
 		std::getline(myFile, stringVar, ',');
-		
+		std::transform(stringVar.begin(), stringVar.end(), stringVar.begin(), [](unsigned char c) {return std::tolower(c); });
+		stringVar.erase(std::remove_if(stringVar.begin(), stringVar.end(), [](unsigned char x) { return std::isspace(x); }), stringVar.end());
+
 		if (stringVar == "quit" || stringVar == "exit")
 			key = Keywords::Quit;
 		else if (stringVar == "help")
@@ -74,6 +77,14 @@ void AdvancedIO::ReadFileToUMap(std::unordered_map<std::string, Keywords> &keywo
 			key = Keywords::Silo_Status;
 		else if (stringVar == "loadmissile")
 			key = Keywords::Load_Missile;
+		else if (stringVar == "antishipmissile" || stringVar == "antishiptorpedo" || stringVar == "supersoniccruisemissile" 
+			|| stringVar == "cruisemissile")
+			key = Keywords::Missile;
+		else if (stringVar == "navalbattery" || stringVar == "navalbattery250mm" || stringVar == "navalbattery250" || stringVar == "navalbattery400" 
+			|| stringVar == "navalbattery400mm" || stringVar == "naval" || stringVar == "battery")
+			key = Keywords::Naval_Battery;
+		else if (stringVar == "missile" || stringVar == "missilelauncher" || stringVar == "launcher")
+			key = Keywords::Missile_Launcher;
 
 		keywordMap.insert({ stringVar, key });
 	}

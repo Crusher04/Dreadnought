@@ -44,6 +44,7 @@ void SceneGame::Update()
 	player->UpdateFromComponents();
 
 	GetUserInput();
+	KeywordSelection();
 }
 
 
@@ -112,7 +113,7 @@ void SceneGame::SelectStarterShip()
 
 
 		//DEBUG ONLY. SET TO FALSE FOR PRODUCTION RELEASE.
-		if (true)
+		if (false)
 		{
 			std::cout << "\n DEBUG CHECKS: \n"
 				<< "Engine Type: " << player->GetComponent<EngineComponent>()->GetMovement() << "\n"
@@ -167,10 +168,12 @@ void SceneGame::LoadAssets()
 void SceneGame::GetUserInput()
 {
 	//USER INPUT
-	std::cout << "COMMAND -> ";
+	std::cout << "\nCOMMAND -> ";
 	IO.GetUserInput(*userInput);
-	
+}
 
+void SceneGame::KeywordSelection()
+{
 	//Variable
 	Keywords key = Keywords::KEYWORD_NULL;
 	auto  missile = player->GetComponent<MissileComponent>();
@@ -191,27 +194,62 @@ void SceneGame::GetUserInput()
 	switch (key)
 	{
 	case Keywords::Quit:
+		std::cout << "\n EXIT CONFIRMED. THANKS FOR PLAYING! \n";
+		attackFlag = false;
 		game->SetGameActive(false);
+		return;
 		break;
 	case Keywords::Menu:
 		break;
 	case Keywords::Back:
+		attackFlag = false;
+		return;
 		break;
 	case Keywords::Attack:
+		attackFlag = true;
 		PlayerAttack();
+		return;
+		break;
+	case Keywords::Missile_Launcher:
+		if (!attackFlag)
+			break;
+		if (player->GetComponent<MissileComponent>())
+		{
+			player->ListMissileComponents();
+		}
+		break;
+	case Keywords::Missile:
+		break;
+	case Keywords::Naval_Battery:
+		if (!attackFlag)
+			break;
+		
+		std::cout << "\n";
+		if (player->GetComponent<NavalBatteriesComponent>()->GetBatteryType() == Armament::NavalBattery250mm)
+		{
+			attackFlag = false;
+			std::cout << "Naval Battery 250mm Selected! Rolling Damage: \n";
+			dRoller.RollDice(player->GetComponent<NavalBatteriesComponent>()->GetDamageDice());
+		}
+		else if (player->GetComponent<NavalBatteriesComponent>()->GetBatteryType() == Armament::NavalBattery400mm)
+		{
+			std::cout << "Naval Battery 400mm Selected! Rolling Damage: \n";
+			attackFlag = false;
+			dRoller.RollDice(player->GetComponent<NavalBatteriesComponent>()->GetDamageDice());
+		}
 		break;
 	case Keywords::Silo_Status:
 		if (player->GetComponent<MissileLauncherComponent>() != nullptr)
 		{
-			
+
 			player->GetComponent<MissileLauncherComponent>()->GetSiloStatus();
-			
+
 		}
 		else
 			std::cout << "\n\t YOU DO NOT HAVE A MISSILE LAUNCHER ARMAMENT. \n";
-			cFormat.Pause();
+
 		break;
-LOADMISSILE:
+	LOADMISSILE:
 	case Keywords::Load_Missile:
 		if (missile != nullptr && launcher != nullptr)
 		{
@@ -231,28 +269,44 @@ LOADMISSILE:
 			else
 			{
 				std::cout << "\n\t SILOS ARE ALL LOADED.\n";
-			}				
+			}
 		}
 		break;
 	default:
 		cFormat.SetColour(12);
 		std::cout << "\nCommand Not Recognized\n";
 		cFormat.SetColour(7);
-		cFormat.Pause();
+		return;
 		break;
 	}
 
 	cFormat.Pause();
-
 }
+
 
 void SceneGame::PlayerAttack()
 {
-	std::string question = "\nWhat armament would you like to attack with?\n";
-	TypeWrite(question, 40);
-	
-	if(player->GetComponent<NavalBatteriesComponent>())
+	std::unique_ptr<std::string> question = std::make_unique <std::string>();
+	std::string delimiter = ",";
+	size_t pos = 0;
+	std::string token;
 
+	*question = "\nWhat armament would you like to attack with?\n";
+	
+	player->GetArmamentComponents(*question);
+	while ((pos = question->find(delimiter)) != std::string::npos) {
+		
+		token = question->substr(0, pos);
+		TypeWrite(token, 5);
+		question->erase(0, pos + delimiter.length());
+		std::cout << std::endl;
+	}
+	
+	while (attackFlag)
+	{
+		GetUserInput();
+		KeywordSelection();
+	}
 }
 
 void SceneGame::TypeWrite(std::string s, int speed)

@@ -3,6 +3,7 @@
 EngineComponent::EngineComponent(EngineType eType)
 {
 	defaultNauticalMiles = (int)eType;
+	name = "Engine";
 	componentType = InventoryType::SUBSYSTEM;
 	if (OnCreate())
 		isCreated = true;

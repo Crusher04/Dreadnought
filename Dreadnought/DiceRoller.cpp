@@ -38,4 +38,6 @@ int DiceRoller::RollDice(DiceType dice)
 		return roll;
 		break;
 	}
+
+	return 0;
 }
