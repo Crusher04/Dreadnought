@@ -69,6 +69,18 @@ public:
 	}
 
 	template<typename ComponentTemplate>
+	int GetComponentPosition() const {
+		int i = NULL;
+		for (auto component : components) {
+			if (dynamic_cast<ComponentTemplate*>(component.get()) != nullptr) {
+				return i;
+			}
+			i++;
+		}
+		return i;
+	}
+
+	template<typename ComponentTemplate>
 	void RemoveComponent() {
 		for (unsigned int i = 0; i < components.size(); i++) {
 			if (dynamic_cast<ComponentTemplate*>(components[i].get()) != nullptr) {
@@ -107,5 +119,10 @@ public:
 	void SetShipType(Ships shipType_) { shipType = shipType_; InitializeCapacities(); }
 	bool AddComponentChecker(Ref<Component> component_);
 	void PrintCapacities();
+	void PushComponentToEnd(int index) {
+		auto hold = components.at(index);
+		components.erase(components.begin() + index);
+		components.push_back(hold);
+	}
 };
 

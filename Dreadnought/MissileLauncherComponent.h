@@ -2,13 +2,13 @@
 #include "Component.h"
 #include "MissileComponent.h"
 #include "DiceRoller.h"
-#include<vector>
+#include <unordered_map>
+#include <iostream>
 class MissileLauncherComponent :  public Component
 {
 protected:
-	int launcherSlots[2];
+	std::unordered_map<int, bool> silos;
 	Armament launcherType;
-	std::vector<MissileComponent> missileSilos;
 	DiceRoller dRoller;
 
 public:
@@ -25,7 +25,7 @@ public:
 	/// Load Missile onto silo. Select silo based on launcher type.
 	/// </summary>
 	/// <param name="silo"></param>
-	void LoadMissile(MissileComponent missile);
+	void LoadMissile(MissileComponent &missile);
 
 	/// <summary>
 	/// Expendes all missile silos
@@ -33,18 +33,33 @@ public:
 	void LaunchMissiles();
 
 	/// <summary>
-	/// Returns the amount of silos in the launcher. 
+	/// Returns the amount of vacant slots for missiles.
 	/// </summary>
 	/// <returns>launcherSlot[0] as an int</returns>
-	const int GetSiloAmount() { return launcherSlots[0]; }
+	const int GetVacantSiloAmount() {
+		int amount = 0;
+		for (auto silo : silos)
+		{
+			if (!silo.second)
+				amount++;
+		}
+		return amount;
+	}
 
 	/// <summary>
 	/// Returns if a silo is loaded or not. Need to pass through silo number.
 	/// </summary>
 	/// <param name="silo"></param>
 	/// <returns>a bool of true if the silo is used or false if silo is empty. Can return NULL if wrong silo number has been passed.</returns>
-	const bool GetSiloStatus(int silo) {
-		return false;
+	const void GetSiloStatus() {
+		
+		for (auto silo : silos)
+		{
+			if(silo.second)
+				std::cout << "\n Silo #" << silo.first + 1 << ": " << "LOADED.";
+			else
+				std::cout << "\n Silo #" << silo.first + 1 << ": " << "VACANT.";
+		}
 	}
 };
 

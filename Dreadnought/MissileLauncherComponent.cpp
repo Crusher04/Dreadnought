@@ -1,8 +1,6 @@
 #include "MissileLauncherComponent.h"
-#include <iostream>
 
-MissileLauncherComponent::MissileLauncherComponent(Armament launcherType_):
-	launcherSlots{NULL}
+MissileLauncherComponent::MissileLauncherComponent(Armament launcherType_)
 {
 
 	//Set Launcher Type
@@ -17,13 +15,16 @@ MissileLauncherComponent::MissileLauncherComponent(Armament launcherType_):
 	switch (launcherType)
 	{
 	case Armament::MissileLauncher_4:
-		launcherSlots[0] = 4;
+		for (int i = 0; i < 4; i++)
+			silos.insert({ i, false });
 		break;
 	case Armament::MissileLauncher_6:
-		launcherSlots[0] = 6;
+		for (int i = 0; i < 6; i++)
+			silos.insert({ i, false });
 		break;
 	case Armament::MissileLauncher_8:
-		launcherSlots[0] = 8;
+		for (int i = 0; i < 8; i++)
+			silos.insert({ i, false });
 		break;
 	}
 
@@ -33,19 +34,28 @@ MissileLauncherComponent::MissileLauncherComponent(Armament launcherType_):
 
 MissileLauncherComponent::~MissileLauncherComponent()
 {
-	launcherSlots[0] = NULL;
-	launcherSlots[1] = NULL;
+	silos.clear();
 	launcherType = Armament::ARMAMENT_NULL;
-	missileSilos.clear();
 }
 
-void MissileLauncherComponent::LoadMissile(MissileComponent missile)
+void MissileLauncherComponent::LoadMissile(MissileComponent &missile)
 {
-	if (launcherSlots[1] < launcherSlots[0])
+	bool loadFlag = false;
+
+	for (auto silo : silos)
 	{
-		missileSilos.push_back(missile);
+		if (silo.second == false)
+		{
+			auto it = silos.find(silo.first);
+			it->second = true;
+			missile.LoadMissile();
+			loadFlag = true;
+			std::cout << "\n MISSILE LOADED \n";
+			return;
+		}
 	}
-	else
+
+	if (!loadFlag)
 		std::cout << "\n\t SILOS ARE ALL LOADED.\n";
 }
 
@@ -53,12 +63,5 @@ void MissileLauncherComponent::LaunchMissiles()
 {
 	int amountToLaunch = 0;
 
-	for (auto missile : missileSilos)
-	{
-		if (missile.GetArmedStatus())
-		{
-			amountToLaunch += 1;
-			
-		}
-	}
+	
 }

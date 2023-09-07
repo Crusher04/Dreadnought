@@ -33,6 +33,9 @@ void SceneGame::OnDestroy()
 
 void SceneGame::Update()
 {
+	//RESET SCREEN
+	cFormat.ClearScreen();
+
 	//Select starter ship once
 	while(!starterShpSelected)
 		SelectStarterShip();
@@ -163,10 +166,18 @@ void SceneGame::LoadAssets()
 
 void SceneGame::GetUserInput()
 {
-	cFormat.ClearScreen();
+	//USER INPUT
 	std::cout << "COMMAND -> ";
 	IO.GetUserInput(*userInput);
+	
+
+	//Variable
 	Keywords key = Keywords::KEYWORD_NULL;
+	auto  missile = player->GetComponent<MissileComponent>();
+	auto launcher = player->GetComponent<MissileLauncherComponent>();
+	int missileVectorPosition = 0;
+
+	//Find the keyword
 	for (auto i : *keywordsMap)
 	{
 		if (*userInput == i.first)
@@ -176,6 +187,7 @@ void SceneGame::GetUserInput()
 		}
 	}
 
+	//Filter through keyword actions
 	switch (key)
 	{
 	case Keywords::Quit:
@@ -188,70 +200,45 @@ void SceneGame::GetUserInput()
 	case Keywords::Silo_Status:
 		if (player->GetComponent<MissileLauncherComponent>() != nullptr)
 		{
-			for (int i = 0; i < player->GetComponent<MissileLauncherComponent>()->GetSiloAmount(); i++)
-			{
-				if (player->GetComponent<MissileLauncherComponent>()->GetSiloStatus(i) == true)
-					std::cout << "\n Silo #" << i << ": " << "LOADED.";
-				else
-					std::cout << "\n Silo #" << i << ": " << "VACANT.";
-			}
+			
+			player->GetComponent<MissileLauncherComponent>()->GetSiloStatus();
+			
 		}
 		else
 			std::cout << "\n\t YOU DO NOT HAVE A MISSILE LAUNCHER ARMAMENT. \n";
 			cFormat.Pause();
 		break;
+LOADMISSILE:
+	case Keywords::Load_Missile:
+		if (missile != nullptr && launcher != nullptr)
+		{
+			if (missile->CheckIfLoaded() == false)
+			{
+				player->GetComponent<MissileLauncherComponent>()->LoadMissile(*missile);
+				break;
+			}
+			else if (player->GetComponent<MissileLauncherComponent>()->GetVacantSiloAmount() > 0)
+			{
+				missileVectorPosition = player->GetComponentPosition<MissileComponent>();
+				player->PushComponentToEnd(missileVectorPosition);
+				missile = player->GetComponent<MissileComponent>();
+				goto LOADMISSILE;
+
+			}
+			else
+			{
+				std::cout << "\n\t SILOS ARE ALL LOADED.\n";
+			}				
+		}
+		break;
 	default:
+		cFormat.SetColour(12);
+		std::cout << "\nCommand Not Recognized\n";
+		cFormat.SetColour(7);
+		cFormat.Pause();
 		break;
 	}
 
-
-	//if (false)
-	//{
-
-	//}
-	//else if (userInput->compare("silostatus") == 0)
-	//{
-	//	if (player->GetComponent<MissileLauncherComponent>() != nullptr)
-	//	{
-	//		for (int i = 0; i < player->GetComponent<MissileLauncherComponent>()->GetSiloAmount(); i++)
-	//		{
-	//			if (player->GetComponent<MissileLauncherComponent>()->GetSiloStatus(i) == true)
-	//				std::cout << "\n Silo #" << i << ": " << "LOADED.";
-	//			else
-	//				std::cout << "\n Silo #" << i << ": " << "VACANT.";
-	//		}
-	//	}
-	//	else
-	//		std::cout << "\n\t YOU DO NOT HAVE A MISSILE LAUNCHER ARMAMENT. \n";
-
-	//}
-	//else if (userInput->compare("loadmissile") == 0)
-	//{
-	//	auto  missile = player->GetComponent<MissileComponent>();
-	//	auto launcher = player->GetComponent<MissileLauncherComponent>();
-	//	if (missile != nullptr && launcher != nullptr)
-	//	{
-
-	//	}
-	//}
-	//else if (userInput->compare("roll") == 0)
-	//{
-	//	dRoller.RollDice(DiceType::D20);
-
-	//}
-	//else if (userInput->compare("keywords") == 0) 
-	//{
-	//	IO.PrintFromUMap(*keywordsMap);
-	//}
-	//else if (userInput->compare("quit") == 0 || userInput->compare("exit") == 0)
-	//{
-	//	game->SetGameActive(false);
-	//}
-	//else
-	//{
-	//	cFormat.SetColour(12);
-	//	std::cout << "\n\Command Not Recognized\n";
-	//	cFormat.SetColour(7);
-	//}
+	cFormat.Pause();
 
 }

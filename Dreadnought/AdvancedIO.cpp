@@ -72,6 +72,8 @@ void AdvancedIO::ReadFileToUMap(std::unordered_map<std::string, Keywords> &keywo
 			key = Keywords::Move;
 		else if (stringVar == "silostatus")
 			key = Keywords::Silo_Status;
+		else if (stringVar == "loadmissile")
+			key = Keywords::Load_Missile;
 
 		keywordMap.insert({ stringVar, key });
 	}
