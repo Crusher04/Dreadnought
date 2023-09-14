@@ -11,3 +11,7 @@ Battleship:
 		Armour
 		Money
 		ArmourClassDefense
+
+
+		NOTE:
+		Loading missiles will eventually have to have missile selection instead of auto loading. 

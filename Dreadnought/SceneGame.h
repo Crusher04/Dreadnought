@@ -41,7 +41,7 @@ public:
 	void GetUserInput();
 	void KeywordSelection();
 	void PlayerAttack();
-	void PlayerArmingMissile();
+	void PlayerArmingOrLaunchingMissile();
 	void TypeWrite(std::string s, int speed);
 
 private:
@@ -54,6 +54,7 @@ private:
 	bool aiOldPosFlag = false;
 	bool attackFlag = false;
 	bool armMissileFlag = false;
+	bool launchMissileFlag = false;
 
 	Board theBoard;
 	std::shared_ptr<Battleship> player;

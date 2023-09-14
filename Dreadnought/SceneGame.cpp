@@ -99,7 +99,7 @@ void SceneGame::SelectStarterShip()
 		player->AddComponent<MissileStorageComponent>(Subsystems::MISSILE_STORAGE_15);
 		player->UpdateFromComponents();	//IF you dont update battleship capacities the missiles wont be added!!
 		
-		for (int i = 0; i < 10; i++)
+		for (int i = 0; i < 1; i++)
 			player->AddComponent<MissileComponent>(Armament::AntiShipMissile);
 
 		player->AddComponent<NavalBatteriesComponent>(Armament::NavalBattery250mm, 2);
@@ -180,9 +180,7 @@ void SceneGame::KeywordSelection()
 	Keywords key = Keywords::KEYWORD_NULL;
 	auto  missile = player->GetComponent<MissileComponent>();
 	auto launcher = player->GetComponent<MissileLauncherComponent>();
-	int missileVectorPosition = 0;
-	int amountToBeArmed = 0;
-	int siloNumber = 0;
+	int siloNumber = 0, amountOfMissiles = 0, amountToBeArmed = 0;
 	bool missilesArmed = false;
 
 	//Find the keyword
@@ -209,6 +207,7 @@ void SceneGame::KeywordSelection()
 	case Keywords::Back:
 		attackFlag = false;
 		armMissileFlag = false;
+		launchMissileFlag = false;
 		return;
 		break;
 	case Keywords::Attack:
@@ -219,20 +218,23 @@ void SceneGame::KeywordSelection()
 
 ARMINGMISSILECOMMAND:
 	case Keywords::Arm_Missile:
-
-		PlayerArmingMissile();
-
+		armMissileFlag = true;
+		PlayerArmingOrLaunchingMissile();
 		break;
-
+LAUNCHMISSILECOMMAND:
 	case Keywords::Missile_Launcher:
+		if (userInput->compare("attacklauncher") == 0 || userInput->compare("launchmissile") == 0)
+			attackFlag = true;
+		
 		if (!attackFlag)
 		{
 			goto COMMANDERROR;
 		}
 		else 
 		{
+			launchMissileFlag = true;
+			PlayerArmingOrLaunchingMissile();
 		}
-
 		break;
 	case Keywords::Missile:
 		break;
@@ -266,17 +268,25 @@ SILOSTATUSCOMMAND:
 			std::cout << "\n\t YOU DO NOT HAVE A MISSILE LAUNCHER ARMAMENT. \n";
 
 		if (armMissileFlag)
-		{
 			goto ARMINGMISSILECOMMAND;
-		}
+		else if (launchMissileFlag)
+			goto LAUNCHMISSILECOMMAND;
 
 		break;
 	case Keywords::Load_Missile:
-
-		while(!player->GetComponent<MissileLauncherComponent>()->LoadMissile(player->GetComponent<MissileComponent>().get()))
+		amountOfMissiles = player->GetAmountOfComponents<MissileComponent>();
+		
+		if (player->GetComponent<MissileComponent>())
 		{
-			auto missilePOS = player->GetComponentPosition<MissileComponent>();
-			player->PushComponentToEnd(missilePOS);
+			while (!player->GetComponent<MissileLauncherComponent>()->LoadMissile(player.get()))
+			{
+				auto missilePOS = player->GetComponentPosition<MissileComponent>();
+				player->PushComponentToEnd(missilePOS);
+			}
+		}
+		else
+		{
+			std::cout << "\n\t There are no missiles to load. \n";
 		}
 		break;
 COMMANDERROR:
@@ -314,14 +324,13 @@ void SceneGame::PlayerAttack()
 	}
 }
 
-void SceneGame::PlayerArmingMissile()
+void SceneGame::PlayerArmingOrLaunchingMissile()
 {
 	if (!player->GetComponent<MissileLauncherComponent>()->GetIsLauncherEmpty())
 	{
-		armMissileFlag = true;
 		while (armMissileFlag)
 		{
-			std::cout << "\nWhich Silo Are You Arming? (Enter the silo number)\n\n";
+			std::cout << "\n Which Silo Are You Arming? (Enter the silo number)\n\n";
 			GetUserInput();
 			std::string::size_type sz;
 			std::string userNum = *userInput;
@@ -334,7 +343,7 @@ void SceneGame::PlayerArmingMissile()
 				if (userNumInt > player->GetComponent<MissileLauncherComponent>()->GetSiloMaxSize())
 				{
 					std::cout << "\n Incorrect Silo Number! Missile Launcher has "
-						<< player->GetComponent<MissileLauncherComponent>()->GetSiloMaxSize() << " Silos Only.";
+						<< player->GetComponent<MissileLauncherComponent>()->GetSiloMaxSize() << " Silos Only.\n";
 				}
 				else
 				{
@@ -344,11 +353,40 @@ void SceneGame::PlayerArmingMissile()
 
 			}
 		}
+		
+		while (launchMissileFlag)
+		{
+			std::cout << "\nWhat Silo Are we launching from? (Enter a silo number)\n";
+			GetUserInput();
+			std::string::size_type sz;
+			std::string userNum = *userInput;
+			if (userNum.length() > 2)
+				KeywordSelection();
+			else
+			{
+				int userNumInt = std::stoi(userNum, &sz);
+				if (userNumInt > player->GetComponent<MissileLauncherComponent>()->GetSiloMaxSize())
+				{
+					std::cout << "\n Incorrect Silo Number! Missile Launcher has "
+						<< player->GetComponent<MissileLauncherComponent>()->GetSiloMaxSize() << " Silos Only.\n";
+				}
+				else
+				{
+					if (player->GetComponent<MissileLauncherComponent>()->LaunchMissile(player.get(), userNumInt))
+					{
+						armMissileFlag = false;
+						launchMissileFlag = false;
+						attackFlag = false;
+					}
+				}
+			}
+
+		}
 
 	}
 	else
 		std::cout << "\n No Missiles In Silos.\n";
-}
+}//End of player arming missile
 
 
 void SceneGame::TypeWrite(std::string s, int speed)

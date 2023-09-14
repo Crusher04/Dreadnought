@@ -1,6 +1,6 @@
 #include "MissileLauncherComponent.h"
 
-MissileLauncherComponent::MissileLauncherComponent(Armament launcherType_) : isLauncherEmpty{ true }
+MissileLauncherComponent::MissileLauncherComponent(Armament launcherType_) : isLauncherEmpty{ true }, siloCounter{0}
 {
 
 	//Set Launcher Type
@@ -42,10 +42,36 @@ MissileLauncherComponent::~MissileLauncherComponent()
 	launcherType = Armament::ARMAMENT_NULL;
 }
 
-bool MissileLauncherComponent::LoadMissile(MissileComponent* missile)
+void MissileLauncherComponent::Update()
+{
+	
+	CheckIfLauncherIsEmpty();
+
+}
+
+void MissileLauncherComponent::CheckIfLauncherIsEmpty()
+{
+	siloCounter = 0;
+
+	for (auto silo : silos)
+	{
+		if (silo.second.compare("") == 0)
+			siloCounter++;
+	}
+
+	if (siloCounter == silos.size())
+		isLauncherEmpty = true;
+	else
+		isLauncherEmpty = false;
+}
+
+bool MissileLauncherComponent::LoadMissile(Battleship* ship)
 {
 	for (auto silo : silos)
 	{
+		auto missile = ship->GetComponent<MissileComponent>();
+		int amountOfMisiles = ship->GetAmountOfComponents<MissileLauncherComponent>();
+
 		if (missile->GetSiloNumber() == -1 && silo.second.compare("") == 0)
 		{
 			if(isLauncherEmpty)
@@ -57,23 +83,55 @@ bool MissileLauncherComponent::LoadMissile(MissileComponent* missile)
 			std::cout << "\n" << missile->GetName() << " Loaded in silo " << missile->GetSiloNumber() + 1;
 			return true;
 		}
-		else if (missile->GetSiloNumber() == 3 && silo.second.compare("") != 0)
+		else if ((missile->GetSiloNumber()+1) == silos.size() && silo.second.compare("") != 0)
 		{
 			std::cout << "\n Missile Launcher is full. All silos are loaded.";
+			return true;
+		}
+		else if (amountOfMisiles <= silos.size())
+		{
+			std::cout << "\n No More Missiles to Load.\n";
 			return true;
 		}
 	}
 
 	return false;
-}
+}//End of Load Missile
 
-bool MissileLauncherComponent::LaunchMissiles(MissileComponent &missile)
+bool MissileLauncherComponent::LaunchMissile(Battleship* ship, int silo)
 {
+	int siloNum = silo - 1;
+
+	if (silos.at(siloNum).compare("") == 0)
+	{
+		std::cout << "\n Silo Is Not Loaded!\n";
+		return false;
+	}
+
+	while (ship->GetComponent<MissileComponent>()->GetSiloNumber() != siloNum)
+		ship->PushComponentToEnd(ship->GetComponentPosition<MissileComponent>());
+	
+	auto missile = ship->GetComponent<MissileComponent>();
+
+	if (!missile->GetArmedStatus())
+		std::cout << "\n\t MISSILE IS NOT ARMED. Cannot Launch Missile. \n";
+	else
+	{
+		std::cout << "Silo " << missile->GetSiloNumber() + 1 << " LAUNCHED SUCCESSFUL! \n";
+		silos.at(siloNum).clear();
+		silos.at(siloNum).append("");
+		for(int i = 0; i < missile->GetDiceMultiplier(); i++)
+			dRoller.RollDice(missile->GetDamageDice());
+		ship->RemoveComponent<MissileComponent>();
+		return true;
+	}
+
 	return false;
 }
 
 const void MissileLauncherComponent::GetSiloStatus(Battleship* ship)
 {
+
 	if (isLauncherEmpty)
 	{
 		for(auto silo : silos)
@@ -115,7 +173,7 @@ const void MissileLauncherComponent::GetSiloStatus(Battleship* ship)
 		}
 	}
 	
-}
+}//End of GetSiloStatus()
 
 bool MissileLauncherComponent::ArmMissileInSilo(Battleship* ship, int silo)
 {
@@ -143,4 +201,4 @@ bool MissileLauncherComponent::ArmMissileInSilo(Battleship* ship, int silo)
 		return true;
 	}
 	return false;
-}
+}//End of ArmMissileInSilo

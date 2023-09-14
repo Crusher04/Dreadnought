@@ -46,8 +46,10 @@
     <ClCompile Include="NavalBatteriesComponent.cpp">
       <Filter>Source\Components</Filter>
     </ClCompile>
-    <ClCompile Include="MissileLauncherComponent.cpp" />
     <ClCompile Include="DiceRoller.cpp" />
+    <ClCompile Include="MissileLauncherComponent.cpp">
+      <Filter>Source\Components</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Board.h">
@@ -101,8 +103,10 @@
     <ClInclude Include="NavalBatteriesComponent.h">
       <Filter>Header\Components</Filter>
     </ClInclude>
-    <ClInclude Include="MissileLauncherComponent.h" />
     <ClInclude Include="DiceRoller.h" />
+    <ClInclude Include="MissileLauncherComponent.h">
+      <Filter>Header\Components</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header">

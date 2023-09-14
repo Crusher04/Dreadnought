@@ -67,7 +67,7 @@ void AdvancedIO::ReadFileToUMap(std::unordered_map<std::string, Keywords> &keywo
 			key = Keywords::Help;
 		else if (stringVar == "menu")
 			key = Keywords::Menu;
-		else if (stringVar == "back")
+		else if (stringVar == "back" || stringVar == "cancel")
 			key = Keywords::Back;
 		else if (stringVar == "attack")
 			key = Keywords::Attack;
@@ -83,7 +83,8 @@ void AdvancedIO::ReadFileToUMap(std::unordered_map<std::string, Keywords> &keywo
 		else if (stringVar == "navalbattery" || stringVar == "navalbattery250mm" || stringVar == "navalbattery250" || stringVar == "navalbattery400"
 			|| stringVar == "navalbattery400mm" || stringVar == "naval" || stringVar == "battery")
 			key = Keywords::Naval_Battery;
-		else if (stringVar == "missile" || stringVar == "missilelauncher" || stringVar == "launcher")
+		else if (stringVar == "missile" || stringVar == "missilelauncher" || stringVar == "launcher" || stringVar == "attacklauncher"
+			|| stringVar == "launchmissile")
 			key = Keywords::Missile_Launcher;
 		else if (stringVar == "armmissile")
 			key = Keywords::Arm_Missile;

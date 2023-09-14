@@ -12,6 +12,7 @@ protected:
 	Armament launcherType;
 	DiceRoller dRoller;
 	bool isLauncherEmpty;
+	int siloCounter;
 	
 public:
 
@@ -23,16 +24,27 @@ public:
 	MissileLauncherComponent(Armament launcherType_);
 	~MissileLauncherComponent();
 
+
+	/// <summary>
+	/// Component update method ensures that certain logic checks are continuously checked. 
+	/// </summary>
+	void Update();
+
+	/// <summary>
+	/// Checks if all silos are empty. triggers boolean isLauncherEmpty if true
+	/// </summary>
+	void CheckIfLauncherIsEmpty();
+
 	/// <summary>
 	/// Load Missile onto silo. Select silo based on launcher type.
 	/// </summary>
 	/// <param name="silo"></param>
-	bool LoadMissile(MissileComponent* missile	);
+	bool LoadMissile(Battleship* ship);
 
 	/// <summary>
 	/// Expendes all missile silos
 	/// </summary>
-	bool LaunchMissiles(MissileComponent &missile);
+	bool LaunchMissile(Battleship* ship, int silo);
 
 	/// <summary>
 	/// Returns the amount of vacant slots for missiles.
