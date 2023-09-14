@@ -80,7 +80,18 @@ public:
 		return i;
 	}
 
-	const void GetArmamentComponents(std::string &s) {
+	template<typename ComponentTemplate>
+	int GetAmountOfComponents() const {
+		int i = 0;
+		for (auto component : components) {
+			if (dynamic_cast<ComponentTemplate*>(component.get()) != nullptr) {
+				i++;
+			}
+		}
+		return i;
+	}
+
+	const void GetArmamentComponentsToString(std::string &s) {
 		for (auto component : components) {
 			if (component.get()->GetComponentType() == InventoryType::ARMAMENT)
 			{
@@ -125,6 +136,16 @@ public:
 		}
 	}
 
+	/// <summary>
+	/// Pushes a component to the end of the component vector
+	/// </summary>
+	/// <param name="index"></param>
+	void PushComponentToEnd(int index) {
+		auto hold = components.at(index);
+		components.erase(components.begin() + index);
+		components.push_back(hold);
+	}
+
 
 	void ListMissileComponents() const;
 	void ListComponents() const;
@@ -132,10 +153,5 @@ public:
 	void SetShipType(Ships shipType_) { shipType = shipType_; InitializeCapacities(); }
 	bool AddComponentChecker(Ref<Component> component_);
 	void PrintCapacities();
-	void PushComponentToEnd(int index) {
-		auto hold = components.at(index);
-		components.erase(components.begin() + index);
-		components.push_back(hold);
-	}
 };
 

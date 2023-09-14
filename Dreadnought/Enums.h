@@ -153,7 +153,8 @@ enum class Keywords {
 	Load_Missile,
 	Missile,
 	Naval_Battery,
-	Missile_Launcher
+	Missile_Launcher,
+	Arm_Missile
 
 };
 #endif // !ENUM_H

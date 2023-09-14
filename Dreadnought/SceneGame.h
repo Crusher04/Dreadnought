@@ -55,11 +55,6 @@ private:
 	std::shared_ptr<Battleship> player;
 	std::unique_ptr<std::unordered_map<std::string, Keywords>> keywordsMap = std::make_unique<std::unordered_map<std::string, Keywords>>();
 
-	//Base Components
-	std::shared_ptr<CommandCenterComponent> cmdCenter;
-	std::shared_ptr<RadarComponent> radar;
-	std::shared_ptr<EngineComponent> engine;
-
 	
 	DiceRoller dRoller;
 };

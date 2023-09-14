@@ -1,6 +1,6 @@
 #include "MissileComponent.h"
 
-MissileComponent::MissileComponent(Armament missileType_) :
+MissileComponent::MissileComponent(Armament missileType_) : siloNumber{-1}, loaded{false}, missileNumber{NULL},
 	missileType{ Armament::ARMAMENT_NULL }, armed{ false }, damageDice{ DiceType::DICE_NULL }, rangeOfAttack{ NULL }, diceMultiplier{NULL}
 {
 	//Set Component type to missiless
@@ -32,6 +32,12 @@ MissileComponent::MissileComponent(Armament missileType_) :
 		damageDice = DiceType::D12;
 		diceMultiplier = 3;
 		name = "Super Sonic Cruise Missile";
+		break;
+	case Armament::ARMAMENT_NULL:
+		rangeOfAttack = 0;
+		damageDice = DiceType::DICE_NULL;
+		diceMultiplier = 0;
+		name = "NULL";
 		break;
 	}
 

@@ -7,7 +7,7 @@ SceneGame::SceneGame(GameManager* game_)
 
 	game = game_;
 
-	IO.ReadFileToUMap(*keywordsMap, "TextFiles/keywords.csv");
+	IO.ReadFileToUMap(*keywordsMap, "TextFiles/keywords.txt");
 	LoadAssets();
 	OnCreate();
 }
@@ -33,9 +33,6 @@ void SceneGame::OnDestroy()
 
 void SceneGame::Update()
 {
-	//RESET SCREEN
-	cFormat.ClearScreen();
-
 	//Select starter ship once
 	while(!starterShpSelected)
 		SelectStarterShip();
@@ -168,7 +165,10 @@ void SceneGame::LoadAssets()
 void SceneGame::GetUserInput()
 {
 	//USER INPUT
-	std::cout << "\nCOMMAND -> ";
+	if(attackFlag)
+		std::cout << "\nATTACK COMMAND -> ";
+	else
+		std::cout << "\nCOMMAND -> ";
 	IO.GetUserInput(*userInput);
 }
 
@@ -179,6 +179,9 @@ void SceneGame::KeywordSelection()
 	auto  missile = player->GetComponent<MissileComponent>();
 	auto launcher = player->GetComponent<MissileLauncherComponent>();
 	int missileVectorPosition = 0;
+	int amountToBeArmed = 0;
+	int siloNumber = 0;
+	bool missilesArmed = false;
 
 	//Find the keyword
 	for (auto i : *keywordsMap)
@@ -210,12 +213,59 @@ void SceneGame::KeywordSelection()
 		PlayerAttack();
 		return;
 		break;
+	case Keywords::Arm_Missile:
+
+		if (!player->GetComponent<MissileLauncherComponent>()->GetIsLauncherEmpty())
+		{
+			
+		}
+		else
+			std::cout << "\n No Missiles In Silos.\n";
+		
+
+		break;
+
 	case Keywords::Missile_Launcher:
 		if (!attackFlag)
-			break;
-		if (player->GetComponent<MissileComponent>())
 		{
-			player->ListMissileComponents();
+			goto COMMANDERROR;
+		}
+
+		if (player->GetComponent<MissileLauncherComponent>()->GetVacantSiloAmount() < player->GetComponent<MissileLauncherComponent>()->GetSiloMaxSize())
+		{
+			int missilesLoaded = (player->GetComponent<MissileLauncherComponent>()->GetSiloMaxSize() - player->GetComponent<MissileLauncherComponent>()->GetVacantSiloAmount());
+			while (missilesLoaded > 0)
+			{
+				auto missile = player->GetComponent<MissileComponent>();
+				
+				if (missile->GetArmedStatus() == true && missile->GetSiloNumber() != -1)
+				{
+					if (player->GetComponent<MissileLauncherComponent>()->LaunchMissiles(*missile))
+					{
+						player->RemoveComponent<MissileComponent>();
+						attackFlag = false;
+					}
+							
+				}
+				else if(missile->GetSiloNumber() != -1)
+				{
+					int missilePos = player->GetComponentPosition<MissileComponent>();
+					player->PushComponentToEnd(missilePos);
+					missilesLoaded--;
+				}
+				
+				if (missilesLoaded == 0)
+				{
+					std::cout << "\n Missiles are not armed!";
+					attackFlag = false;
+				}
+			}
+			
+		}
+		else
+		{
+			std::cout << "\n NO MISSILES ARE LOADED!";
+			attackFlag = false;
 		}
 		break;
 	case Keywords::Missile:
@@ -241,9 +291,9 @@ void SceneGame::KeywordSelection()
 	case Keywords::Silo_Status:
 		if (player->GetComponent<MissileLauncherComponent>() != nullptr)
 		{
+			player->GetComponent<MissileLauncherComponent>()->GetSiloStatus(player.get());
 
-			player->GetComponent<MissileLauncherComponent>()->GetSiloStatus();
-
+			
 		}
 		else
 			std::cout << "\n\t YOU DO NOT HAVE A MISSILE LAUNCHER ARMAMENT. \n";
@@ -251,36 +301,20 @@ void SceneGame::KeywordSelection()
 		break;
 	LOADMISSILE:
 	case Keywords::Load_Missile:
-		if (missile != nullptr && launcher != nullptr)
+		while(!player->GetComponent<MissileLauncherComponent>()->LoadMissile(player->GetComponent<MissileComponent>().get()))
 		{
-			if (missile->CheckIfLoaded() == false)
-			{
-				player->GetComponent<MissileLauncherComponent>()->LoadMissile(*missile);
-				break;
-			}
-			else if (player->GetComponent<MissileLauncherComponent>()->GetVacantSiloAmount() > 0)
-			{
-				missileVectorPosition = player->GetComponentPosition<MissileComponent>();
-				player->PushComponentToEnd(missileVectorPosition);
-				missile = player->GetComponent<MissileComponent>();
-				goto LOADMISSILE;
-
-			}
-			else
-			{
-				std::cout << "\n\t SILOS ARE ALL LOADED.\n";
-			}
+			auto missilePOS = player->GetComponentPosition<MissileComponent>();
+			player->PushComponentToEnd(missilePOS);
 		}
+
 		break;
+COMMANDERROR:
 	default:
 		cFormat.SetColour(12);
 		std::cout << "\nCommand Not Recognized\n";
 		cFormat.SetColour(7);
-		return;
 		break;
 	}
-
-	cFormat.Pause();
 }
 
 
@@ -293,7 +327,7 @@ void SceneGame::PlayerAttack()
 
 	*question = "\nWhat armament would you like to attack with?\n";
 	
-	player->GetArmamentComponents(*question);
+	player->GetArmamentComponentsToString(*question);
 	while ((pos = question->find(delimiter)) != std::string::npos) {
 		
 		token = question->substr(0, pos);

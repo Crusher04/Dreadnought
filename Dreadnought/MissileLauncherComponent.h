@@ -1,5 +1,6 @@
 #pragma once
 #include "Component.h"
+#include "Battleship.h"
 #include "MissileComponent.h"
 #include "DiceRoller.h"
 #include <unordered_map>
@@ -7,14 +8,15 @@
 class MissileLauncherComponent :  public Component
 {
 protected:
-	std::unordered_map<int, bool> silos;
+	std::unordered_map<int, std::string> silos;
 	Armament launcherType;
 	DiceRoller dRoller;
-
+	bool isLauncherEmpty;
+	
 public:
 
 	/// <summary>
-	/// Missile Launcher Constructor. Passes through laucnher type. 
+	/// Missile Launcher Constructor. Passes through launcher type. 
 	/// 4, 6, or 8 silos. 
 	/// </summary>
 	/// <param name="launcherType_"></param>
@@ -25,25 +27,19 @@ public:
 	/// Load Missile onto silo. Select silo based on launcher type.
 	/// </summary>
 	/// <param name="silo"></param>
-	void LoadMissile(MissileComponent &missile);
+	bool LoadMissile(MissileComponent* missile	);
 
 	/// <summary>
 	/// Expendes all missile silos
 	/// </summary>
-	void LaunchMissiles();
+	bool LaunchMissiles(MissileComponent &missile);
 
 	/// <summary>
 	/// Returns the amount of vacant slots for missiles.
 	/// </summary>
-	/// <returns>launcherSlot[0] as an int</returns>
+	/// <returns>amount as an int</returns>
 	const int GetVacantSiloAmount() {
-		int amount = 0;
-		for (auto silo : silos)
-		{
-			if (!silo.second)
-				amount++;
-		}
-		return amount;
+		return 0;
 	}
 
 	/// <summary>
@@ -51,15 +47,29 @@ public:
 	/// </summary>
 	/// <param name="silo"></param>
 	/// <returns>a bool of true if the silo is used or false if silo is empty. Can return NULL if wrong silo number has been passed.</returns>
-	const void GetSiloStatus() {
-		
-		for (auto silo : silos)
-		{
-			if(silo.second)
-				std::cout << "\n Silo #" << silo.first + 1 << ": " << "LOADED.";
-			else
-				std::cout << "\n Silo #" << silo.first + 1 << ": " << "VACANT.";
-		}
+	const void GetSiloStatus(Battleship* ship);
+	
+
+	/// <summary>
+	/// Returns the amount of silos in this launcher. 
+	/// </summary>
+	/// <returns> silos.size() as an size_t </returns>
+	const size_t GetSiloMaxSize() {
+		return silos.size();
 	}
+
+	/// <summary>
+	/// Gets boolean flag that tells us if the launcher has missiles or not
+	/// </summary>
+	/// <returns></returns>
+	const bool GetIsLauncherEmpty() { return isLauncherEmpty; }
+
+	/// <summary>
+	/// Arms Missiles in silo
+	/// </summary>
+	/// <param name="missile"></param>
+	/// <returns>returns bool value if successful (true) or not successful (false)</returns>
+	bool ArmMissileInSilo(MissileComponent* missile);
+	
 };
 

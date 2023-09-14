@@ -7,10 +7,12 @@ class MissileComponent :
 protected:
     Armament missileType;
     bool armed;
-    bool loaded = false;
+    bool loaded;
     DiceType damageDice;
     int rangeOfAttack;
     int diceMultiplier;
+    int siloNumber;
+    int missileNumber;
 
 public:
 
@@ -42,7 +44,7 @@ public:
     /// <summary>
     /// Sets loaded bool to true
     /// </summary>
-    void LoadMissile() { loaded = true; }
+    void LoadMissile(int siloNumber_) { loaded = true; siloNumber = siloNumber_; }
 
     /// <summary>
     /// const Return of the missileType as enum armament.
@@ -78,9 +80,9 @@ public:
     const bool CheckIfLoaded() { return loaded; }
 
     /// <summary>
-    /// Returns the name of the missile.
+    /// Returns which silo the missile is loaded in.
     /// </summary>
-    /// <returns>name as std::string</returns>
-    const std::string GetName() { return name; }
+    /// <returns>siloNumber as int</returns>
+    const int GetSiloNumber() { return siloNumber; }
 };
 

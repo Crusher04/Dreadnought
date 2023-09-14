@@ -5,6 +5,7 @@ class MissileStorageComponent :
 {
 protected:
     int storage;
+
 public:
 
     /// <summary>

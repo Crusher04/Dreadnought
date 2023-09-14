@@ -167,6 +167,7 @@ bool Battleship::AddComponentChecker(Ref<Component> component_)
 		if (missileCapacity[1] < missileCapacity[0])
 		{
 			missileCapacity[1] += 1;
+			
 			return true;
 		}
 		else

@@ -73,18 +73,20 @@ void AdvancedIO::ReadFileToUMap(std::unordered_map<std::string, Keywords> &keywo
 			key = Keywords::Attack;
 		else if (stringVar == "move")
 			key = Keywords::Move;
-		else if (stringVar == "silostatus")
+		else if (stringVar == "silostatus" || stringVar == "launcherstatus")
 			key = Keywords::Silo_Status;
 		else if (stringVar == "loadmissile")
 			key = Keywords::Load_Missile;
-		else if (stringVar == "antishipmissile" || stringVar == "antishiptorpedo" || stringVar == "supersoniccruisemissile" 
+		else if (stringVar == "antishipmissile" || stringVar == "antishiptorpedo" || stringVar == "supersoniccruisemissile"
 			|| stringVar == "cruisemissile")
 			key = Keywords::Missile;
-		else if (stringVar == "navalbattery" || stringVar == "navalbattery250mm" || stringVar == "navalbattery250" || stringVar == "navalbattery400" 
+		else if (stringVar == "navalbattery" || stringVar == "navalbattery250mm" || stringVar == "navalbattery250" || stringVar == "navalbattery400"
 			|| stringVar == "navalbattery400mm" || stringVar == "naval" || stringVar == "battery")
 			key = Keywords::Naval_Battery;
 		else if (stringVar == "missile" || stringVar == "missilelauncher" || stringVar == "launcher")
 			key = Keywords::Missile_Launcher;
+		else if (stringVar == "armmissile")
+			key = Keywords::Arm_Missile;
 
 		keywordMap.insert({ stringVar, key });
 	}
