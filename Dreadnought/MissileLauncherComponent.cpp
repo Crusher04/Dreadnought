@@ -100,15 +100,15 @@ const void MissileLauncherComponent::GetSiloStatus(Battleship* ship)
 			
 			if (ship->GetComponent<MissileComponent>()->GetSiloNumber() == silo.first && ship->GetComponent<MissileComponent>()->GetArmedStatus())
 			{
-				std::cout << "\n " << ship->GetComponent<MissileComponent>()->GetName() << " in Silo " << silo.first + 1 << " is ARMED\n";
+				std::cout << "\n\t" << ship->GetComponent<MissileComponent>()->GetName() << " in Silo " << silo.first + 1 << " is ARMED\n";
 			}
 			else if (ship->GetComponent<MissileComponent>()->GetSiloNumber() == silo.first && !ship->GetComponent<MissileComponent>()->GetArmedStatus())
 			{
-				std::cout << "\n" << ship->GetComponent<MissileComponent>()->GetName() << " in Silo " << silo.first + 1 << " is ON STANDBY\n";
+				std::cout << "\n\t" << ship->GetComponent<MissileComponent>()->GetName() << " in Silo " << silo.first + 1 << " is ON STANDBY\n";
 
 			}
 			else if (silo.second.compare("") == 0)
-				std::cout << "\n Silo " << silo.first + 1 << " is Empty\n";
+				std::cout << "\n\tSilo " << silo.first + 1 << " is Empty\n";
 			
 			ship->PushComponentToEnd(ship->GetComponentPosition<MissileComponent>());
 
@@ -117,18 +117,30 @@ const void MissileLauncherComponent::GetSiloStatus(Battleship* ship)
 	
 }
 
-bool MissileLauncherComponent::ArmMissileInSilo(MissileComponent* missile)
+bool MissileLauncherComponent::ArmMissileInSilo(Battleship* ship, int silo)
 {
 	
-
-	for (auto silo : silos)
+	int siloNum = silo - 1;
+	
+	if (silos.at(siloNum).compare("") == 0)
 	{
-		if (!missile->GetArmedStatus() && missile->GetSiloNumber() == silo.first)
-		{
-			missile->ArmMissile();
-			std::cout << "\n\t" << missile->GetName() << " is Armed in Silo " << missile->GetSiloNumber() + 1;
-			return true;
-		}
+		std::cout << "\n Silo Is Not Loaded!\n";
+		return false;
+	}
+
+	while (ship->GetComponent<MissileComponent>()->GetSiloNumber() != siloNum)
+		ship->PushComponentToEnd(ship->GetComponentPosition<MissileComponent>());
+
+	auto missile = ship->GetComponent<MissileComponent>();
+
+
+	if (missile->GetArmedStatus())
+		std::cout << "\n\tMissile already armed.\n";
+	else
+	{
+		ship->GetComponent<MissileComponent>()->ArmMissile();
+		std::cout << "\n Missile " << missile->GetName() << " in Silo " << missile->GetSiloNumber() + 1 << " is ARMED\n";
+		return true;
 	}
 	return false;
 }

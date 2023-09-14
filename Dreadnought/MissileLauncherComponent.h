@@ -69,7 +69,7 @@ public:
 	/// </summary>
 	/// <param name="missile"></param>
 	/// <returns>returns bool value if successful (true) or not successful (false)</returns>
-	bool ArmMissileInSilo(MissileComponent* missile);
+	bool ArmMissileInSilo(Battleship* ship, int silo);
 	
 };
 

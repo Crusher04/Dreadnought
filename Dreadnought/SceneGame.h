@@ -41,16 +41,20 @@ public:
 	void GetUserInput();
 	void KeywordSelection();
 	void PlayerAttack();
+	void PlayerArmingMissile();
 	void TypeWrite(std::string s, int speed);
 
 private:
+
+	//Flags
 	bool starterShpSelected = false;
 	bool helpFlag = false;
 	bool moveFlag = false;
 	bool endTurn = false;
 	bool aiOldPosFlag = false;
 	bool attackFlag = false;
-	
+	bool armMissileFlag = false;
+
 	Board theBoard;
 	std::shared_ptr<Battleship> player;
 	std::unique_ptr<std::unordered_map<std::string, Keywords>> keywordsMap = std::make_unique<std::unordered_map<std::string, Keywords>>();

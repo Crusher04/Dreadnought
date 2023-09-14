@@ -167,6 +167,8 @@ void SceneGame::GetUserInput()
 	//USER INPUT
 	if(attackFlag)
 		std::cout << "\nATTACK COMMAND -> ";
+	else if(armMissileFlag)
+		std::cout << "\ARMING MISSILE COMMAND -> ";
 	else
 		std::cout << "\nCOMMAND -> ";
 	IO.GetUserInput(*userInput);
@@ -206,6 +208,7 @@ void SceneGame::KeywordSelection()
 		break;
 	case Keywords::Back:
 		attackFlag = false;
+		armMissileFlag = false;
 		return;
 		break;
 	case Keywords::Attack:
@@ -213,15 +216,11 @@ void SceneGame::KeywordSelection()
 		PlayerAttack();
 		return;
 		break;
+
+ARMINGMISSILECOMMAND:
 	case Keywords::Arm_Missile:
 
-		if (!player->GetComponent<MissileLauncherComponent>()->GetIsLauncherEmpty())
-		{
-			
-		}
-		else
-			std::cout << "\n No Missiles In Silos.\n";
-		
+		PlayerArmingMissile();
 
 		break;
 
@@ -230,43 +229,10 @@ void SceneGame::KeywordSelection()
 		{
 			goto COMMANDERROR;
 		}
+		else 
+		{
+		}
 
-		if (player->GetComponent<MissileLauncherComponent>()->GetVacantSiloAmount() < player->GetComponent<MissileLauncherComponent>()->GetSiloMaxSize())
-		{
-			int missilesLoaded = (player->GetComponent<MissileLauncherComponent>()->GetSiloMaxSize() - player->GetComponent<MissileLauncherComponent>()->GetVacantSiloAmount());
-			while (missilesLoaded > 0)
-			{
-				auto missile = player->GetComponent<MissileComponent>();
-				
-				if (missile->GetArmedStatus() == true && missile->GetSiloNumber() != -1)
-				{
-					if (player->GetComponent<MissileLauncherComponent>()->LaunchMissiles(*missile))
-					{
-						player->RemoveComponent<MissileComponent>();
-						attackFlag = false;
-					}
-							
-				}
-				else if(missile->GetSiloNumber() != -1)
-				{
-					int missilePos = player->GetComponentPosition<MissileComponent>();
-					player->PushComponentToEnd(missilePos);
-					missilesLoaded--;
-				}
-				
-				if (missilesLoaded == 0)
-				{
-					std::cout << "\n Missiles are not armed!";
-					attackFlag = false;
-				}
-			}
-			
-		}
-		else
-		{
-			std::cout << "\n NO MISSILES ARE LOADED!";
-			attackFlag = false;
-		}
 		break;
 	case Keywords::Missile:
 		break;
@@ -288,6 +254,7 @@ void SceneGame::KeywordSelection()
 			dRoller.RollDice(player->GetComponent<NavalBatteriesComponent>()->GetDamageDice());
 		}
 		break;
+SILOSTATUSCOMMAND:
 	case Keywords::Silo_Status:
 		if (player->GetComponent<MissileLauncherComponent>() != nullptr)
 		{
@@ -298,15 +265,19 @@ void SceneGame::KeywordSelection()
 		else
 			std::cout << "\n\t YOU DO NOT HAVE A MISSILE LAUNCHER ARMAMENT. \n";
 
+		if (armMissileFlag)
+		{
+			goto ARMINGMISSILECOMMAND;
+		}
+
 		break;
-	LOADMISSILE:
 	case Keywords::Load_Missile:
+
 		while(!player->GetComponent<MissileLauncherComponent>()->LoadMissile(player->GetComponent<MissileComponent>().get()))
 		{
 			auto missilePOS = player->GetComponentPosition<MissileComponent>();
 			player->PushComponentToEnd(missilePOS);
 		}
-
 		break;
 COMMANDERROR:
 	default:
@@ -342,6 +313,43 @@ void SceneGame::PlayerAttack()
 		KeywordSelection();
 	}
 }
+
+void SceneGame::PlayerArmingMissile()
+{
+	if (!player->GetComponent<MissileLauncherComponent>()->GetIsLauncherEmpty())
+	{
+		armMissileFlag = true;
+		while (armMissileFlag)
+		{
+			std::cout << "\nWhich Silo Are You Arming? (Enter the silo number)\n\n";
+			GetUserInput();
+			std::string::size_type sz;
+			std::string userNum = *userInput;
+			if (userNum.length() > 2)
+				KeywordSelection();
+			else 
+			{
+				int userNumInt = std::stoi(userNum, &sz);
+
+				if (userNumInt > player->GetComponent<MissileLauncherComponent>()->GetSiloMaxSize())
+				{
+					std::cout << "\n Incorrect Silo Number! Missile Launcher has "
+						<< player->GetComponent<MissileLauncherComponent>()->GetSiloMaxSize() << " Silos Only.";
+				}
+				else
+				{
+					if (player->GetComponent<MissileLauncherComponent>()->ArmMissileInSilo(player.get(), userNumInt))
+						armMissileFlag = false;
+				}
+
+			}
+		}
+
+	}
+	else
+		std::cout << "\n No Missiles In Silos.\n";
+}
+
 
 void SceneGame::TypeWrite(std::string s, int speed)
 {
