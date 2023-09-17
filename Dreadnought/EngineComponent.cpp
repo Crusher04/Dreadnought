@@ -40,6 +40,8 @@ void EngineComponent::SetSpawn(int x, int y)
 {
 	position[0] = x;
 	position[1] = y;
+
+	isSpawned = true;
 }
 
 void EngineComponent::DecrementMovement()
@@ -48,10 +50,43 @@ void EngineComponent::DecrementMovement()
 		movement -= 5;
 }
 
-void EngineComponent::MoveShip(int x, int y)
+void EngineComponent::MoveShip(MovementDirection direction)
 {
-	position[0] = x;
-	position[1] = y;
+	if (movement > 0)
+	{
+		switch (direction)
+		{
+		case MovementDirection::UP:
+			position[1] -= 1;
+			break;
+		case MovementDirection::DOWN:
+			position[1] += 1;
+			break;
+		case MovementDirection::LEFT:
+			position[0] -= 1;
+			break;
+		case MovementDirection::RIGHT:
+			position[0] += 1;
+
+			break;
+		}
+
+		DecrementMovement();
+	}
+	else
+	{
+		std::cout << "\n\t No Movement Left.\n";
+	}
+	
+}
+
+void EngineComponent::MoveShip(MovementDirection direction, int distance)
+{
+}
+
+void EngineComponent::ResetMovemnt()
+{
+	movement = defaultNauticalMiles;
 }
 
 void EngineComponent::ChangeEngineType(EngineType eType)

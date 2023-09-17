@@ -132,11 +132,12 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="AdvancedIO.cpp" />
+    <ClCompile Include="AIController.cpp" />
     <ClCompile Include="Battleship.cpp" />
     <ClCompile Include="CommandCenterComponent.cpp" />
     <ClCompile Include="DiceRoller.cpp" />
     <ClCompile Include="Dreadnought.cpp" />
-    <ClCompile Include="Board.cpp" />
+    <ClCompile Include="BoardUI.cpp" />
     <ClCompile Include="ConsoleFormatting.cpp" />
     <ClCompile Include="EngineComponent.cpp" />
     <ClCompile Include="GameManager.cpp" />
@@ -151,8 +152,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AdvancedIO.h" />
+    <ClInclude Include="AIController.h" />
     <ClInclude Include="Battleship.h" />
-    <ClInclude Include="Board.h" />
+    <ClInclude Include="BoardUI.h" />
     <ClInclude Include="CommandCenterComponent.h" />
     <ClInclude Include="Component.h" />
     <ClInclude Include="ConsoleFormatting.h" />

@@ -5,6 +5,7 @@
 #include "DiceRoller.h"
 #include <unordered_map>
 #include <iostream>
+#include <sstream>
 class MissileLauncherComponent :  public Component
 {
 protected:
@@ -13,7 +14,8 @@ protected:
 	DiceRoller dRoller;
 	bool isLauncherEmpty;
 	int siloCounter;
-	
+	std::stringstream message;
+
 public:
 
 	/// <summary>

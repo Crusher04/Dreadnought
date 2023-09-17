@@ -51,7 +51,16 @@ public:
 	/// </summary>
 	/// <param name="x"></param>
 	/// <param name="y"></param>
-	void MoveShip(int x, int y);
+	void MoveShip(MovementDirection direction);
+
+	/// <summary>
+	/// Sets new position of ship with how far the ship wants to go
+	/// </summary>
+	/// <param name="direction"></param>
+	/// <param name="distance"></param>
+	void MoveShip(MovementDirection direction, int distance);
+
+	void ResetMovemnt();
 
 	void ChangeEngineType(EngineType eType);
 

@@ -2,6 +2,7 @@
 #include "MissileStorageComponent.h"
 #include "MissileComponent.h"
 #include "MissileLauncherComponent.h"
+#include "EngineComponent.h"
 
 void Battleship::InitializeCapacities()
 {
@@ -52,8 +53,9 @@ void Battleship::InitializeCapacities()
 }
 
 Battleship::Battleship(ActorType aType):shipType{Ships::UNDEFINEDSHIP}, thisActor{ActorType::UNDEFINEDACTOR}, isAlive{true}, isSinking{false},
-										onFire{false}, onboardWaterAmount{NULL}
+onFire{ false }, onboardWaterAmount{ NULL }
 {
+	
 	thisActor = aType;
 }
 
@@ -208,5 +210,7 @@ void Battleship::PrintCapacities()
 		<< "\nMissiles: " << missileCapacity[1] << "/" << missileCapacity[0]
 		<< "\nJets: " << jetCapacity[1] << "/" << jetCapacity[0] << "\n";
 }
+
+
 
 

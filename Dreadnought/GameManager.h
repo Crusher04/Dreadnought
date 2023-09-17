@@ -1,7 +1,6 @@
 #pragma once
 #ifndef GAMEMANAGER_H
 #define GAMEMANAGER_H
-#include "Board.h"
 #include "Battleship.h"
 #include "ConsoleFormatting.h"
 #include "Scene.h"

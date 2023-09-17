@@ -26,5 +26,5 @@ protected:
 	InventoryType componentType;
 	ActionType componentAction;
 	std::string name;
-	
+
 };

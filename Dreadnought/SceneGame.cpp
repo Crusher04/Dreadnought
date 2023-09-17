@@ -1,10 +1,9 @@
 #include "SceneGame.h"
-#include "Enums.h"
 SceneGame::SceneGame(GameManager* game_)
 {
 	// Providing a seed value
 	std::srand((unsigned)time(NULL));
-
+	
 	game = game_;
 
 	IO.ReadFileToUMap(*keywordsMap, "TextFiles/keywords.txt");
@@ -40,6 +39,8 @@ void SceneGame::Update()
 	//Always pull updates to battleship from components
 	player->UpdateFromComponents();
 
+	cFormat.ClearScreen();
+	theBoard.Render();
 	GetUserInput();
 	KeywordSelection();
 }
@@ -99,7 +100,7 @@ void SceneGame::SelectStarterShip()
 		player->AddComponent<MissileStorageComponent>(Subsystems::MISSILE_STORAGE_15);
 		player->UpdateFromComponents();	//IF you dont update battleship capacities the missiles wont be added!!
 		
-		for (int i = 0; i < 1; i++)
+		for (int i = 0; i < 10; i++)
 			player->AddComponent<MissileComponent>(Armament::AntiShipMissile);
 
 		player->AddComponent<NavalBatteriesComponent>(Armament::NavalBattery250mm, 2);
@@ -164,25 +165,32 @@ void SceneGame::LoadAssets()
 
 void SceneGame::GetUserInput()
 {
+	//print console message
+	std::cout << "\n" << player->GetConsoleMessage() << "\n";
+	
 	//USER INPUT
 	if(attackFlag)
 		std::cout << "\nATTACK COMMAND -> ";
 	else if(armMissileFlag)
-		std::cout << "\ARMING MISSILE COMMAND -> ";
+		std::cout << "\nARMING MISSILE COMMAND -> ";
 	else
 		std::cout << "\nCOMMAND -> ";
+
 	IO.GetUserInput(*userInput);
+	holdClearScreen = false;
+
 }
 
 void SceneGame::KeywordSelection()
 {
-	//Variable
+	player->SetConsoleMessage("");
+	//Variables must be declared before the switch:case statements due to goto jump statments
 	Keywords key = Keywords::KEYWORD_NULL;
 	auto  missile = player->GetComponent<MissileComponent>();
 	auto launcher = player->GetComponent<MissileLauncherComponent>();
 	int siloNumber = 0, amountOfMissiles = 0, amountToBeArmed = 0;
 	bool missilesArmed = false;
-
+	char test;
 	//Find the keyword
 	for (auto i : *keywordsMap)
 	{
@@ -192,6 +200,14 @@ void SceneGame::KeywordSelection()
 			break;
 		}
 	}
+
+	//DEBUG ONLY
+	if (userInput->compare("pos") == 0)
+	{
+		IO.PrintCursorPos();
+	
+	}
+
 
 	//Filter through keyword actions
 	switch (key)
@@ -203,15 +219,23 @@ void SceneGame::KeywordSelection()
 		return;
 		break;
 	case Keywords::Menu:
+		attackFlag = false;
+		armMissileFlag = false;
+		launchMissileFlag = false;
+		holdClearScreen = false;
+		game->BuildScene(SCENENUMBER::SCENE_MAINMENU);
+		return;
 		break;
 	case Keywords::Back:
 		attackFlag = false;
 		armMissileFlag = false;
 		launchMissileFlag = false;
+		holdClearScreen = false;
 		return;
 		break;
 	case Keywords::Attack:
 		attackFlag = true;
+		holdClearScreen = true;
 		PlayerAttack();
 		return;
 		break;
@@ -219,6 +243,7 @@ void SceneGame::KeywordSelection()
 ARMINGMISSILECOMMAND:
 	case Keywords::Arm_Missile:
 		armMissileFlag = true;
+		holdClearScreen = true;
 		PlayerArmingOrLaunchingMissile();
 		break;
 LAUNCHMISSILECOMMAND:
@@ -233,6 +258,7 @@ LAUNCHMISSILECOMMAND:
 		else 
 		{
 			launchMissileFlag = true;
+			holdClearScreen = true;
 			PlayerArmingOrLaunchingMissile();
 		}
 		break;
@@ -256,8 +282,8 @@ LAUNCHMISSILECOMMAND:
 			dRoller.RollDice(player->GetComponent<NavalBatteriesComponent>()->GetDamageDice());
 		}
 		break;
-SILOSTATUSCOMMAND:
 	case Keywords::Silo_Status:
+		holdClearScreen = true;
 		if (player->GetComponent<MissileLauncherComponent>() != nullptr)
 		{
 			player->GetComponent<MissileLauncherComponent>()->GetSiloStatus(player.get());
@@ -274,6 +300,7 @@ SILOSTATUSCOMMAND:
 
 		break;
 	case Keywords::Load_Missile:
+		holdClearScreen = true;
 		amountOfMissiles = player->GetAmountOfComponents<MissileComponent>();
 		
 		if (player->GetComponent<MissileComponent>())
@@ -294,6 +321,8 @@ COMMANDERROR:
 		cFormat.SetColour(12);
 		std::cout << "\nCommand Not Recognized\n";
 		cFormat.SetColour(7);
+		system("pause");
+		std::cout << "\n";
 		break;
 	}
 }

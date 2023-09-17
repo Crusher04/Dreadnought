@@ -1,6 +1,6 @@
 #pragma once
 #include "Scene.h"
-#include "Board.h"
+#include "BoardUI.h"
 #include "GameManager.h"
 #include "Enums.h"
 
@@ -9,6 +9,8 @@
 #include <fstream>
 #include <sstream>
 #include <string>
+
+#include "AIController.h"
 
 #include "Battleship.h"
 #include "EngineComponent.h"
@@ -19,8 +21,8 @@
 #include "NavalBatteriesComponent.h"
 #include "MissileLauncherComponent.h"
 
-
 #include "DiceRoller.h"
+
 class SceneGame: public Scene
 {
 
@@ -55,12 +57,17 @@ private:
 	bool attackFlag = false;
 	bool armMissileFlag = false;
 	bool launchMissileFlag = false;
+	bool holdClearScreen = false;
 
-	Board theBoard;
+	//Counters
+	int clearScreenCounter = 0;
+
+	BoardUI theBoard;
 	std::shared_ptr<Battleship> player;
 	std::unique_ptr<std::unordered_map<std::string, Keywords>> keywordsMap = std::make_unique<std::unordered_map<std::string, Keywords>>();
-
-	
 	DiceRoller dRoller;
+
+
+	AIController enemies;
 };
 

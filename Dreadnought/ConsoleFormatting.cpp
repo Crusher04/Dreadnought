@@ -7,6 +7,7 @@
 ConsoleFormatting::ConsoleFormatting()
 {
 	hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+	
 }
 
 void ConsoleFormatting::SetColour(int colour)

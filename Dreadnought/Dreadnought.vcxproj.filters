@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="Board.cpp">
+    <ClCompile Include="BoardUI.cpp">
       <Filter>Source</Filter>
     </ClCompile>
     <ClCompile Include="ConsoleFormatting.cpp">
@@ -46,13 +46,16 @@
     <ClCompile Include="NavalBatteriesComponent.cpp">
       <Filter>Source\Components</Filter>
     </ClCompile>
-    <ClCompile Include="DiceRoller.cpp" />
     <ClCompile Include="MissileLauncherComponent.cpp">
       <Filter>Source\Components</Filter>
     </ClCompile>
+    <ClCompile Include="DiceRoller.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="AIController.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Board.h">
+    <ClInclude Include="BoardUI.h">
       <Filter>Header</Filter>
     </ClInclude>
     <ClInclude Include="ConsoleFormatting.h">
@@ -103,10 +106,13 @@
     <ClInclude Include="NavalBatteriesComponent.h">
       <Filter>Header\Components</Filter>
     </ClInclude>
-    <ClInclude Include="DiceRoller.h" />
     <ClInclude Include="MissileLauncherComponent.h">
       <Filter>Header\Components</Filter>
     </ClInclude>
+    <ClInclude Include="DiceRoller.h">
+      <Filter>Header</Filter>
+    </ClInclude>
+    <ClInclude Include="AIController.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header">
