@@ -10,7 +10,7 @@ ConsoleFormatting cFormat;
 BoardUI::BoardUI() 
 {
 	//Initialize Variables
-	boardSize[0] = 75;
+	boardSize[0] = 92;
 	boardSize[1] = 25;
 	chunkDefault[0] = boardSize[0];
 	chunkDefault[1] = boardSize[1];
@@ -85,19 +85,46 @@ void BoardUI::Render(Battleship* player)
 		int amountOfSilos = player->GetComponent<MissileLauncherComponent>()->GetSiloMaxSize();
 		for (int i = 0; i < amountOfSilos; i++)
 		{
-			if (player->GetComponent<MissileComponent>()->GetSiloNumber() == i)
+			if (player->GetComponent<MissileLauncherComponent>()->GetSiloUMAP().at(i) != "")
 			{
-				if (player->GetComponent<MissileComponent>()->GetArmedStatus())
+				for (int j = 0; j < player->GetAmountOfComponents<MissileComponent>(); j++)
 				{
-					cFormat.SetColour(12);
-					std::cout << "0 ";
-					cFormat.SetColour(7);
+					if (player->GetComponent<MissileComponent>()->GetSiloNumber() == i)
+					{
+						if (player->GetComponent<MissileComponent>()->GetArmedStatus())
+						{
+							cFormat.SetColour(12);
+							std::cout << 0;
+							cFormat.SetColour(7);
+						}
+						else if(player->GetComponent<MissileComponent>()->CheckIfLoaded())
+						{
+							cFormat.SetColour(10);
+							std::cout << 0;
+							cFormat.SetColour(7);
+						}
+						break;
+					}
+					else
+					{
+						auto missilePOS = player->GetComponentPosition<MissileComponent>();
+						player->PushComponentToEnd(missilePOS);
+
+					}
 				}
-				
+			}
+			else
+			{
+				cFormat.SetColour(7);
+				std::cout << 0;
 			}
 		}
+
+		//Show missile quantity
+		cFormat.SetColour(7);
+		std::cout << " | Missile Quantity: " << player->GetAmountOfComponents<MissileComponent>();
 	}
-	
+		
 
 	//NEW LINE
 	std::cout << "\n";
