@@ -71,7 +71,7 @@ bool MissileLauncherComponent::LoadMissile(Battleship* ship)
 	for (auto silo : silos)
 	{
 		auto missile = ship->GetComponent<MissileComponent>();
-		int amountOfMisiles = ship->GetAmountOfComponents<MissileLauncherComponent>();
+		int amountOfMisiles = ship->GetAmountOfComponents<MissileComponent>();
 		message.str("");
 
 		if (missile->GetSiloNumber() == -1 && silo.second.compare("") == 0)
@@ -79,7 +79,7 @@ bool MissileLauncherComponent::LoadMissile(Battleship* ship)
 			if(isLauncherEmpty)
 				isLauncherEmpty = false;
 
-			missile->LoadMissile(silo.first);
+			ship->GetComponent<MissileComponent>()->LoadMissile(silo.first);
 			silos.at(silo.first).clear();
 			silos.at(silo.first).append(missile->GetName());
 

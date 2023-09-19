@@ -16,7 +16,7 @@ public:
 	const ActionType GetActionType() { return componentAction; }
 
 	/// <summary>
-	/// Gets the name of the battery. Generally this will just say if its 250mm or 400mm
+	/// Gets the name of the component
 	/// </summary>
 	/// <returns>name as std::string</returns>
 	std::string GetName() const { return name; }

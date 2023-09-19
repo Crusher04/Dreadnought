@@ -14,12 +14,15 @@ protected:
 	//Actor and Ship type
 	ActorType thisActor;
 	Ships shipType;
+	std::string shipName;
 
 	//Conditional Variables or flags
 	bool isAlive;
 	bool onFire;
 	bool isSinking;
 	int  onboardWaterAmount;
+	bool countingFlag = false;
+	int componentCounter = 0;
 
 	//Storage types {MaxCapacity, CapacityUsed}
 	int armamentCapacity[2] = { 0,0 };
@@ -147,14 +150,17 @@ public:
 	}
 
 	template<typename ComponentTemplate>
-	int GetAmountOfComponents() const {
-		int i = 0;
+	int GetAmountOfComponents() {
+		if (!countingFlag)
+			componentCounter = 0;
+		countingFlag = true;
 		for (auto component : components) {
 			if (dynamic_cast<ComponentTemplate*>(component.get()) != nullptr) {
-				i++;
+				componentCounter++;
 			}
 		}
-		return i;
+		countingFlag = false;
+		return componentCounter;
 	}
 
 	const void GetArmamentComponentsToString(std::string &s) {
@@ -168,6 +174,12 @@ public:
 		}
 	}
 	
+
+	/// <summary>
+	/// Returns the name of the ship.
+	/// </summary>
+	/// <returns></returns>
+	std::string GetShipName() const { return shipName; }
 
 	/// <summary>
 	/// Gets consoleMessage as a string

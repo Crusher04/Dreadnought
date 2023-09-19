@@ -15,6 +15,7 @@ void Battleship::InitializeCapacities()
 		subsystemCapacity[1] = 0;
 		itemCapacity[0] = 2;
 		itemCapacity[1] = 0;
+		shipName = "Dreadnought";
 		return;
 		break;
 	case Ships::SunkenLady:
@@ -24,6 +25,7 @@ void Battleship::InitializeCapacities()
 		subsystemCapacity[1] = 0;
 		itemCapacity[0] = 1;
 		itemCapacity[1] = 0;
+		shipName = "SunkenLady";
 		return;
 		break;
 	case Ships::Idris:
@@ -33,6 +35,7 @@ void Battleship::InitializeCapacities()
 		subsystemCapacity[1] = 0;
 		itemCapacity[0] = 2;
 		itemCapacity[1] = 0;
+		shipName = "Idris";
 		return;
 		break;
 	case Ships::SuperNova:
@@ -44,6 +47,7 @@ void Battleship::InitializeCapacities()
 		itemCapacity[1] = 0;
 		jetCapacity[0] = 6;
 		jetCapacity[1] = 0;
+		shipName = "SuperNova";
 		return;
 		break;
 	case Ships::Neptune:
@@ -61,7 +65,7 @@ onFire{ false }, onboardWaterAmount{ NULL }
 
 Battleship::~Battleship()
 {
-
+	shipName = "";
 }
 
 void Battleship::UpdateFromComponents()

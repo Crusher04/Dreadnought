@@ -17,13 +17,18 @@ CommandCenterComponent::~CommandCenterComponent()
 
 bool CommandCenterComponent::OnCreate(int health_, int armour_, int money_, int acDefence_)
 {
-	health = health_;
-	armour = armour_;
-	money = money_;
-	adsDefence = acDefence_;
-	isCreated = true;
+	if (isCreated == false)
+	{
+		health = health_;
+		maxHealth = health;
+		armour = armour_;
+		money = money_;
+		adsDefence = acDefence_;
+		isCreated = true;
+		return true;
+	}
 	
-	return true;
+	return false;
 }
 
 void CommandCenterComponent::TakeDamage(int damage)

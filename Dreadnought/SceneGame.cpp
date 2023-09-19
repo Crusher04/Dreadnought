@@ -40,7 +40,7 @@ void SceneGame::Update()
 	player->UpdateFromComponents();
 
 	cFormat.ClearScreen();
-	theBoard.Render();
+	theBoard.Render(player.get());
 	GetUserInput();
 	KeywordSelection();
 }
@@ -177,7 +177,6 @@ void SceneGame::GetUserInput()
 		std::cout << "\nCOMMAND -> ";
 
 	IO.GetUserInput(*userInput);
-	holdClearScreen = false;
 
 }
 
@@ -222,7 +221,6 @@ void SceneGame::KeywordSelection()
 		attackFlag = false;
 		armMissileFlag = false;
 		launchMissileFlag = false;
-		holdClearScreen = false;
 		game->BuildScene(SCENENUMBER::SCENE_MAINMENU);
 		return;
 		break;
@@ -230,12 +228,10 @@ void SceneGame::KeywordSelection()
 		attackFlag = false;
 		armMissileFlag = false;
 		launchMissileFlag = false;
-		holdClearScreen = false;
 		return;
 		break;
 	case Keywords::Attack:
 		attackFlag = true;
-		holdClearScreen = true;
 		PlayerAttack();
 		return;
 		break;
@@ -243,7 +239,6 @@ void SceneGame::KeywordSelection()
 ARMINGMISSILECOMMAND:
 	case Keywords::Arm_Missile:
 		armMissileFlag = true;
-		holdClearScreen = true;
 		PlayerArmingOrLaunchingMissile();
 		break;
 LAUNCHMISSILECOMMAND:
@@ -258,7 +253,6 @@ LAUNCHMISSILECOMMAND:
 		else 
 		{
 			launchMissileFlag = true;
-			holdClearScreen = true;
 			PlayerArmingOrLaunchingMissile();
 		}
 		break;
@@ -283,7 +277,6 @@ LAUNCHMISSILECOMMAND:
 		}
 		break;
 	case Keywords::Silo_Status:
-		holdClearScreen = true;
 		if (player->GetComponent<MissileLauncherComponent>() != nullptr)
 		{
 			player->GetComponent<MissileLauncherComponent>()->GetSiloStatus(player.get());
@@ -300,7 +293,6 @@ LAUNCHMISSILECOMMAND:
 
 		break;
 	case Keywords::Load_Missile:
-		holdClearScreen = true;
 		amountOfMissiles = player->GetAmountOfComponents<MissileComponent>();
 		
 		if (player->GetComponent<MissileComponent>())

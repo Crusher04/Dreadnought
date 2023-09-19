@@ -72,6 +72,9 @@ public:
 		return silos.size();
 	}
 
+	const std::unordered_map<int, std::string> GetSiloUMAP() { return silos; };
+
+
 	/// <summary>
 	/// Gets boolean flag that tells us if the launcher has missiles or not
 	/// </summary>
@@ -84,6 +87,7 @@ public:
 	/// <param name="missile"></param>
 	/// <returns>returns bool value if successful (true) or not successful (false)</returns>
 	bool ArmMissileInSilo(Battleship* ship, int silo);
+
 	
 };
 

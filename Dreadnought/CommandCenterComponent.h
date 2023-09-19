@@ -7,6 +7,7 @@ private:
 
 	//Class variables
 	int health;
+	int maxHealth;
 	int armour;
 	int money;
 	int adsDefence;
@@ -36,6 +37,7 @@ public:
 
 	const int GetArmour() { return armour; }
 	const int GetHealth() { return health; }
+	const int GetMaxHealth() { return maxHealth; }
 	const int GetADSDefence() { return adsDefence; }
 	const int GetMoney() { return money; }
 	const bool GetAction() { return action; }

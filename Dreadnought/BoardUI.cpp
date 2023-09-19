@@ -1,6 +1,9 @@
 #include "BoardUI.h"
 #include "ConsoleFormatting.h"
 #include "RadarComponent.h"
+#include "CommandCenterComponent.h"
+#include "EngineComponent.h"
+#include "MissileLauncherComponent.h"
 
 ConsoleFormatting cFormat;
 
@@ -15,18 +18,12 @@ BoardUI::BoardUI()
 	chunkPosition[1] = 1;
 }
 
-void BoardUI::MovePlayer(Battleship* player, MovementDirection direction)
-{
-
-	Render();
-}
-
-void BoardUI::Render()
+void BoardUI::Render(Battleship* player)
 {	
-	//space 
-	char space = 32;
+	//Header
 	std::cout << "\t\t\t MAP \n\t\t\t-----"; 
 
+	//Print out the board
 	for (int i = 0; i < boardSize[1]; i++)
 	{
 		cFormat.SetColour(7);
@@ -38,9 +35,111 @@ void BoardUI::Render()
 		}
 	}
 
+	//Set Colour back to normal, new line
+	cFormat.SetColour(7);
+	std::cout << "\n";
+	
+	
+	//Top Border for UI
+	for (int i = 0; i < boardSize[0]; i++)
+		std::cout << "-";
+
+	//Print ship name
+
+	std::cout << "\nShip Name: " << player->GetShipName();
+
+	/* **** Health **** */	
+	std::cout << " | Health: ";
+	
+	int maxHealth = player->GetComponent<CommandCenterComponent>()->GetMaxHealth();
+	int health = player->GetComponent<CommandCenterComponent>()->GetHealth();
+	
+	if ((maxHealth / health) < 2)
+	{
+		cFormat.SetColour(7);
+		std::cout << health;
+	}
+	else if ((maxHealth / health) < 4)
+	{
+		cFormat.SetColour(14);
+		std::cout << health;
+		
+	}
+	else
+	{
+		cFormat.SetColour(12);
+		std::cout << health;
+	}
+
+	//Reset Colour to white
+	cFormat.SetColour(7);
+
+	//Movement
+	std::cout << " | Movement: " << player->GetComponent<EngineComponent>()->GetMovement();
+
+	if (player->GetComponent<MissileLauncherComponent>().get() != nullptr)
+	{
+		//Silo Status
+		std::cout << "| Silo Status: "; 
+
+		int amountOfSilos = player->GetComponent<MissileLauncherComponent>()->GetSiloMaxSize();
+		for (int i = 0; i < amountOfSilos; i++)
+		{
+			if (player->GetComponent<MissileComponent>()->GetSiloNumber() == i)
+			{
+				if (player->GetComponent<MissileComponent>()->GetArmedStatus())
+				{
+					cFormat.SetColour(12);
+					std::cout << "0 ";
+					cFormat.SetColour(7);
+				}
+				
+			}
+		}
+	}
+	
+
+	//NEW LINE
+	std::cout << "\n";
+
+	//Actions
+	std::cout << "Action: ";
+	if (player->GetComponent<CommandCenterComponent>()->GetAction())
+	{
+		cFormat.SetColour(10);
+		std::cout << " AVAILABLE";
+	}
+	else
+	{
+		cFormat.SetColour(12);
+		std::cout << " NOT AVAILABLE";
+
+	}
+
+	//Reset colour
+	cFormat.SetColour(7);
+
+	//Bonus Actions
+	std::cout << " | Bonus Action: ";
+	if (player->GetComponent<CommandCenterComponent>()->GetBonusAction())
+	{
+		cFormat.SetColour(10);
+		std::cout << " AVAILABLE";
+	}
+	else
+	{
+		cFormat.SetColour(12);
+		std::cout << " NOT AVAILABLE";
+
+	}
+
+	//Reset colour
 	cFormat.SetColour(7);
 
 
+	//Bottom Border for UI
 	std::cout << "\n";
+	for (int i = 0; i < boardSize[0]; i++)
+		std::cout << "-";
 }
 

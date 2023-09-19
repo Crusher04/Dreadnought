@@ -57,7 +57,6 @@ private:
 	bool attackFlag = false;
 	bool armMissileFlag = false;
 	bool launchMissileFlag = false;
-	bool holdClearScreen = false;
 
 	//Counters
 	int clearScreenCounter = 0;
