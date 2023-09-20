@@ -6,7 +6,8 @@ SceneGame::SceneGame(GameManager* game_)
 	
 	game = game_;
 
-	IO.ReadFileToUMap(*keywordsMap, "TextFiles/keywords.txt");
+	IO.ReadKeywordFileToUMap(*keywordsMap, "TextFiles/keywords.txt");
+	IO.ReadCommandsFileToUMap(*commandsMap);
 	LoadAssets();
 	OnCreate();
 }
@@ -217,6 +218,10 @@ void SceneGame::KeywordSelection()
 		game->SetGameActive(false);
 		return;
 		break;
+	case Keywords::Commands:
+		cFormat.ClearScreen();
+		GoToCommandsHelp();
+		break;
 	case Keywords::Menu:
 		attackFlag = false;
 		armMissileFlag = false;
@@ -418,4 +423,25 @@ void SceneGame::TypeWrite(std::string s, int speed)
 		Sleep(speed);
 	}
 
+}
+
+void SceneGame::GoToCommandsHelp()
+{
+	//Create our command variable to hold the command
+	Commands command = Commands::COMMAND_NULL;
+
+	//Get user command
+	GetUserInput();
+
+	//find the command
+	for (auto i : *commandsMap)
+	{
+		if (*userInput == i.first)
+		{
+			command = i.second;
+			break;
+		}
+	}
+
+	
 }

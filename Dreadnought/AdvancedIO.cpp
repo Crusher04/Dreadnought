@@ -48,7 +48,7 @@ void AdvancedIO::PrintFromUMap(std::unordered_map<std::string, Keywords> &uMap)
 		std::cout << "\n" << i.first << "\n";
 }
 
-void AdvancedIO::ReadFileToUMap(std::unordered_map<std::string, Keywords> &keywordMap, std::string filename)
+void AdvancedIO::ReadKeywordFileToUMap(std::unordered_map<std::string, Keywords> &keywordMap, std::string filename)
 {
 	std::string stringVar;
 	std::ifstream myFile(filename);
@@ -88,10 +88,29 @@ void AdvancedIO::ReadFileToUMap(std::unordered_map<std::string, Keywords> &keywo
 			key = Keywords::Missile_Launcher;
 		else if (stringVar == "armmissile")
 			key = Keywords::Arm_Missile;
+		else if (stringVar == "commands")
+			key = Keywords::Commands;
 
 		keywordMap.insert({ stringVar, key });
 	}
 
 	myFile.close();
+}
+
+void AdvancedIO::ReadCommandsFileToUMap(std::unordered_map<std::string, Commands>& commandsMap)
+{
+	std::string stringVar;
+	std::ifstream myFile("TextFiles/commands.txt");
+	Keywords command;
+
+	while (!myFile.eof())
+	{
+		command = Keywords::KEYWORD_NULL;
+		std::getline(myFile, stringVar, '*');
+		std::cout << stringVar;
+	}
+
+	myFile.close();
+
 }
 

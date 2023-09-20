@@ -154,7 +154,15 @@ enum class Keywords {
 	Missile,
 	Naval_Battery,
 	Missile_Launcher,
-	Arm_Missile
+	Arm_Missile,
+	Commands
 
+};
+
+enum class Commands {
+	COMMAND_NULL,
+	Attack,
+	Move,
+	
 };
 #endif // !ENUM_H

@@ -45,6 +45,7 @@ public:
 	void PlayerAttack();
 	void PlayerArmingOrLaunchingMissile();
 	void TypeWrite(std::string s, int speed);
+	void GoToCommandsHelp();
 
 private:
 
@@ -64,6 +65,7 @@ private:
 	BoardUI theBoard;
 	std::shared_ptr<Battleship> player;
 	std::unique_ptr<std::unordered_map<std::string, Keywords>> keywordsMap = std::make_unique<std::unordered_map<std::string, Keywords>>();
+	std::unique_ptr<std::unordered_map<std::string, Commands>> commandsMap = std::make_unique<std::unordered_map<std::string, Commands>>();
 	DiceRoller dRoller;
 
 

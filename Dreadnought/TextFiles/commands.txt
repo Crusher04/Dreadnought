@@ -1,0 +1,88 @@
+COMMANDS
+--------
+To see more details of each command, type out the command.
+Type back to return out of command help. 
+--------
+> Move
+> Attack
+> Load Missile
+> Arm Missile
+> Silo Status
+> End / End Turn
+> Colour Legends
+> Jets / Jet
+> Deploy Jet
+> Prepare Defense
+> Items / Item
+> Ship Components / Ship Details
+> Attack Range
+
+--move
+MOVE COMMAND
+-------------
+This command allows your ship to move across the waters. Each Square is 5 Nautical Miles
+and takes 5 movement from your ship. To refresh your movement, you must end your turn.
+
+Command Variants:
+-Move Direction(UP, DOWN, LEFT, RIGHT)
+-Move Direction #(# is number of spaces in that direction)
+
+--attack
+ATTACK COMMAND
+---------------
+The attack command gives you a list of weaponry to choose from to attack the enemy ship.
+What is installed in the ship is what the player will be given to choose from.
+
+Command Variants:
+-Attack Weapon(Weapon is the weapon type; Missile Launcher, Naval Battery, etc)
+
+--load missile
+LOAD MISSILE COMMAND
+---------------------
+This command loads a random missile into the missile launcher silo
+
+--arm missile
+ARM MISSILE COMMAND
+--------------------
+This commands will allow you to arm a missile in one of the silos
+
+Command Variants:
+Arm Missile #(# is the silo number you'd like to arm)
+
+--silo status
+SILO STATUS COMMAND
+--------------------
+This command shows the status of each silo in your missile launcher. 
+
+--end turn
+END / END TURN
+---------------
+This command ends your turn and refreshes your movement and actions. 
+
+--jets
+Jets / Jet COMMAND
+-------------------
+This command shows you more commands for your jets, such as Deploy, Attack, Return to base / Land, and more
+
+Command Variants:
+- Command Jet
+- Command Jets
+- Select Jet
+- Select Jets
+
+--colour legends
+COLOUR LEGENDS COMMAND
+-----------------------
+This displays the meaning of different colours for each symbo. Like what red means for silo symbol in UI
+and why the enemy ship changes colour ( hint: changes colour wether its in range of attack or not)
+
+--deploy jet
+DEPLOY JET COMMAND
+-------------------
+Sends a jet into deployment status(Launches it into the air). This gives the jet the ability to defend or attack.
+Jets have limited time in the air before needing to refuel. 
+
+Command Variants:
+Launch Jet
+Launch Jets
+
