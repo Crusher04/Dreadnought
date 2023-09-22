@@ -1,4 +1,5 @@
 #include "SceneGame.h"
+
 SceneGame::SceneGame(GameManager* game_)
 {
 	// Providing a seed value
@@ -364,9 +365,20 @@ void SceneGame::PlayerArmingOrLaunchingMissile()
 				KeywordSelection();
 			else 
 			{
-				int userNumInt = std::stoi(userNum, &sz);
+				int userNumInt = 0;
 
-				if (userNumInt > player->GetComponent<MissileLauncherComponent>()->GetSiloMaxSize())
+				if (isdigit(userNum[0]))
+				{
+					userNumInt = std::stoi(userNum, &sz);
+				}
+				else
+				{
+					userNumInt = -1;
+				}
+
+				
+
+				if (userNumInt > player->GetComponent<MissileLauncherComponent>()->GetSiloMaxSize() || userNumInt == -1)
 				{
 					std::cout << "\n Incorrect Silo Number! Missile Launcher has "
 						<< player->GetComponent<MissileLauncherComponent>()->GetSiloMaxSize() << " Silos Only.\n";
@@ -390,7 +402,17 @@ void SceneGame::PlayerArmingOrLaunchingMissile()
 				KeywordSelection();
 			else
 			{
-				int userNumInt = std::stoi(userNum, &sz);
+				int userNumInt = 0;
+
+				if (isdigit(userNum[0]))
+				{
+					userNumInt = std::stoi(userNum, &sz);
+				}
+				else
+				{
+					userNumInt = -1;
+				}
+
 				if (userNumInt > player->GetComponent<MissileLauncherComponent>()->GetSiloMaxSize())
 				{
 					std::cout << "\n Incorrect Silo Number! Missile Launcher has "
