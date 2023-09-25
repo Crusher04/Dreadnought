@@ -18,7 +18,7 @@ Type back to return out of command help.
 > Attack Range
 
 *
-MOVE COMMAND
+MOVE COMMAND *
 -------------
 This command allows your ship to move across the waters. Each Square is 5 Nautical Miles
 and takes 5 movement from your ship. To refresh your movement, you must end your turn.

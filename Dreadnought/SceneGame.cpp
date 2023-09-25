@@ -172,15 +172,15 @@ void SceneGame::GetUserInput()
 	
 	//USER INPUT
 	if(attackFlag)
-		std::cout << "\nATTACK COMMAND -> ";
+		std::cout << "ATTACK COMMAND -> ";
 	else if(armMissileFlag)
-		std::cout << "\nARMING MISSILE COMMAND -> ";
+		std::cout << "ARMING MISSILE COMMAND -> ";
 	else
-		std::cout << "\nCOMMAND -> ";
+		std::cout << "COMMAND -> ";
 
 	IO.GetUserInput(*userInput);
 
-}
+}//End of GetUserInput()
 
 void SceneGame::KeywordSelection()
 {
@@ -216,6 +216,7 @@ void SceneGame::KeywordSelection()
 	case Keywords::Quit:
 		std::cout << "\n EXIT CONFIRMED. THANKS FOR PLAYING! \n";
 		attackFlag = false;
+		armMissileFlag = false;
 		game->SetGameActive(false);
 		return;
 		break;
@@ -357,7 +358,7 @@ void SceneGame::PlayerArmingOrLaunchingMissile()
 	{
 		while (armMissileFlag)
 		{
-			std::cout << "\n Which Silo Are You Arming? (Enter the silo number)\n\n";
+			std::cout << "\n Which Silo Are You Arming? (Enter the silo number)\n";
 			GetUserInput();
 			std::string::size_type sz;
 			std::string userNum = *userInput;
@@ -451,6 +452,11 @@ void SceneGame::GoToCommandsHelp()
 {
 	//Create our command variable to hold the command
 	Commands command = Commands::COMMAND_NULL;
+
+	for (auto j : *commandsMap)
+	{
+		
+	}
 
 	//Get user command
 	GetUserInput();

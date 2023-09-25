@@ -107,7 +107,14 @@ void AdvancedIO::ReadCommandsFileToUMap(std::unordered_map<std::string, Commands
 	{
 		command = Keywords::KEYWORD_NULL;
 		std::getline(myFile, stringVar, '*');
-		std::cout << stringVar;
+
+		if (stringVar == "move")
+		{
+			std::getline(myFile, stringVar, '*');
+			commandsMap.insert(stringVar.begin(), Commands::Move);
+			
+		}
+
 	}
 
 	myFile.close();
