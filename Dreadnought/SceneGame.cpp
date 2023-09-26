@@ -455,21 +455,39 @@ void SceneGame::GoToCommandsHelp()
 
 	for (auto j : *commandsMap)
 	{
-		
+		if (*userInput == "move")
+			command = Commands::Move;
+	}
+
+	switch (command)
+	{
+	case Commands::COMMAND_NULL:
+		break;
+	case Commands::Attack:
+		break;
+	case Commands::Move:
+		break;
+	case Commands::Load_Missile:
+		break;
+	case Commands::Arm_Missile:
+		break;
+	case Commands::Silo_Status:
+		break;
+	case Commands::End_Turn:
+		break;
+	case Commands::Jets:
+		break;
+	case Commands::Colour_Legend:
+		break;
+	case Commands::Deploy_Jets:
+		break;
+	case Commands::Prepare_Defense:
+		break;
+	default:
+		break;
 	}
 
 	//Get user command
 	GetUserInput();
-
-	//find the command
-	for (auto i : *commandsMap)
-	{
-		if (*userInput == i.first)
-		{
-			command = i.second;
-			break;
-		}
-	}
-
 	
 }

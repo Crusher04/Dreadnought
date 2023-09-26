@@ -163,6 +163,14 @@ enum class Commands {
 	COMMAND_NULL,
 	Attack,
 	Move,
+	Load_Missile,
+	Arm_Missile,
+	Silo_Status,
+	End_Turn,
+	Jets,
+	Colour_Legend,
+	Deploy_Jets,
+	Prepare_Defense
 	
 };
 #endif // !ENUM_H
