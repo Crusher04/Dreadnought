@@ -220,8 +220,7 @@ void SceneGame::KeywordSelection()
 		game->SetGameActive(false);
 		return;
 		break;
-	case Keywords::Commands:
-		cFormat.ClearScreen();
+	case Keywords::Help:
 		GoToCommandsHelp();
 		break;
 	case Keywords::Menu:
@@ -235,6 +234,7 @@ void SceneGame::KeywordSelection()
 		attackFlag = false;
 		armMissileFlag = false;
 		launchMissileFlag = false;
+		commandsHelpFlag = false;
 		return;
 		break;
 	case Keywords::Attack:
@@ -450,44 +450,108 @@ void SceneGame::TypeWrite(std::string s, int speed)
 
 void SceneGame::GoToCommandsHelp()
 {
-	//Create our command variable to hold the command
-	Commands command = Commands::COMMAND_NULL;
-
-	for (auto j : *commandsMap)
-	{
-		if (*userInput == "move")
-			command = Commands::Move;
-	}
-
-	switch (command)
-	{
-	case Commands::COMMAND_NULL:
-		break;
-	case Commands::Attack:
-		break;
-	case Commands::Move:
-		break;
-	case Commands::Load_Missile:
-		break;
-	case Commands::Arm_Missile:
-		break;
-	case Commands::Silo_Status:
-		break;
-	case Commands::End_Turn:
-		break;
-	case Commands::Jets:
-		break;
-	case Commands::Colour_Legend:
-		break;
-	case Commands::Deploy_Jets:
-		break;
-	case Commands::Prepare_Defense:
-		break;
-	default:
-		break;
-	}
-
-	//Get user command
-	GetUserInput();
+	commandsHelpFlag = true;
 	
+	while (commandsHelpFlag)
+	{
+		//Create our command variable to hold the command
+		Commands command = Commands::COMMAND_NULL;	
+
+		if (!commandsHelpIntroFlag)
+		{
+			cFormat.ClearScreen();
+			commandsHelpIntroFlag = true;
+			auto intro = *commandsMap;
+			std::cout << intro.find(Commands::Intro)->second;
+		}
+		
+		//Get User Input
+		if (commandsHelpIntroFlag)
+		{
+			GetUserInput();
+			if (*userInput == "back")
+			{
+				commandsHelpFlag = false;
+				return;
+			}
+			else if (*userInput == "exit" || *userInput == "quit")
+			{
+				commandsHelpFlag = false;
+				KeywordSelection();
+				return;
+			}
+		}
+
+		auto c = *commandsMap;
+		if (*userInput == "move")
+		{
+			if (c.contains(Commands::Move))
+				std::cout << c.find(Commands::Move)->second;
+		}
+		else if (*userInput == "attack")
+		{
+			if (c.contains(Commands::Attack))
+				std::cout << c.find(Commands::Attack)->second;
+
+		}
+		else if (*userInput == "loadmissile")
+		{
+			if (c.contains(Commands::Load_Missile))
+				std::cout << c.find(Commands::Load_Missile)->second;
+
+		}
+		else if (*userInput == "armmissile")
+		{
+			if (c.contains(Commands::Arm_Missile))
+				std::cout << c.find(Commands::Arm_Missile)->second;
+
+		}
+		else if(*userInput == "silostatus")
+		{
+			if (c.contains(Commands::Silo_Status))
+				std::cout << c.find(Commands::Silo_Status)->second;
+
+		}
+		else if (*userInput == "endturn")
+		{
+			if (c.contains(Commands::End_Turn))
+				std::cout << c.find(Commands::End_Turn)->second;
+
+		}
+		else if (*userInput == "jets")
+		{
+			if (c.contains(Commands::Jets))
+				std::cout << c.find(Commands::Jets)->second;
+
+		}
+		else if (*userInput == "colourlegend")
+		{
+			if (c.contains(Commands::Colour_Legend))
+				std::cout << c.find(Commands::Colour_Legend)->second;
+
+		}
+		else if (*userInput == "deployjets")
+		{
+			if (c.contains(Commands::Deploy_Jets))
+				std::cout << c.find(Commands::Deploy_Jets)->second;
+
+		}
+		else if (*userInput == "preparedefense")
+		{
+			if(c.contains(Commands::Prepare_Defense))
+				std::cout << c.find(Commands::Prepare_Defense)->second;
+
+		}
+		else
+		{
+			std::cout << "\n\tInvalid Command";
+		}
+
+		commandsHelpIntroFlag = false;
+		*userInput = "";
+		cFormat.Pause();
+
+	}//End of While Loop
+
+	commandsHelpIntroFlag = false;
 }

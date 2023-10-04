@@ -21,7 +21,7 @@ public:
 	void PrintFromFile(std::string filename, bool csvFile);
 	void PrintCursorPos();
 	void ReadKeywordFileToUMap(std::unordered_map<std::string, Keywords> &keywordMap, std::string filename);
-	void ReadCommandsFileToUMap(std::unordered_map<std::string, Commands>& commandsMap);
+	void ReadCommandsFileToUMap(std::unordered_map<Commands, std::string>& commandsMap);
 	void PrintFromUMap (std::unordered_map<std::string, Keywords> &uMap);
 };
 

@@ -18,7 +18,7 @@ Type back to return out of command help.
 > Attack Range
 
 *move*
-MOVE COMMAND *
+MOVE COMMAND 
 -------------
 This command allows your ship to move across the waters. Each Square is 5 Nautical Miles
 and takes 5 movement from your ship. To refresh your movement, you must end your turn.
@@ -41,7 +41,7 @@ LOAD MISSILE COMMAND
 ---------------------
 This command loads a random missile into the missile launcher silo
 
-*armmisisle
+*armmissile*
 ARM MISSILE COMMAND
 --------------------
 This commands will allow you to arm a missile in one of the silos
@@ -62,7 +62,7 @@ This command ends your turn and refreshes your movement and actions.
 Command Variants:
 End
 
-*Jets*
+*jets*
 Jets COMMAND
 -------------------
 This command shows you more commands for your jets, such as Deploy, Attack, Return to base / Land, and more
@@ -79,7 +79,7 @@ COLOUR LEGENDS COMMAND
 This displays the meaning of different colours for each symbo. Like what red means for silo symbol in UI
 and why the enemy ship changes colour ( hint: changes colour wether its in range of attack or not)
 
-*deployjet*
+*deployjets*
 DEPLOY JET COMMAND
 -------------------
 Sends a jet into deployment status(Launches it into the air). This gives the jet the ability to defend or attack.
@@ -89,7 +89,7 @@ Command Variants:
 Launch Jet
 Launch Jets
 
-*preparedefence*
+*preparedefense*
 PREPARE DEFENCE COMMAND
 ------------------------
 If you have 

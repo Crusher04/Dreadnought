@@ -58,6 +58,8 @@ private:
 	bool attackFlag = false;
 	bool armMissileFlag = false;
 	bool launchMissileFlag = false;
+	bool commandsHelpFlag = false;
+	bool commandsHelpIntroFlag = false;
 
 	//Counters
 	int clearScreenCounter = 0;
@@ -65,7 +67,7 @@ private:
 	BoardUI theBoard;
 	std::shared_ptr<Battleship> player;
 	std::unique_ptr<std::unordered_map<std::string, Keywords>> keywordsMap = std::make_unique<std::unordered_map<std::string, Keywords>>();
-	std::unique_ptr<std::unordered_map<std::string, Commands>> commandsMap = std::make_unique<std::unordered_map<std::string, Commands>>();
+	std::unique_ptr<std::unordered_map<Commands,std::string >> commandsMap = std::make_unique<std::unordered_map<Commands,std::string>>();
 	DiceRoller dRoller;
 
 

@@ -63,7 +63,7 @@ void AdvancedIO::ReadKeywordFileToUMap(std::unordered_map<std::string, Keywords>
 
 		if (stringVar == "quit" || stringVar == "exit")
 			key = Keywords::Quit;
-		else if (stringVar == "help")
+		else if (stringVar == "help" || stringVar == "commands")
 			key = Keywords::Help;
 		else if (stringVar == "menu")
 			key = Keywords::Menu;
@@ -88,8 +88,6 @@ void AdvancedIO::ReadKeywordFileToUMap(std::unordered_map<std::string, Keywords>
 			key = Keywords::Missile_Launcher;
 		else if (stringVar == "armmissile")
 			key = Keywords::Arm_Missile;
-		else if (stringVar == "commands")
-			key = Keywords::Commands;
 
 		keywordMap.insert({ stringVar, key });
 	}
@@ -97,7 +95,7 @@ void AdvancedIO::ReadKeywordFileToUMap(std::unordered_map<std::string, Keywords>
 	myFile.close();
 }
 
-void AdvancedIO::ReadCommandsFileToUMap(std::unordered_map<std::string, Commands> &commandsMap)
+void AdvancedIO::ReadCommandsFileToUMap(std::unordered_map<Commands, std::string> &commandsMap)
 {
 	std::string stringVar;
 	std::ifstream myFile("TextFiles/commands.txt");
@@ -109,65 +107,66 @@ void AdvancedIO::ReadCommandsFileToUMap(std::unordered_map<std::string, Commands
 	{
 		command = Keywords::KEYWORD_NULL;
 		std::getline(myFile, stringVar, '*');
+		commandsMap.insert({ Commands::Intro, stringVar  });
 
 		if (stringVar == "move")
 		{
 			std::getline(myFile, stringVar, '*');
-			commandsMap.insert({ stringVar, Commands::Move });
+			commandsMap.insert({ Commands::Move, stringVar  });
 			
 		}
 		else if (stringVar == "attack")
 		{
 			std::getline(myFile, stringVar, '*');
-			commandsMap.insert({ stringVar, Commands::Attack });
+			commandsMap.insert({ Commands::Attack, stringVar });
 
 		}
 		else if(stringVar == "loadmissile")
 		{
 			std::getline(myFile, stringVar, '*');
-			commandsMap.insert({ stringVar, Commands::Load_Missile });
+			commandsMap.insert({ Commands::Load_Missile, stringVar });
 
 		}
 		else if(stringVar == "armmissile")
 		{
 			std::getline(myFile, stringVar, '*');
-			commandsMap.insert({ stringVar, Commands::Arm_Missile });
+			commandsMap.insert({ Commands::Arm_Missile, stringVar });
 
 		}
 		else if(stringVar == "silostatus")
 		{
 			std::getline(myFile, stringVar, '*');
-			commandsMap.insert({ stringVar, Commands::Silo_Status });
+			commandsMap.insert({ Commands::Silo_Status, stringVar });
 
 		}
 		else if(stringVar == "endturn")
 		{
 			std::getline(myFile, stringVar, '*');
-			commandsMap.insert({ stringVar, Commands::End_Turn });
+			commandsMap.insert({ Commands::End_Turn, stringVar });
 
 		}
 		else if(stringVar=="jets")
 		{
 			std::getline(myFile, stringVar, '*');
-			commandsMap.insert({ stringVar, Commands::Jets });
+			commandsMap.insert({ Commands::Jets, stringVar });
 
 		}
 		else if(stringVar == "colourlegend")
 		{
 			std::getline(myFile, stringVar, '*');
-			commandsMap.insert({ stringVar, Commands::Colour_Legend });
+			commandsMap.insert({ Commands::Colour_Legend, stringVar });
 
 		}
 		else if(stringVar == "deployjets")
 		{
 			std::getline(myFile, stringVar, '*');
-			commandsMap.insert({ stringVar, Commands::Deploy_Jets });
+			commandsMap.insert({ Commands::Deploy_Jets, stringVar });
 
 		}
 		else if(stringVar =="preparedefense")
 		{
 			std::getline(myFile, stringVar, '*');
-			commandsMap.insert({ stringVar, Commands::Prepare_Defense });
+			commandsMap.insert({ Commands::Prepare_Defense, stringVar });
 
 		}
 

@@ -155,7 +155,6 @@ enum class Keywords {
 	Naval_Battery,
 	Missile_Launcher,
 	Arm_Missile,
-	Commands
 
 };
 
@@ -170,7 +169,8 @@ enum class Commands {
 	Jets,
 	Colour_Legend,
 	Deploy_Jets,
-	Prepare_Defense
+	Prepare_Defense,
+	Intro,
 	
 };
 #endif // !ENUM_H
