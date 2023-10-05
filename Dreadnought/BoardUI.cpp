@@ -10,10 +10,10 @@ ConsoleFormatting cFormat;
 BoardUI::BoardUI() 
 {
 	//Initialize Variables
-	boardSize[0] = 92;
-	boardSize[1] = 25;
-	chunkDefault[0] = boardSize[0];
-	chunkDefault[1] = boardSize[1];
+	boardRenderSize[0] = 92;
+	boardRenderSize[1] = 25;
+	chunkDefault[0] = 0;
+	chunkDefault[1] = 0;
 	chunkPosition[0] = 1;
 	chunkPosition[1] = 1;
 }
@@ -22,24 +22,47 @@ void BoardUI::Render(Battleship* player)
 {	
 	//Header
 	std::cout << "\t\t\t MAP \n\t\t\t-----"; 
+	int playerPosX = player->GetComponent<EngineComponent>()->GetPositionX();
+
+	if (playerPosX >= (chunkDefault[0] + boardRenderSize[0]))
+	{
+		chunkPosition[0] += 1;
+		chunkDefault[0] += boardRenderSize[0];
+		if (chunkPosition[0] == 0)
+			chunkPosition[0] = 1;
+
+			
+	}
+	else if (playerPosX < (chunkDefault[0] / (boardRenderSize[0]*chunkPosition[0])))
+	{
+		chunkPosition[0] -= 1;
+		chunkDefault[0] -= boardRenderSize[0];
+		
+		if (chunkPosition[0] == 0)
+			chunkPosition[0] = -1;
+
+	}
+
 
 	//Print out the board
-	for (int y = 0; y < boardSize[1]; y++)
+	for (int y = 0; y < boardRenderSize[1]; y++)
 	{
 		cFormat.SetColour(7);
 		std::cout << "\n";
-		for (int x = 0; x < boardSize[0]; x++)
+		for (int x = chunkDefault[0]; x < (boardRenderSize[0] * chunkPosition[0]); x++)
 		{
 			cFormat.SetColour(23);
-			if (player->GetComponent<EngineComponent>()->GetPositionX() == x && player->GetComponent<EngineComponent>()->GetPositionY() == y)
+			if (playerPosX == x && player->GetComponent<EngineComponent>()->GetPositionY() == y)
 			{
 				cFormat.SetColour(26);
 				std::cout << "0";
 				cFormat.SetColour(23);
 			}
-
-			//Water Icon
-			std::cout << "~";
+			else {
+				//Water Icon
+				std::cout << "~";
+			}
+			
 		}
 	}
 
@@ -49,7 +72,7 @@ void BoardUI::Render(Battleship* player)
 	
 	
 	//Top Border for UI
-	for (int i = 0; i < boardSize[0]; i++)
+	for (int i = 0; i < boardRenderSize[0]; i++)
 		std::cout << "-";
 
 	//Print ship name
@@ -174,7 +197,7 @@ void BoardUI::Render(Battleship* player)
 
 	//Bottom Border for UI
 	std::cout << "\n";
-	for (int i = 0; i < boardSize[0]; i++)
+	for (int i = 0; i < boardRenderSize[0]; i++)
 		std::cout << "-";
 }
 
