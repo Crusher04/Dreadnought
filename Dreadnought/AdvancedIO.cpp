@@ -103,6 +103,9 @@ void AdvancedIO::ReadCommandsFileToUMap(std::unordered_map<Commands, std::string
 
 	//Combs through the commands.txt file and assings the details to the command
 	//Must have the if statements in order of the file commands
+	//EDIT: 10/4/23 There is a better way to run this map. Use strings as key and look for them from 
+	//User input though its not worth the time to change it now. Maybe later..
+
 	while (!myFile.eof())
 	{
 		command = Keywords::KEYWORD_NULL;
@@ -169,7 +172,30 @@ void AdvancedIO::ReadCommandsFileToUMap(std::unordered_map<Commands, std::string
 			commandsMap.insert({ Commands::Prepare_Defense, stringVar });
 
 		}
+		else if (stringVar == "preparedefense")
+		{
+			std::getline(myFile, stringVar, '*');
+			commandsMap.insert({ Commands::Prepare_Defense, stringVar });
 
+		}
+		else if (stringVar == "items")
+		{
+			std::getline(myFile, stringVar, '*');
+			commandsMap.insert({ Commands::Items, stringVar });
+
+		}
+		else if (stringVar == "shipcomponents")
+		{
+			std::getline(myFile, stringVar, '*');
+			commandsMap.insert({ Commands::Ship_Components, stringVar });
+
+		}
+		else if (stringVar == "attackrange")
+		{
+			std::getline(myFile, stringVar, '*');
+			commandsMap.insert({ Commands::Attack_Range, stringVar });
+
+		}
 	}
 
 	myFile.close();

@@ -171,6 +171,9 @@ enum class Commands {
 	Deploy_Jets,
 	Prepare_Defense,
 	Intro,
+	Items,
+	Ship_Components,
+	Attack_Range,
 	
 };
 #endif // !ENUM_H

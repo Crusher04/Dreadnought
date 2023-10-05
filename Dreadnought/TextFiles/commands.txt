@@ -14,7 +14,7 @@ Type back to return out of command help.
 > Deploy Jet
 > Prepare Defense
 > Items
-> Ship Components / Ship Details
+> Ship Components
 > Attack Range
 
 *move*
@@ -92,4 +92,24 @@ Launch Jets
 *preparedefense*
 PREPARE DEFENCE COMMAND
 ------------------------
-If you have 
+If you have a Active Defense System, you can use your bonus action to prepare the Active Defense System (ADS) to 
+defend against incoming missiles, torpedoes, railguns, and aircraft.
+
+*items*
+ITEMS COMMAND
+--------------
+This command displays a list of items in the storage unit of your ship. Items you can carry are:
+
+- Fire Repellent
+- Hull Repair Kit
+- Weapon Repair Kit
+
+*shipcomponents*
+SHIP COMPONENTS COMMAND
+------------------------
+This command lists out the components in your battleship. 
+
+*attackrange*
+ATTACK RANGE COMMAND
+---------------------
+This command tells you if a ship is within attack range. Must have a Radar Component.

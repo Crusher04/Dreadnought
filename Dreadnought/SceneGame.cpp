@@ -542,6 +542,24 @@ void SceneGame::GoToCommandsHelp()
 				std::cout << c.find(Commands::Prepare_Defense)->second;
 
 		}
+		else if (*userInput == "items")
+		{
+			if (c.contains(Commands::Items))
+				std::cout << c.find(Commands::Items)->second;
+
+		}
+		else if (*userInput == "shipcomponents")
+		{
+			if (c.contains(Commands::Ship_Components))
+				std::cout << c.find(Commands::Ship_Components)->second;
+
+		}
+		else if (*userInput == "attackrange")
+		{
+			if (c.contains(Commands::Attack_Range))
+				std::cout << c.find(Commands::Attack_Range)->second;
+
+		}
 		else
 		{
 			std::cout << "\n\tInvalid Command";
