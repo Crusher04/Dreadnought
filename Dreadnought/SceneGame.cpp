@@ -191,6 +191,7 @@ void SceneGame::KeywordSelection()
 	auto launcher = player->GetComponent<MissileLauncherComponent>();
 	int siloNumber = 0, amountOfMissiles = 0, amountToBeArmed = 0;
 	bool missilesArmed = false;
+	bool moveFlag = false;
 	char test;
 	//Find the keyword
 	for (auto i : *keywordsMap)
@@ -237,12 +238,72 @@ void SceneGame::KeywordSelection()
 		commandsHelpFlag = false;
 		return;
 		break;
+	case Keywords::End_Turn:
+		player->GetComponent<EngineComponent>()->ResetMovemnt();
+		break;
 	case Keywords::Attack:
 		attackFlag = true;
 		PlayerAttack();
 		return;
 		break;
+	case Keywords::Move:
+		TypeWrite("Which Direction would you like to move?(Up, Down, Left, Right): ", 5);
+		moveFlag = true;
+		do
+		{
+			GetUserInput();
+			if (*userInput == "back")
+			{
+				moveFlag = false;
+			}
+			else if (*userInput == "exit" || *userInput == "quit")
+			{
+				game->SetGameActive(false);
+				return;
+			}
+			else if (*userInput == "left")
+			{
+				player->GetComponent<EngineComponent>()->MoveShip(MovementDirection::LEFT);
+				moveFlag = false;
+			}
+			else if (*userInput == "right")
+			{
+				player->GetComponent<EngineComponent>()->MoveShip(MovementDirection::RIGHT);
+				moveFlag = false;
+			}
+			else if (*userInput == "up")
+			{
+				player->GetComponent<EngineComponent>()->MoveShip(MovementDirection::UP);
+				moveFlag = false;
+			}
+			else if (*userInput == "down")
+			{
+				player->GetComponent<EngineComponent>()->MoveShip(MovementDirection::DOWN);
+				moveFlag = false;
+			}
+			else
+			{
+				cFormat.SetColour(12);
+				std::cout << "\n\tInvalid Command";
+				cFormat.SetColour(7);
+			}
 
+
+		} while (moveFlag);
+
+		break;
+	case Keywords::Move_Left:
+		player->GetComponent<EngineComponent>()->MoveShip(MovementDirection::LEFT);
+		break;
+	case Keywords::Move_Right:
+		player->GetComponent<EngineComponent>()->MoveShip(MovementDirection::RIGHT);
+		break;
+	case Keywords::Move_Down:
+		player->GetComponent<EngineComponent>()->MoveShip(MovementDirection::DOWN);
+		break;
+	case Keywords::Move_Up:
+		player->GetComponent<EngineComponent>()->MoveShip(MovementDirection::UP);
+		break;
 ARMINGMISSILECOMMAND:
 	case Keywords::Arm_Missile:
 		armMissileFlag = true;
@@ -437,7 +498,6 @@ void SceneGame::PlayerArmingOrLaunchingMissile()
 		std::cout << "\n No Missiles In Silos.\n";
 }//End of player arming missile
 
-
 void SceneGame::TypeWrite(std::string s, int speed)
 {
 	for (int i = 0; i < s.length(); i++)
@@ -482,7 +542,12 @@ void SceneGame::GoToCommandsHelp()
 			}
 		}
 
+		//Bind the map for easier control
 		auto c = *commandsMap;
+
+		//Change colour output to green
+		cFormat.SetColour(10);
+
 		if (*userInput == "move")
 		{
 			if (c.contains(Commands::Move))
@@ -562,9 +627,11 @@ void SceneGame::GoToCommandsHelp()
 		}
 		else
 		{
+			cFormat.SetColour(12);
 			std::cout << "\n\tInvalid Command";
 		}
 
+		cFormat.SetColour(7);
 		commandsHelpIntroFlag = false;
 		*userInput = "";
 		cFormat.Pause();

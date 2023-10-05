@@ -33,6 +33,11 @@ public:
 	/// <param name="pos"></param>
 	void SetConsoleCursorPos(COORD pos);
 	
+	/// <summary>
+	/// Resets Colour to white on black.
+	/// </summary>
+	void ResetColour();
+
 	void ScrollToTop();
 
 private:

@@ -33,6 +33,11 @@ void ConsoleFormatting::SetConsoleCursorPos(COORD pos)
 	SetConsoleCursorPosition(hConsole, pos);
 }
 
+void ConsoleFormatting::ResetColour()
+{
+	SetColour(7);
+}
+
 void ConsoleFormatting::ScrollToTop() {
 	COORD coord;
 	coord.X = 0;

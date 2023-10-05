@@ -2,6 +2,7 @@
 //Controls the movement and position of the ship
 #include "Component.h"
 #include <iostream>
+#include "ConsoleFormatting.h"
 
 class EngineComponent: public Component
 {
@@ -11,7 +12,7 @@ private:
 	int movement = 0;
 	int defaultNauticalMiles = 0;
 	int position[2] = { 0,0 };
-	
+	ConsoleFormatting cFormat;
 
 public:
 	/// <summary>
@@ -63,6 +64,11 @@ public:
 	void ResetMovemnt();
 
 	void ChangeEngineType(EngineType eType);
+
+	//Return X / Y Positions
+	int GetPositionX() { return position[0]; }
+	int GetPositionY() { return position[1]; }
+
 
 
 

@@ -24,13 +24,21 @@ void BoardUI::Render(Battleship* player)
 	std::cout << "\t\t\t MAP \n\t\t\t-----"; 
 
 	//Print out the board
-	for (int i = 0; i < boardSize[1]; i++)
+	for (int y = 0; y < boardSize[1]; y++)
 	{
 		cFormat.SetColour(7);
 		std::cout << "\n";
-		for (int i = 0; i < boardSize[0]; i++)
+		for (int x = 0; x < boardSize[0]; x++)
 		{
 			cFormat.SetColour(23);
+			if (player->GetComponent<EngineComponent>()->GetPositionX() == x && player->GetComponent<EngineComponent>()->GetPositionY() == y)
+			{
+				cFormat.SetColour(26);
+				std::cout << "0";
+				cFormat.SetColour(23);
+			}
+
+			//Water Icon
 			std::cout << "~";
 		}
 	}

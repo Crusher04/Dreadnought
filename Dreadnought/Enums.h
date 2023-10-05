@@ -155,6 +155,11 @@ enum class Keywords {
 	Naval_Battery,
 	Missile_Launcher,
 	Arm_Missile,
+	Move_Left,
+	Move_Right,
+	Move_Up,
+	Move_Down,
+	End_Turn
 
 };
 

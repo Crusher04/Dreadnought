@@ -69,10 +69,20 @@ void AdvancedIO::ReadKeywordFileToUMap(std::unordered_map<std::string, Keywords>
 			key = Keywords::Menu;
 		else if (stringVar == "back" || stringVar == "cancel")
 			key = Keywords::Back;
+		else if (stringVar == "end" || stringVar == "endturn")
+			key = Keywords::End_Turn;
 		else if (stringVar == "attack")
 			key = Keywords::Attack;
 		else if (stringVar == "move")
 			key = Keywords::Move;
+		else if (stringVar == "moveleft")
+			key = Keywords::Move_Left;
+		else if (stringVar == "moveright")
+			key = Keywords::Move_Right;
+		else if (stringVar == "moveup")
+			key = Keywords::Move_Up;
+		else if (stringVar == "movedown")
+			key = Keywords::Move_Down;
 		else if (stringVar == "silostatus" || stringVar == "launcherstatus")
 			key = Keywords::Silo_Status;
 		else if (stringVar == "loadmissile")

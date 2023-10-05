@@ -1,5 +1,4 @@
 #include "EngineComponent.h"
-
 EngineComponent::EngineComponent(EngineType eType)
 {
 	defaultNauticalMiles = (int)eType;
@@ -75,7 +74,10 @@ void EngineComponent::MoveShip(MovementDirection direction)
 	}
 	else
 	{
+		cFormat.SetColour(12);
 		std::cout << "\n\t No Movement Left.\n";
+		cFormat.ResetColour();
+		cFormat.Pause();
 	}
 	
 }
