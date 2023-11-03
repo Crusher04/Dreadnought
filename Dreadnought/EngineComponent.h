@@ -62,6 +62,7 @@ public:
 	/// <param name="distance"></param>
 	void MoveShip(MovementDirection direction, int distance);
 
+	//Resets Movement
 	void ResetMovemnt();
 
 	//Changes the engine type
