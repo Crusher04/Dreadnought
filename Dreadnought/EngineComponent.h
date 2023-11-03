@@ -1,4 +1,5 @@
 #pragma once
+
 //Controls the movement and position of the ship
 #include "Component.h"
 #include <iostream>
@@ -63,6 +64,7 @@ public:
 
 	void ResetMovemnt();
 
+	//Changes the engine type
 	void ChangeEngineType(EngineType eType);
 
 	//Return X / Y Positions
