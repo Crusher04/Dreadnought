@@ -44,7 +44,7 @@ void BoardUI::Render(Battleship* player)
 	}
 
 
-	//Print out the board on to console
+	//Print out the board
 	for (int y = 0; y < boardRenderSize[1]; y++)
 	{
 		cFormat.SetColour(7);
