@@ -7,7 +7,7 @@
 #include <stdlib.h>
 #include <crtdbg.h>
 #include "GameManager.h"
-
+#include "MemoryMonitor.h"
 
 
 #define _CRTDBG_MAP_ALLOC
