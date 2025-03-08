@@ -1,6 +1,5 @@
 #include "GameManager.h"
-
-
+#include <SDL3_ttf/SDL_ttf.h>
 
 GameManager::GameManager():currentScene{nullptr}, gameActive{nullptr}
 {	
@@ -61,6 +60,11 @@ GameManager::~GameManager()
 
 void GameManager::Run()
 {
+	// --- SDL_ttf Initialization ---
+	if (TTF_Init() != 0) {
+		std::cerr << "TTF_Init Error: " << SDL_GetError() << std::endl;
+		SDL_Quit();
+	}
 	currentScene->Update();
 }
 

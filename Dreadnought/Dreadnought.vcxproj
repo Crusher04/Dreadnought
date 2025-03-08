@@ -75,8 +75,8 @@
     <TargetName>Dreadnought a1.0</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>C:\SDL3-3.2.8\include\SDL3;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\SDL3-3.2.8\lib\x64;$(LibraryPath)</LibraryPath>
+    <IncludePath>C:\SDL3\SDL3_ttf-3.2.0\include\SDL3_ttf;C:\SDL3\SDL3-3.2.8\include\SDL3;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\SDL3\SDL3_ttf-3.2.0\lib\x64;C:\SDL3\SDL3-3.2.8\lib\x64;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -114,12 +114,12 @@
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
-      <AdditionalIncludeDirectories>C:\SDL3-3.2.8\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\SDL3\SDL3_ttf-3.2.0\include;C:\SDL3\SDL3-3.2.8\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>SDL3.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>SDL3.lib;SDL3_ttf.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
