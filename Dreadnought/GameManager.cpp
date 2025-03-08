@@ -4,14 +4,28 @@
 
 GameManager::GameManager():currentScene{nullptr}, gameActive{nullptr}
 {	
+	windowPtr = nullptr;
+	const int SCREEN_WIDTH = 1920;
+	const int SCREEN_HEIGHT = 1080;
+	windowPtr = new Window(SCREEN_WIDTH, SCREEN_HEIGHT);
+	if (windowPtr == nullptr) {
+		//OnDestroy();
+		//return false;
+	}
+	if (windowPtr->OnCreate() == false) {
+		//OnDestroy();
+		//return false;
+	}
+
+
 	//Console Title
-	SetConsoleTitleA("Dreadnought: Rogue-like Surival Game");
-	std::cout << "\n\t PLEASE MAXIMIZE WINDOW FOR FULL EXPERIENCE! THANKS :) \n";
+	//SetConsoleTitleA("Dreadnought: Rogue-like Surival Game");
+	//std::cout << "\n\t PLEASE MAXIMIZE WINDOW FOR FULL EXPERIENCE! THANKS :) \n";
 	//Sleep(4000);
-	cFormat.ClearScreen();
-	IO.PrintFromFile("TextFiles/credits.txt");
+	//cFormat.ClearScreen();
+	//IO.PrintFromFile("TextFiles/credits.txt");
 	//Sleep(3500);
-	cFormat.ClearScreen();
+	//cFormat.ClearScreen();
 
 	//Set Game as active
 	if (gameActive == nullptr)
@@ -41,6 +55,8 @@ GameManager::~GameManager()
 		delete gameActive;
 	}
 
+	windowPtr->OnDestroy();
+	delete windowPtr;
 }
 
 void GameManager::Run()

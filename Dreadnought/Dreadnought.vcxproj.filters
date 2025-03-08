@@ -53,6 +53,7 @@
       <Filter>Source</Filter>
     </ClCompile>
     <ClCompile Include="AIController.cpp" />
+    <ClCompile Include="Window.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BoardUI.h">
@@ -113,6 +114,7 @@
       <Filter>Header</Filter>
     </ClInclude>
     <ClInclude Include="AIController.h" />
+    <ClInclude Include="Window.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header">

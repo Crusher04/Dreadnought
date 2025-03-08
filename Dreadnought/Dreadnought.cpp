@@ -19,7 +19,7 @@ int main()
 
     while (game->IsGameActive())
     {
-        game->Run();
+       game->Run();
     }
 
     delete game;

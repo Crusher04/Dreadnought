@@ -8,6 +8,7 @@
 #include "SceneGame.h"
 #include "SceneHowToPlay.h"
 #include "AdvancedIO.h"
+#include "Window.h"
 
 #include <algorithm>
 #include <cctype>
@@ -25,9 +26,13 @@
 #define DBG_NEW new
 #endif
 
+
+
 class GameManager
 {
 private:
+	class Window* windowPtr;
+
 	class Scene* currentScene;
 
 	AdvancedIO IO;
